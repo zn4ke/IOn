@@ -1,0 +1,4 @@
+h4 lecture browser
+.btn.btn-primary(ng-click='goTo("/admin/new/event")') new
+div(ng-repeat='event in data.events', ng-click='select(this, "event")')
+    div {{event._id}}

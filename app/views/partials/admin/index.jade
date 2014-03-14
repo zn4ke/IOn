@@ -1,0 +1,7 @@
+.container(ng-controller='AdminCtrl')
+    .row
+        
+        tabset
+            tab(ng-repeat="tab in tabs", heading="{{tab.title}}", active="tab.active", ui-sref="{{tab.sref}}") {{tab.content}}
+        div.col-xs-4(ui-view='browser')
+        div.col-xs-8(ui-view='details')

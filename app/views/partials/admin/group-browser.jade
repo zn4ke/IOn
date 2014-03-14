@@ -1,0 +1,4 @@
+h4 group browser
+.btn.btn-primary(ng-click='goTo("/admin/new/group")') new
+div(ng-repeat='group in data.groups', ng-click='select(this, "group")')
+    div {{group.name}}

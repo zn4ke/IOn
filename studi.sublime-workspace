@@ -1,0 +1,407 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"collect",
+				"collectionName"
+			],
+			[
+				"new",
+				"newDbEntry"
+			],
+			[
+				"current",
+				"current_user"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"inte",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inten",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/gargamel/Public/node/student-response/client/views/layout.jade",
+		"/home/gargamel/Public/node/student-response/client/js/app.js",
+		"/home/gargamel/Public/node/student-response/client/views/index.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/state1.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/state1-list.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/state2.jade",
+		"/home/gargamel/Public/node/student-response/client/js/services.js",
+		"/home/gargamel/Public/node/student-response/server/routes.js",
+		"/home/gargamel/Public/node/student-response/client/js/controller/main.js",
+		"/home/gargamel/Public/node/student-response/client/js/lib/underscore.string.js",
+		"/home/gargamel/Public/node/student-response/client/views/partials/state2-list.jade",
+		"/home/gargamel/Public/node/student-response/client/js/lib/angular-ui/angular-ui-router.js",
+		"/home/gargamel/Public/node/student-response/client/css/ng-grid.css",
+		"/home/gargamel/Public/node/student-response/client/js/lib/angular-ui/ui-bootstrap-tpls-0.9.0.js",
+		"/home/gargamel/Public/node/student-response/client/js/lib/angular-ui/ng-grid.js",
+		"/home/gargamel/Public/node/student-response/client/js/controller/admin.js",
+		"/home/gargamel/Public/node/student-response/client/js/directives.js",
+		"/home/gargamel/Public/node/student-response/client/views/partials/admin-content.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/admin.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/admin-decks.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/admin-events.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/admin-groups.jade",
+		"/home/gargamel/Public/node/student-response/server/controllers/api/deck.js",
+		"/home/gargamel/Public/node/student-response/server/controllers/api/event.js",
+		"/home/gargamel/Public/node/student-response/server/controllers/api/group.js",
+		"/home/gargamel/Public/node/student-response/server/controllers/api/user.js",
+		"/home/gargamel/Public/node/student-response/client/views/particles/particular-panel.jade",
+		"/home/gargamel/Public/node/student-response/client/views/particles/user-test.jade",
+		"/home/gargamel/Public/node/student-response/client/views/particles/group-test.jade",
+		"/home/gargamel/Public/node/student-response/client/views/particles/event-test.jade",
+		"/home/gargamel/Public/node/student-response/client/views/particles/deck-test.jade",
+		"/home/gargamel/Public/node/student-response/server/controllers/house.js",
+		"/home/gargamel/Public/node/student-response/client/css/particles.css",
+		"/home/gargamel/Public/node/student-response/server/controllers/socket.js",
+		"/home/gargamel/Public/node/student-response/client/css/particulator.css",
+		"/home/gargamel/Public/node/student-response/server/controllers/user.js",
+		"/home/gargamel/Public/node/student-response/server/models/User.js",
+		"/home/gargamel/Public/node/student-response/client/views/particles/particulator-panel.jade",
+		"/home/gargamel/Public/node/student-response/client/js/controller/particle.js",
+		"/home/gargamel/Public/node/student-response/client/js/controller/player.js",
+		"/home/gargamel/Public/node/student-response/server.js",
+		"/home/gargamel/Public/node/student-response/server/models/Event.js",
+		"/home/gargamel/Public/node/student-response/client/views/partials/player-admin.jade",
+		"/home/gargamel/Public/node/student-response/server/models/Lecture.js",
+		"/home/gargamel/Public/node/student-response/client/views/forms/slide-mc.jade",
+		"/home/gargamel/Public/node/student-response/client/views/slides/mob/slide-mc.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/player-pres.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/player-mob.jade",
+		"/home/gargamel/Public/node/student-response/client/views/slides/pres/slide-mc.jade",
+		"/home/gargamel/Public/node/student-response/client/views/slides/mob/slide-simple.jade",
+		"/home/gargamel/Public/node/student-response/client/views/forms/slide-simple.jade",
+		"/home/gargamel/Public/node/student-response/client/views/forms/slide.jade",
+		"/home/gargamel/Public/node/student-response/client/views/slides/stat/slide-mc.jade",
+		"/home/gargamel/Public/node/student-response/client/views/slides/pres/slide-simple.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/teachers.jade",
+		"/home/gargamel/Public/node/student-response/server/models/Deck.js",
+		"/home/gargamel/Public/node/student-response/server/models/Slide.js",
+		"/home/gargamel/Public/node/student-response/client/views/partials/login.jade",
+		"/home/gargamel/Public/node/student-response/package.json",
+		"/home/gargamel/Public/node/student-response/LICENSE",
+		"/home/gargamel/Public/node/student-response/client/views/forms/group.jade",
+		"/home/gargamel/Public/node/student-response/client/views/forms/deck.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/profile.jade",
+		"/home/gargamel/Public/node/student-response/client/views/forms/profile.jade",
+		"/home/gargamel/Public/node/student-response/client/views/forms/user.jade",
+		"/home/gargamel/Public/node/student-response/server/controllers/auth.js",
+		"/home/gargamel/Public/node/student-response/client/js/routingConfig.js",
+		"/home/gargamel/Public/node/student-response/client/views/partials/admin-create.jade",
+		"/home/gargamel/Public/node/student-response/client/views/partials/register.jade",
+		"/home/gargamel/Public/node/student-response/client/js/controllers.js",
+		"/home/gargamel/Public/node/student-response/client/js/controllers.admin.js",
+		"/home/gargamel/Public/node/student-response/client/js/controllers.player.js",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin.jade",
+		"/home/gargamel/Public/node/sf/client/js/controllers.player.js",
+		"/home/gargamel/Public/node/sf/client/js/controllers.admin.js",
+		"/home/gargamel/Public/node/sf/client/js/services.js",
+		"/home/gargamel/Public/node/sf/client/views/partials/player-admin.jade",
+		"/home/gargamel/Public/node/sf/client/js/controllers.js",
+		"/home/gargamel/Public/node/sf/client/views/index.jade",
+		"/home/gargamel/Public/node/sf/server/controllers/socket.js",
+		"/home/gargamel/Public/node/sf/client/views/layout.jade",
+		"/home/gargamel/Public/node/sf/client/views/forms/slide-simple.jade",
+		"/home/gargamel/Public/node/sf/client/views/forms/slide-mp.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin-groups.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin-decks.jade",
+		"/home/gargamel/Public/node/sf/client/css/app.css",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin-create.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/private.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/player-pres.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/player-mob.jade",
+		"/home/gargamel/Public/node/sf/server.js",
+		"/home/gargamel/Public/node/sf/server/controllers/house.js",
+		"/home/gargamel/Public/node/sf/client/js/app.js",
+		"/home/gargamel/Public/node/sf/client/views/partials/player-admin",
+		"/home/gargamel/Public/node/sf/client/views/partials/player-mob",
+		"/home/gargamel/Public/node/sf/server/routes.js",
+		"/home/gargamel/Public/node/sf/client/js/lib/socket.io/socket.io.js",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin-events.jade",
+		"/home/gargamel/Public/node/sf/server/models/Lecture.js",
+		"/home/gargamel/Public/node/sf/server/models/Deck.js",
+		"/home/gargamel/Public/node/sf/client/views/partials/register.jade",
+		"/home/gargamel/Public/node/sf/client/js/routingConfig.js",
+		"/home/gargamel/Public/node/sf/client/js/directives.js",
+		"/home/gargamel/Public/node/sf/client/js/controlers.player.js",
+		"/home/gargamel/Public/node/sf/client/views/forms/group.jade",
+		"/home/gargamel/Public/node/sf/server/models/Slide.js",
+		"/home/gargamel/Public/node/sf/server/models/User.js",
+		"/home/gargamel/Public/node/sf/client/views/forms/deck.jade",
+		"/home/gargamel/Public/node/sf/server/models/Group.js",
+		"/home/gargamel/Public/node/sf/server/models/Answer.js",
+		"/home/gargamel/Public/node/sf/server/controllers/auth.js",
+		"/home/gargamel/Public/node/sf/client/views/forms/simple-slide.jade",
+		"/home/gargamel/Public/node/sf/client/views/forms/event",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin-create-content.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/groups.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin.events.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin.decks.jade",
+		"/home/gargamel/Public/node/sf/client/views/partials/admin.groups.jade",
+		"/home/gargamel/Public/node/sf/server/controllers/user.js",
+		"/home/gargamel/Public/node/sf/package.json",
+		"/home/gargamel/Public/node/sf/server/settings.js",
+		"/home/gargamel/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/gargamel/Public/node/mean/app/views/layouts/default.jade",
+		"/home/gargamel/Public/node/mean/public/views/header.html",
+		"/home/gargamel/Public/node/mean/app/views/includes/head.jade",
+		"/home/gargamel/Public/node/mean/public/js/services/db.js",
+		"/home/gargamel/Public/node/mean/config/express.js",
+		"/home/gargamel/Public/node/mean/app/models/deck.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/home/gargamel/Public/node/student-response, -/home/gargamel/Public/node/student-response/node_modules/*, -/home/gargamel/Public/node/student-response/client/js/lib/*",
+			"/home/gargamel/Public/node/sf, -/home/gargamel/Public/node/sf/node_modules/*, -/home/gargamel/Public/node/sf/client/js/libs/*",
+			"/home/gargamel/Public/node/mean, -/home/gargamel/Public/node/mean/node_modules/*, -/home/gargamel/Public/node/mean/public/lib/*",
+			"-public/lib/*,-node_modules/*",
+			"-/home/gargamel/Public/node/mean/public/lib,-/home/gargamel/Public/node/mean/node_modules",
+			"/home/gargamel/Public/node/mean/app,/home/gargamel/Public/node/mean/public,-/home/gargamel/Public/node/mean/public/lib,-/home/gargamel/Public/node/mean/node_modules",
+			"/home/gargamel/Public/node/mean/app,/home/gargamel/Public/node/mean/public,-/home/gargamel/Public/node/mean/public/lib",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"pcModel",
+			"pc-model",
+			"console",
+			"Group",
+			"group",
+			"Group",
+			"scope.particular",
+			"event",
+			"scope.particular",
+			"NavCtrl",
+			"scope.particle",
+			"Auth",
+			"particle-type",
+			"particle-templ",
+			"particular.list",
+			"particleList",
+			"tempUsers",
+			"user",
+			"users",
+			"particulator",
+			"User",
+			"apply",
+			"jason borne",
+			"ngsf_db",
+			"ngsfdb",
+			"ngsf-db",
+			"ngsfbd",
+			"UserParticleCtrl",
+			"onUpdateCallbacks",
+			"db:get request",
+			"Socket",
+			"DbProvider",
+			"handshake un",
+			"populate",
+			"refreshClient",
+			"lecture",
+			"Lecture",
+			"='')",
+			"angular-client-side-auth",
+			"db:update",
+			"req.user",
+			"$scope.user",
+			"db:remove",
+			"validate called",
+			"console.log",
+			"authorize",
+			"siteAdmin",
+			"accessLevel",
+			"authorize",
+			"nickname",
+			"login",
+			"routeParams",
+			"choose",
+			"remove",
+			"error",
+			"admin-create",
+			"console.log",
+			");\n",
+			"mobilie",
+			"users:get",
+			"User",
+			"angular-client-side-auth",
+			"dLabel",
+			"admin/admin",
+			"admin",
+			"getAll",
+			"' ",
+			"log",
+			"express.session",
+			"findAll",
+			"findALL",
+			"console.log",
+			"console",
+			"routes",
+			"validate",
+			"AuthCtrl",
+			"findAll",
+			"addUser",
+			"space",
+			"Content",
+			"Collection",
+			"collection",
+			"requiresLogin",
+			"socketProvider",
+			"auth",
+			"FantasyFootball",
+			"fantasy",
+			"ngff",
+			"ngsf",
+			"ngff",
+			"contents",
+			"http"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"pcData",
+			"pc-data",
+			"Deck",
+			"deck",
+			"event",
+			"Event",
+			"particular",
+			"Group",
+			"ngsf-db",
+			"socket",
+			"event",
+			"Event",
+			"student-response",
+			"username",
+			"db:get",
+			"Deck",
+			"StudentFeedback",
+			"ngsf",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 287.0,
+	"status_bar_visible": true
+}

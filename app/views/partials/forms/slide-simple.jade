@@ -1,0 +1,20 @@
+.row(ng-controller="AdminContentCtrl")
+    .col-sm-12
+        h1 Simple Slide
+    
+    .col-sm-12
+        form.form(name='form', ng-submit='submitForm("slide", form)')
+            .form-group()
+                label Name
+                input.form-control(type='textbox', name='pres', ng-model='formData.pres')
+                
+
+            .form-group()
+                label Mobile
+                input.form-control(type='textbox', name='mobile', ng-model='formData.mobile')
+                
+
+            .form-group()
+                label Notes
+                input.form-control(type='textbox', name='notes', ng-model='formData.notes')
+            button.btn.btn-lg.btn-primary(type='submit') send

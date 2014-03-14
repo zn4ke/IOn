@@ -1,0 +1,27 @@
+.row(ng-controller="AdminContentCtrl")
+    .col-sm-12
+        h1 Group Form
+    
+    .col-sm-12
+        form.form(name='form', ng-submit='submitForm("group")')
+            .form-group()
+                label Name
+                input.form-control(type='text', name='name', ng-model='formData.name')
+
+            .form-group()
+                label Description
+                input.form-control(type='textbox', name='desc', ng-model='formData.desc')
+
+
+            .form-group()
+                label Optionen
+                br
+                input(type='checkbox', name='pub', ng-model='formData.pub',value='value')  
+                span &nbsp; public
+                br
+                input(type='checkbox', name='share', ng-model='formData.share')  
+                span &nbsp; shared
+                br
+
+            button.btn.btn-lg.btn-primary(type='submit') Send
+
