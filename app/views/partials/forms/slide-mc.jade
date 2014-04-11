@@ -1,0 +1,27 @@
+.row(ng-controller="AdminContentCtrl")
+    .col-sm-12
+        h1 MC
+
+    .col-sm-12
+        form.form()
+            .form-group
+                label Name
+                input.form-control(type='text', placeholder='type a name', ng-model='formData.name')
+            .form-group
+                label Question (Presentation)
+                textarea.form-control( placeholder='type some presentation here', ng-model='formData.pres.question')
+                br
+                label Mobile Content
+                textarea.form-control( placeholder='type some mobile content', ng-model='formData.mob.question')
+                br
+                label(ng-init="formData.mob.answers = formData.mob.answers || [{text: 'ans1'},{text: 'ans2'}]") Answers
+                div( ng-repeat='answer in formData.mob.answers')
+                    div.form-group
+                        textarea.form-control(ng-model='formData.mob.answers[$index].text')
+                        .btn.btn-danger(ng-click='removeFromArray(formData.mob.answers)')
+                            span.glyphicon.glyphicon-remove
+                div.form-group
+                .btn.btn-success(ng-click='addToArray(formData.mob.answers)')
+                    span.glyphicon.glyphicon-plus
+            .form-group
+                .btn.btn-primary( ng-click='addSlide( "slide-mc" )') send

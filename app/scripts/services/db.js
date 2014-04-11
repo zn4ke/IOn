@@ -9,12 +9,12 @@ angular.module('studiApp')
                 }, { //parameters default
                 update: {
                     method: 'PUT',
-                    params: {}
+                    params: { }
                 },
                 get: {
                     method: 'GET',
                     params: {
-                        id:'me'
+                        //id:'me'
                     }
                 },
                 list: {
@@ -35,7 +35,7 @@ angular.module('studiApp')
                 get: {
                     method: 'GET',
                     params: {
-                        id:'me'
+                        //id:'me'
                     }
                 },
                 list: {
@@ -65,6 +65,14 @@ angular.module('studiApp')
                     params: {
                         id:'list'
                     }
+                }
+            }),
+            slide: $resource('/api/db/slide/:id', {
+                id: '@id'
+                }, { //parameters default
+                update: {
+                    method: 'PUT',
+                    params: {}
                 }
             })
         };

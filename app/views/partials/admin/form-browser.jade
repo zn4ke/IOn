@@ -1,4 +1,8 @@
 h4 form browser
-div(ng-repeat='form in data.forms', ng-click='select(this, "user")')
-    ul
-        li {{form.name}}
+div 
+    div
+        a(ng-href="/admin/new/slide-simple") Simple Slide
+    div
+        a(ng-href="/admin/new/slide-mc") Multiple-Choice
+    div
+        a(ng-href="/admin/new/slide-simple") ....

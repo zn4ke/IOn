@@ -5,3 +5,7 @@ div
     div desc: {{data.selected.deck.desc}}
     div pub: {{data.selected.deck.pub}}
     div share: {{data.selected.deck.share}}
+    div slides
+        div.thumbnail(ng-repeat="slide in data.selected.deck.slides") title: {{slide.title}}
+        br
+        a.btn.btn-primary.btn-xs( value="" href="admin/new/slide-simple") add Slide

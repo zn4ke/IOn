@@ -1,4 +1,4 @@
 h4 deck browser
 .btn.btn-primary(ng-click='goTo("/admin/new/deck")') new
 div(ng-repeat='deck in data.decks', ng-click='select(this, "deck")')
-    div {{deck.name}}
+    div.thumbnail {{deck.name}}
