@@ -1,9 +1,12 @@
 'use strict';
 
 var express = require('express'),
+    http = require('http'),
+    
     path = require('path'),
     fs = require('fs'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    connect = require('express/node_modules/connect');
 
 /**
  * Main application file
@@ -33,24 +36,54 @@ require(modelsPath + '/user');
 //   }
 // });
 
+var MongoStore = require('connect-mongo')(connect)
+  ,sessionStore = new MongoStore({ db: db.connection.db });
+
+
+
 // Populate empty DB with sample data
 require('./lib/config/dummydata');
   
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
-var app = express();
+var app = express()
+    , server = http.createServer(app);
+
+
+/*
+*   socket.io config and init
+*/
+var io = require('socket.io').listen(server);
+io.set('log level', 2);
+
+
 
 // Express settings
-require('./lib/config/express')(app);
+require('./lib/config/express')(app, db, io);
 
 // Routing
 require('./lib/routes')(app);
 
-// Start server
-app.listen(config.port, function () {
-  console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
+
+
+
+io.sockets.on('connection', function(socket){
+  require('./lib/controllers/socket')(socket, io);
 });
+
+
+
+// Start server
+app.set('port', config.port || 3000);
+server.listen(app.get('port'), function(){
+    console.log("Express server listening on port " + app.get('port'));
+});
+
+
+// app.listen(config.port, function () {
+//   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
+// });
 
 // Expose app
 exports = module.exports = app;

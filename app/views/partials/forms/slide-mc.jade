@@ -3,10 +3,10 @@
         h1 MC
 
     .col-sm-12
-        form.form()
+        form.form( ng-init="formData.type='slide-mc'" )
             .form-group
-                label Name
-                input.form-control(type='text', placeholder='type a name', ng-model='formData.name')
+                label Titel
+                input.form-control(type='text', placeholder='type a name', ng-model='formData.title')
             .form-group
                 label Question (Presentation)
                 textarea.form-control( placeholder='type some presentation here', ng-model='formData.pres.question')
@@ -24,4 +24,4 @@
                 .btn.btn-success(ng-click='addToArray(formData.mob.answers)')
                     span.glyphicon.glyphicon-plus
             .form-group
-                .btn.btn-primary( ng-click='addSlide( "slide-mc" )') send
+                .btn.btn-primary( ng-click='saveSlide( "slide-mc" )') send

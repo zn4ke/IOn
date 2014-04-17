@@ -1,0 +1,16 @@
+div()
+    .modal-header
+        h2 Choose an Item
+
+    .modal-body
+        h3 {{type}}
+        
+        .thumbnail.container-fluid( ng-repeat="item in items")
+            div()
+                .row
+                    // ng-style="{'background-color': (item._id === selected.item._id) ? 'red' : 'gray'}"
+                    div.col-xs-10(ng-class="{'bg-info': (item._id === selected.item._id) }") (id: {{item._id}})
+                    .btn.btn-primary.btn-xs-pull-right( ng-click="select(this)" ) clickMe
+    .modal-footer
+        button.btn.btn-primary( ng-click="ok()" ) Ok
+        button.btn.btn-primary( ng-click="cancel()" ) cancel

@@ -10,6 +10,8 @@
     "connect-mongo": "~0.4.0",
     "passport": "latest",
     "passport-local": "latest",
+    "passport.socketio":"2.2.0",
+    "socket.io":"0.9.16",
     "jade": "latest"
   },
   "devDependencies": {

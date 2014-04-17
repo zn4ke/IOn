@@ -7,5 +7,6 @@ div
     div share: {{data.selected.deck.share}}
     div slides
         div.thumbnail(ng-repeat="slide in data.selected.deck.slides") title: {{slide.title}}
+            .btn.btn-primary( ng-click="editSlide(this)" ) edit
         br
-        a.btn.btn-primary.btn-xs( value="" href="admin/new/slide-simple") add Slide
+        .btn.btn-primary.btn-xs( ng-click="addSlide(this)" ) add Slide

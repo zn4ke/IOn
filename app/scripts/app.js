@@ -1,11 +1,18 @@
 'use strict';
 
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+
+
+
 angular.module('studiApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngCkeditor'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
@@ -87,8 +94,8 @@ angular.module('studiApp', [
                         $scope.info = 'admin.groups controller';
                     }
                 })
-                .state("admin.new", {
-                    url: "/new/:type",
+                .state("admin.edit", {
+                    url: "/edit/:type",
                     views: {
                         browser:{templateUrl: "partials/admin/form-browser.html"},
                         details:{
@@ -98,37 +105,33 @@ angular.module('studiApp', [
                         }
                     }
                 })
-                .state("admin.lectures", {
+                .state("admin.events", {
                 // 
-                    url: "/lectures",
+                    url: "/events",
                     views: {
-                        browser:{templateUrl: "partials/admin/lecture-browser.html"},
-                        details:{templateUrl: "partials/admin/lecture-details.html"}
-                    },
-                    controller: function($scope) {
-                        $scope.info = 'admin.lecture controller';
+                        browser:{templateUrl: "partials/admin/event-browser.html"},
+                        details:{templateUrl: "partials/admin/event-details.html"}
                     }
                 })
-            .state('state1', {
-                url: "/state1",
+            .state('viewer', {
+                url: "/viewer/:eventId",
                 views: {
                     nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/state1.html"}
+                    main:{templateUrl: "partials/viewer.html"}
                 },
                 //templateUrl: "partials/state1.html",
                 controller: function($scope) {
                     $scope.items = ["A", "List", "Of", "Items"];
                 }
             })
-                .state('state1.list', {
-                    url: "/list",
-                    templateUrl: "partials/list.html",
-                    //templateUrl: "partials/list.html",
-                    controller: function($scope) {
-                        console.log('state1.list controller')
-                        $scope.items = ["A", "List", "Of", "Items"];
-                    }
-                })
+            .state('join', {
+                url: "/join",
+                views: {
+                    nav:{templateUrl: "partials/navbar.html"},
+                    main:{templateUrl: "partials/event-list.html"}
+                }
+            })
+
             .state('state2', {
                 url: "/state2/:id",
                 views: {

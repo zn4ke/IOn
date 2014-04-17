@@ -37,7 +37,8 @@ angular.module('studiApp')
 // https://github.com/ericpanorel/AngularCkEdDirective
 
 // "use strict";
-// ckApp.directive('ckedit', function ($parse) {
+// angular.module('studiApp')
+// .directive('ckedit', function ($parse) {
 //     CKEDITOR.disableAutoInline = true;
 //     var counter = 0,
 //     prefix = '__ckd_';

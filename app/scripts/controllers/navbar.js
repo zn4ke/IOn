@@ -10,8 +10,8 @@ angular.module('studiApp')
             'title': 'Enter',
             'link': '/enter'
         }, {
-            'title': 'State1',
-            'link': '/state1'
+            'title': 'Events',
+            'link': '/join'
         }, {
             'title': 'Admin',
             'link': '/admin/decks',

@@ -9,10 +9,15 @@
                 input.form-control(type='text', name='name', ng-model='formData.name')
 
             .form-group()
-                label Description
+                label Beschreibung
                 input.form-control(type='textbox', name='desc', ng-model='formData.desc')
 
-
+            .form-group()
+                label Gruppe
+                span groupID:
+                    span(ng-bind="formData.group._id")
+                div(ng-init="formData.group={init:'hello',_id:'fake'}")
+                .btn.btn-primary(ng-click="choose('groups', 'group' )") choose
             .form-group()
                 label Optionen
                 br

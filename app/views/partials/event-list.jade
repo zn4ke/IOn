@@ -1,0 +1,14 @@
+div.container( ng-controller="ViewerCtrl")
+    h3 List of Events
+    h4 meine Veranstaltungen
+    ul.row
+        li.thumbnail.col-xs-4( ng-repeat="event in data.events.pub", ng-click="joinEvent(this)")
+            div name {{event.name}}
+            div date {{event.date}}
+            div pub {{event.pub}}
+    h4 öffentliche Veranstaltungen
+    ul.row
+        li.thumbnail.col-xs-4( ng-repeat="event in data.events.my", ng-click="joinEvent(this)" )
+            div name {{event.name}}
+            div date {{event.date}}
+            div pub {{event.pub}}

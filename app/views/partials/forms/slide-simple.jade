@@ -3,21 +3,33 @@
         h1 Simple Slide
     
     .col-sm-12
-        form.form(name='form')
+        form.form( ng-init="formData.type='slide-simple'" )
             .form-group()
                 label Title
                 input.form-control(type='textbox', name='pres', ng-model='formData.title')
             .form-group()
-                label Presentation
-                textarea.form-control( ng-model='formData.pres')
-                
+                label(ng-init="presZoom = 1") Presentation
+                .btn.btn-primary(ng-click="presZoom = presZoom * 1.1; presZoomStyle={zoom: presZoom}") +
+                .btn.btn-primary(ng-click="presZoom = presZoom * 0.9; presZoomStyle={zoom: presZoom}") -
+                div.thumbnail(ng-init="data.editPres = false")
+                    .btn.btn-primary.pull-right( ng-hide="data.editPres", ng-click="toggleEdit('pres')") edit
+                    .btn.btn-danger.pull-right( ng-show="data.editPres", ng-click="toggleEdit('pres')") save
+                    div( ng-show="data.editPres")
+                        textarea( ckeditor="editorOptions", ng-model='formData.pres')
+                    div.pres-class( ng-hide="data.editPres", dynamic='formData.pres', ng-style="presZoomStyle")
 
             .form-group()
                 label Mobile
                 textarea.form-control( ng-model='formData.mobile')
-                
+            
+            div(dynamic='formData.mobile')
+            <script type="math/tex">x+\sqrt{1-x^2}</script>
+            div(data-toggle="tooltip", data-placement="top", title="Tooltip on top") x = {-b \pm \sqrt{b^2-4ac} \over 2a}
+            span(class="math-tex", mathjax-bind="data.expression")
+            span(class="math-tex", mathjax-tex="x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}", data-toggle="tooltip", data-placement="top", title="Tooltip on top")
+
 
             .form-group()
                 label Notes
                 textarea.form-control( ng-model='formData.notes' )
-            .btn.btn-primary( ng-click='addSlide( "slide-simple" )') send
+            .btn.btn-primary( ng-click='saveSlide( "slide-simple" )') send
