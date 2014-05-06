@@ -1,11 +1,11 @@
 'use strict';
 
-describe('Controller: SlidePreviewCtrl', function () {
+describe('Controller: PlayerCtrl', function () {
 
   // load the controller's module
   beforeEach(module('studiApp'));
 
-  var SlidePreviewCtrl,
+  var PlayerCtrl,
     scope,
     $httpBackend;
 
@@ -15,7 +15,7 @@ describe('Controller: SlidePreviewCtrl', function () {
     $httpBackend.expectGET('/api/awesomeThings')
       .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
     scope = $rootScope.$new();
-    SlidePreviewCtrl = $controller('SlidePreviewCtrl', {
+    PlayerCtrl = $controller('PlayerCtrl', {
       $scope: scope
     });
   }));

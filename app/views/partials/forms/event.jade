@@ -14,10 +14,12 @@
 
             .form-group()
                 label Gruppe
-                span groupID:
-                    span(ng-bind="formData.group._id")
-                div(ng-init="formData.group={init:'hello',_id:'fake'}")
-                .btn.btn-primary(ng-click="choose('groups', 'group' )") choose
+                div(ng-init="formData.group='wähle eine Gruppe'")
+                .btn.btn-primary(ng-click="choose('groups', 'group' )") {{formData.group}}
+            .form-group()
+                label Deck
+                div(ng-init="formData.deck='wähle eine Deck'")
+                .btn.btn-primary(ng-click="choose('decks', 'deck' )") {{formData.deck}}
             .form-group()
                 label Optionen
                 br

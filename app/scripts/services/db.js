@@ -55,9 +55,9 @@ angular.module('studiApp')
                 },
                 get: {
                     method: 'GET',
-                    params: {
-                        id:'me'
-                    }
+                    // params: {
+                    //     id:'me'
+                    // }
                 },
                 list: {
                     isArray: true,

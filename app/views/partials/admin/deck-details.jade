@@ -1,12 +1,11 @@
-h4 deck details
-div
-    div id: {{data.selected.deck._id}}
-    div name: {{data.selected.deck.name}}
-    div desc: {{data.selected.deck.desc}}
-    div pub: {{data.selected.deck.pub}}
-    div share: {{data.selected.deck.share}}
-    div slides
-        div.thumbnail(ng-repeat="slide in data.selected.deck.slides") title: {{slide.title}}
-            .btn.btn-primary( ng-click="editSlide(this)" ) edit
-        br
-        .btn.btn-primary.btn-xs( ng-click="addSlide(this)" ) add Slide
+div(ng-hide="data.selected.deck")
+    div <<<----- choose a deck
+div(ng-hide="!data.selected.deck")
+    h4 {{data.selected.deck.name}}
+    div Beschreibung: {{data.selected.deck.desc}}
+    div
+        span pub: {{data.selected.deck.pub}}
+        span share: {{data.selected.deck.share}}
+    div Anzahl Slides: {{data.selected.deck.slides.length}}
+    .btn.btn-primary( ng-click="addSlide()") add Slide
+    slide-preview

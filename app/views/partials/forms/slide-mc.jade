@@ -12,16 +12,16 @@
                 textarea.form-control( placeholder='type some presentation here', ng-model='formData.pres.question')
                 br
                 label Mobile Content
-                textarea.form-control( placeholder='type some mobile content', ng-model='formData.mob.question')
+                textarea.form-control( placeholder='type some mobile content', ng-model='formData.mobile.question')
                 br
-                label(ng-init="formData.mob.answers = formData.mob.answers || [{text: 'ans1'},{text: 'ans2'}]") Answers
-                div( ng-repeat='answer in formData.mob.answers')
+                label(ng-init="formData.mobile.answers = formData.mobile.answers || [{text: 'ans1'},{text: 'ans2'}]") Answers
+                div( ng-repeat='answer in formData.mobile.answers')
                     div.form-group
-                        textarea.form-control(ng-model='formData.mob.answers[$index].text')
-                        .btn.btn-danger(ng-click='removeFromArray(formData.mob.answers)')
+                        textarea.form-control(ng-model='formData.mobile.answers[$index].text')
+                        .btn.btn-danger(ng-click='removeFromArray(formData.mobile.answers)')
                             span.glyphicon.glyphicon-remove
                 div.form-group
-                .btn.btn-success(ng-click='addToArray(formData.mob.answers)')
+                .btn.btn-success(ng-click='addToArray(formData.mobile.answers)')
                     span.glyphicon.glyphicon-plus
             .form-group
                 .btn.btn-primary( ng-click='saveSlide( "slide-mc" )') send

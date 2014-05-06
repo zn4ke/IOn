@@ -1,16 +1,26 @@
 'use strict';
 
 angular.module('studiApp')
-    .controller('AdminCtrl', function ($scope, $location, $modal, User, Db) {
+    .controller('AdminCtrl', function ($scope, $location, $modal, $cookieStore, User, Db) {
+        //console.log('AdminCtrl init')
         $scope.data.selected = {};
         $scope.info = 'Admin controller';
         updateAllData();
-        $scope.tabs = [
+        $scope.links = [
             { title:"Decks", sref:"admin.decks" },
             { title:"Gruppen", sref:"admin.groups" },
             { title:"Kurse", sref:"admin.events" },
             { title:"Users", sref:"admin.users" }
         ];
+
+        $scope.$on('$stateChangeSuccess', function( changeEvent, toState, toParams, fromState, fromParams){
+            // console.log('state changed successfully')
+            // console.log('toState', toState)
+            // console.log('toParams', toParams)
+            $scope.app.styles.sidebarWidth = ( toState.name === 'admin') ? 0 : 3;
+        });
+
+
         $scope.select = function(scope, type){
             var obj;
             if (type === 'user'){
@@ -26,15 +36,23 @@ angular.module('studiApp')
             $scope.data.selected[type] = scope[type]
         };
         $scope.editSlide = function(scope){
-            console.log(scope)
+            //console.log(scope)
             $scope.data.selected.slide = scope.$index;
             $location.path('admin/edit/' + scope.slide.type);
         };
         $scope.addSlide = function(scope){
-            console.log(scope)
+            //console.log(scope)
             $scope.data.selected.slide = 'new';
             $location.path('admin/edit/slide-simple');
         };
+
+
+        $scope.startEvent = function(){
+            $cookieStore.put('event', $scope.data.selected.event._id)
+            //console.log('cookie event2', $cookieStore.get('event'))
+            $location.path('player');
+        };
+
 
 
         function updateAllData(){
@@ -43,36 +61,6 @@ angular.module('studiApp')
             $scope.data.groups = Db.group.list();
             $scope.data.events = Db.event.list();
         };
-
-        // $scope.choose = function (type, targetBinding) {
-
-        //     var modalInstance = $modal.open({
-        //       templateUrl: 'partials/admin/chooser.html',
-        //       controller: ModalInstanceCtrl,
-        //       resolve: {
-        //         type: function(){
-        //             return type
-        //         },
-        //         targetBinding: function () {
-        //           return targetBinding;
-        //         },
-        //         items: function () {
-        //           return $scope.data[type];
-        //         }
-        //       }
-        //     });
-
-        //     modalInstance.result.then(function (selectedItem) {
-        //       console.log('processing modal result')
-        //       console.log(formData)
-
-        //       $scope[targetBinding] = selectedItem;
-        //     }, function () {
-        //       //$log.info('Modal dismissed at: ' + new Date());
-        //     });
-        // };
-
-
     })
 
 
@@ -120,7 +108,7 @@ angular.module('studiApp')
         $scope.$watch('formData.pres', function(){
             //MathJax.Hub.Queue(["Typeset",MathJax.Hub])
             MathJax.Hub.Update($('body').html());
-            console.log('pres changed')
+            //console.log('pres changed')
         })
         $scope.toggleEdit = function(target){
             $('.cke_wysiwyg_div').removeAttr('title')
@@ -129,7 +117,6 @@ angular.module('studiApp')
         };
 
         $scope.submitForm = function(type){
-            console.log('submitting form', $scope.formData)
             Db[type].save($scope.formData)
             $scope.data[type + 's'] = Db[type].list();
             $location.path('/admin/' + type + 's')
@@ -139,24 +126,19 @@ angular.module('studiApp')
             if ($scope.data.selected.slide === 'new')
                 $scope.data.selected.deck.slides.push($scope.formData);
 
-            $scope.data.selected.deck.$update(function(arg){
+            $scope.data.selected.deck.$update(function(savedDeck){
                 $scope.data.decks = Db.deck.list();
-                $scope.data.selected.deck = Db.deck.get({ id: $scope.data.selected.deck._id });
+                $scope.data.selected.deck = savedDeck;
             });
             $location.path('/admin/decks')
         };
 
 
         $scope.addToArray = function(array){
-            console.log('add array');
-            console.log(array);
             array.push({text:'new answer'});
         }
         $scope.removeFromArray = function(array){
-            console.log('remove array');
             array.splice(this.$index, 1);
-            console.log(array);
-            $scope.$apply();
         }
 
         $scope.choose = function (type, targetBinding) {
@@ -189,25 +171,25 @@ angular.module('studiApp')
 
 
 var ModalInstanceCtrl = function ($scope, $modalInstance, items, type) {
-    console.log('modal ctrl')
-    console.log('items', items)
-    console.log('type', type)
+    // console.log('modal ctrl')
+    // console.log('items', items)
+    // console.log('type', type)
     $scope.type = type
     $scope.items = items;
     $scope.selected = {
         item: $scope.items[0]
     };
     $scope.select = function(scope){
-        console.log('selecting', scope.item._id)
+        //console.log('selecting', scope.item._id)
         $scope.selected.item = scope.item
     };
     $scope.ok = function () {
-        console.log('modal ok, selected:', $scope.selected.item )
+        //console.log('modal ok, selected:', $scope.selected.item )
         $modalInstance.close( $scope.selected.item);
     };
 
     $scope.cancel = function () {
-        console.log('modal cancel')
+        //console.log('modal cancel')
         $modalInstance.dismiss('cancel');
     };
 };

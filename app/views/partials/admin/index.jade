@@ -1,10 +1,10 @@
-.container(ng-controller='AdminCtrl')
-    .row
-        button.btn.btn-primary( ng-click="choose('decks')") Decks
-        button.btn.btn-primary( ng-click="choose('events')") Events
-        button.btn.btn-primary( ng-click="choose('groups')") Groups
-        tabset
-            tab(ng-repeat="tab in tabs", heading="{{tab.title}}", active="tab.active", ui-sref="{{tab.sref}}") {{tab.content}}
-        div.col-xs-3(ui-view='browser')
-        div.col-xs-9(ui-view='details')
-
+div(ng-controller='AdminCtrl')
+        
+    .container
+        .row
+            #wrapper-sidebar( ng-show='app.styles.sidebarWidth', ng-class="app.styles.sidebarClass" )
+                div( ui-view='sidebar' )
+            #wrapper-content( ng-class="app.styles.mainContentClass" )
+                div( ui-view='content' )
+                    .light-border( ng-repeat="link in links", ui-sref="{{link.sref}}" )
+                        .btn.btn-primary {{link.title}} - {{link.content}}

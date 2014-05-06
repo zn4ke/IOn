@@ -17,7 +17,7 @@ angular.module('studiApp', [
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 
-        $urlRouterProvider.otherwise("/state1");
+        $urlRouterProvider.otherwise("/");
       //
       // Now set up the states
         $stateProvider
@@ -65,40 +65,55 @@ angular.module('studiApp', [
                 // 
                     url: "/users",
                     views: {
-                        browser:{templateUrl: "partials/admin/user-browser.html"},
-                        details:{templateUrl: "partials/admin/user-details.html"}
-                    },
-                    controller: function($scope) {
-                        $scope.info = 'admin.users controller';
+                        sidebar:{templateUrl: "partials/admin/user-browser.html"},
+                        content:{templateUrl: "partials/admin/user-details.html"}
+                    }
+                })
+                .state("admin.user", {
+                // 
+                    url: "/user/:id",
+                    views: {
+                        sidebar:{templateUrl: "partials/admin/user-browser.html"},
+                        content:{templateUrl: "partials/admin/user-details.html"}
                     }
                 })
                 .state("admin.decks", {
                 // 
                     url: "/decks",
                     views: {
-                        browser:{templateUrl: "partials/admin/deck-browser.html"},
-                        details:{templateUrl: "partials/admin/deck-details.html"}
-                    },
-                    controller: function($scope) {
-                        $scope.info = 'admin.decks controller';
+                        sidebar:{templateUrl: "partials/admin/deck-browser.html"},
+                        content:{templateUrl: "partials/admin/deck-details.html"}
+                    }
+                })
+                .state("admin.deck", {
+                // 
+                    url: "/deck/:id",
+                    views: {
+                        sidebar:{templateUrl: "partials/admin/deck-browser.html"},
+                        content:{templateUrl: "partials/admin/deck-details.html"}
                     }
                 })
                 .state("admin.groups", {
                 // 
                     url: "/groups",
                     views: {
-                        browser:{templateUrl: "partials/admin/group-browser.html"},
-                        details:{templateUrl: "partials/admin/group-details.html"}
-                    },
-                    controller: function($scope) {
-                        $scope.info = 'admin.groups controller';
+                        sidebar:{templateUrl: "partials/admin/group-browser.html"},
+                        content:{templateUrl: "partials/admin/group-details.html"}
+                    }
+                })
+                .state("admin.group", {
+                // 
+                    url: "/group/:id",
+                    views: {
+                        sidebar:{templateUrl: "partials/admin/group-browser.html"},
+                        content:{templateUrl: "partials/admin/group-details.html"}
                     }
                 })
                 .state("admin.edit", {
                     url: "/edit/:type",
                     views: {
-                        browser:{templateUrl: "partials/admin/form-browser.html"},
-                        details:{
+                        sidebar:{templateUrl: "partials/admin/form-browser.html"},
+                        content:{
                             templateUrl: function(stateParams){
                                 return '/partials/forms/' + stateParams.type + '.html'
                             }
@@ -109,21 +124,19 @@ angular.module('studiApp', [
                 // 
                     url: "/events",
                     views: {
-                        browser:{templateUrl: "partials/admin/event-browser.html"},
-                        details:{templateUrl: "partials/admin/event-details.html"}
+                        sidebar:{templateUrl: "partials/admin/event-browser.html"},
+                        content:{templateUrl: "partials/admin/event-details.html"}
                     }
                 })
-            .state('viewer', {
-                url: "/viewer/:eventId",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/viewer.html"}
-                },
-                //templateUrl: "partials/state1.html",
-                controller: function($scope) {
-                    $scope.items = ["A", "List", "Of", "Items"];
-                }
-            })
+                .state("admin.event", {
+                // 
+                    url: "/event/:id",
+                    views: {
+                        sidebar:{templateUrl: "partials/admin/event-browser.html"},
+                        content:{templateUrl: "partials/admin/event-details.html"}
+                    }
+                })
+
             .state('join', {
                 url: "/join",
                 views: {
@@ -131,29 +144,29 @@ angular.module('studiApp', [
                     main:{templateUrl: "partials/event-list.html"}
                 }
             })
-
-            .state('state2', {
-                url: "/state2/:id",
+            .state('mobile', {
+                url: "/mobile",
                 views: {
                     nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/state2.html"}
-                },
-            })
-                .state('state2.list', {
-                    url: "/list",
-                    templateUrl: "partials/state2-list.html",
-                    controller: function($scope) {
-                        $scope.things = ["A", "Set", "Of", "Things"];
-                    }
-                })
-
-            .state('enter',{
-                url: "/enter",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/list.html"}
+                    main:{templateUrl: "partials/mobile.html"}
                 }
             })
+            .state('player', {
+                url: "/player",
+                views: {
+                    nav:{templateUrl: "partials/navbar.html"},
+                    main:{templateUrl: "partials/player.html"},
+                    controls:{templateUrl: "partials/controls.html"}
+                }
+            })
+            .state('presentation', {
+                url: "/presentation",
+                views: {
+                    nav:{templateUrl: "partials/navbar.html"},
+                    main:{templateUrl: "partials/presentation.html"}
+                }
+            })
+
 
 
 

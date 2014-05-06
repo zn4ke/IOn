@@ -33,14 +33,15 @@ html.no-js
     // Add your site or application content here
     
     // div(class="container" ng-view)
-    .nav(ui-view='nav')
-    .container-fluid(ui-view='main')
+    #wrapper
+        #wrapper-topnav( ng-show='app.showNav' )
+            .nav( ui-view='nav')
+        #wrapper-main.container( ng-style="app.styles.wrapperMain")
+            div(ui-view='main', ng-style="app.styles.wrapperContent")
+        #wrapper-controls( ng-show='app.showControls' )
+            div( ui-view='controls' )
 
-    hr
-    pre
-        div $state = {{$state.current.name}}
-        div $stateParams = {{$stateParams}}
-        div $state full url = {{ $state.$current.url.source }}
+
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
     // script.
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -83,5 +84,7 @@ html.no-js
     <script src="scripts/directives/access.js"></script>
     <script src="scripts/directives/dynamic.js"></script>
     <script src="scripts/controllers/slide.js"></script>
+    <script src="scripts/directives/slide.js"></script>
+    <script src="scripts/controllers/player.js"></script>
     <!-- endbuild -->
     

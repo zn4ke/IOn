@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"ng-s",
+				"ng-show	AngularJS"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"ng-in",
+				"ng-init	AngularJS"
+			],
+			[
+				"vie",
+				"viewer"
+			],
+			[
+				"btn",
+				"btn-primary"
+			],
+			[
+				"ng",
+				"ng-click	AngularJS"
+			],
+			[
+				"bt",
+				"btn-primary"
+			],
+			[
+				"ng-co",
+				"ng-controller	AngularJS"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
 				"collect",
 				"collectionName"
 			],
@@ -20,10 +56,74 @@
 	"buffers":
 	[
 		{
-			"file": "lib/controllers/api.js",
+			"file": "app/views/partials/admin/deck-details.jade",
 			"settings":
 			{
-				"buffer_size": 1652,
+				"buffer_size": 363,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/directives/slide.js",
+			"settings":
+			{
+				"buffer_size": 384,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/slide-player.jade",
+			"settings":
+			{
+				"buffer_size": 1124,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/slide.js",
+			"settings":
+			{
+				"buffer_size": 1790,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/slides/slide-simple-pres.jade",
+			"settings":
+			{
+				"buffer_size": 114,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/slides/slide-simple-mobile.jade",
+			"settings":
+			{
+				"buffer_size": 23,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/services/form.js",
+			"settings":
+			{
+				"buffer_size": 2443,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/slides/slide-mc-pres.jade",
+			"settings":
+			{
+				"buffer_size": 115,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/forms/slide-simple.jade",
+			"settings":
+			{
+				"buffer_size": 1912,
 				"line_ending": "Unix"
 			}
 		},
@@ -31,71 +131,15 @@
 			"file": "app/scripts/controllers/admin.js",
 			"settings":
 			{
-				"buffer_size": 1150,
+				"buffer_size": 7811,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/controllers/main.js",
+			"file": "app/views/partials/admin/chooser.jade",
 			"settings":
 			{
-				"buffer_size": 239,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/partials/admin/deck-browser.jade",
-			"settings":
-			{
-				"buffer_size": 163,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/partials/admin/group-browser.jade",
-			"settings":
-			{
-				"buffer_size": 169,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/styles/main.css",
-			"settings":
-			{
-				"buffer_size": 1422,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/index.jade",
-			"settings":
-			{
-				"buffer_size": 3819,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/navbar.js",
-			"settings":
-			{
-				"buffer_size": 781,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/partials/admin/lecture-browser.jade",
-			"settings":
-			{
-				"buffer_size": 170,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/directives/ckeditor.js",
-			"settings":
-			{
-				"buffer_size": 3403,
+				"buffer_size": 637,
 				"line_ending": "Unix"
 			}
 		}
@@ -106,6 +150,10 @@
 		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"",
+				"Indentation: Reindent Lines"
+			],
 			[
 				"in",
 				"Indentation: Reindent Lines"
@@ -144,54 +192,87 @@
 	},
 	"file_history":
 	[
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-details.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-simple.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/group.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/deck.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-details.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-browser.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-browser.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-browser.jade",
-		"/home/gargamel/Public/node/studi/lib/controllers/api.js",
-		"/home/gargamel/Public/node/studi/lib/routes.js",
-		"/home/gargamel/Public/node/studi/lib/models/deck.js",
-		"/home/gargamel/Public/node/studi/app/scripts/services/auth.js",
-		"/home/gargamel/Public/node/studi/app/scripts/services/db.js",
-		"/home/gargamel/Public/node/studi/app/scripts/controllers/admin.js",
-		"/home/gargamel/Public/node/studi/app/scripts/app.js",
-		"/home/gargamel/Public/node/studi/app/scripts/controllers/signup.js",
 		"/home/gargamel/Public/node/studi/app/views/index.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/event-list.jade",
+		"/home/gargamel/Public/node/studi/app/styles/main.css",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/event-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/navbar.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/index.jade",
+		"/home/gargamel/Public/node/studi/lib/models/event.js",
+		"/home/gargamel/Public/node/studi/lib/controllers/api.js",
+		"/home/gargamel/Public/node/studi/bower.json",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/event.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/slide.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-simple.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/chooser.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/admin.js",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/main.js",
+		"/home/gargamel/Public/node/studi/lib/controllers/socket.js",
+		"/home/gargamel/Public/node/studi/server.js",
+		"/home/gargamel/Public/node/studi/lib/config/passport.js",
+		"/home/gargamel/Public/node/studi/lib/config/express.js",
+		"/home/gargamel/Public/node/studi/lib/config/env/all.js",
+		"/home/gargamel/Public/node/studi/package.json",
+		"/home/gargamel/Public/node/studi/app/views/partials/viewer.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/services/db.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/event-browser.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/app.js",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/event.js",
+		"/home/gargamel/Public/node/studi/test/spec/controllers/event.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-browser.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/event.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-browser.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/navbar.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-mc.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/form-browser.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-details.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/ngMath/plugin.js",
+		"/home/gargamel/Public/node/studi/app/bower_components/bootstrap/DOCS-LICENSE",
+		"/home/gargamel/Public/node/studi/studi.sublime-workspace",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-browser.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/directives/dynamic.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/simplebox/plugin.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/simplebox/dialogs/simplebox.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/mathjax/plugin.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/mathjax/dialogs/mathjax.js",
+		"/home/gargamel/Public/node/studi/app/scripts/directives/ckeditor.js",
+		"/home/gargamel/Public/node/studi/.gitignore",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/config.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/ngMath/dialogs/ng-math.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/ckeditor.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/templates/templates/default.js",
+		"/home/gargamel/Public/node/studi/lib/models/deck.js",
+		"/home/gargamel/Public/node/studi/lib/routes.js",
+		"/home/gargamel/Public/node/studi/lib/models/slide.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/deck.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/user-details.jade",
+		"/home/gargamel/Public/node/studi/lib/config/dummydata.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/lecture.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/group.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-details.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/services/auth.js",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/signup.js",
 		"/home/gargamel/Public/node/studi/app/views/partials/admin/form-details.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-simple",
-		"/home/gargamel/Public/node/studi/app/scripts/directives/dynamic.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/navbar.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/controllers/navbar.js",
 		"/home/gargamel/Public/node/studi/app/scripts/directives/access.js",
 		"/home/gargamel/Public/node/studi/app/scripts/services/user.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/form-browser.jade",
 		"/home/gargamel/Public/node/studi/lib/controllers/users.js",
 		"/home/gargamel/Public/node/studi/app/scripts/services/socket.js",
 		"/home/gargamel/Public/node/studi/app/scripts/controllers/form.js",
-		"/home/gargamel/Public/node/studi/lib/models/slide.js",
-		"/home/gargamel/Public/node/studi/lib/config/dummydata.js",
 		"/home/gargamel/Public/node/studi/lib/models/thing.js",
 		"/home/gargamel/Public/node/studi/lib/controllers/index.js",
 		"/home/gargamel/Public/node/studi/lib/models/user.js",
-		"/home/gargamel/Public/node/studi/lib/models/event.js",
 		"/home/gargamel/Public/node/studi/lib/models/group.js",
 		"/home/gargamel/Public/node/studi/lib/models/answer.js",
 		"/home/gargamel/Public/node/studi/app/scripts/controllers/settings.js",
 		"/home/gargamel/Public/node/studi/app/views/partials/profile.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/index.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-details.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/admin/user-browser.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/user-details.jade",
 		"/home/gargamel/Public/node/studi/app/views/template/tabs/tab.jade",
 		"/home/gargamel/Public/node/studi/app/views/template/tabs/tabset.jade",
 		"/home/gargamel/Public/node/studi/app/views/templates/tabs/tab.html",
 		"/home/gargamel/Public/node/studi/app/views/partials/admin/stuff-details.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/admin/stuff-browser.jade",
-		"/home/gargamel/Public/node/studi/app/styles/main.css",
 		"/home/gargamel/Public/node/studi/app/views/partials/signup.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/login.jade",
 		"/home/gargamel/Public/node/studi/app/scripts/controllers/login.js",
@@ -199,7 +280,6 @@
 		"/home/gargamel/Public/node/studi/app/views/partials/admin/user.browser.jade",
 		"/home/gargamel/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/home/gargamel/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
-		"/home/gargamel/Public/node/studi/server.js",
 		"/home/gargamel/Public/node/studi/app/views/partials/state2.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/home.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/nav.jade",
@@ -210,7 +290,6 @@
 		"/home/gargamel/Public/node/studi/app/views/partials/contacts.detail.html",
 		"/home/gargamel/Public/node/studi/app/views/partials/contacts.html",
 		"/home/gargamel/Public/node/studi/app/views/partials/contacts.detail.item.html",
-		"/home/gargamel/Public/node/studi/bower.json",
 		"/home/gargamel/Public/node/studi/app/views/partials/state2.list.jade",
 		"/home/gargamel/Public/node/student-response/client/views/layout.jade",
 		"/home/gargamel/Public/node/student-response/client/js/app.js",
@@ -240,38 +319,7 @@
 		"/home/gargamel/Public/node/student-response/server/controllers/api/user.js",
 		"/home/gargamel/Public/node/student-response/client/views/particles/particular-panel.jade",
 		"/home/gargamel/Public/node/student-response/client/views/particles/user-test.jade",
-		"/home/gargamel/Public/node/student-response/client/views/particles/group-test.jade",
-		"/home/gargamel/Public/node/student-response/client/views/particles/event-test.jade",
-		"/home/gargamel/Public/node/student-response/client/views/particles/deck-test.jade",
-		"/home/gargamel/Public/node/student-response/server/controllers/house.js",
-		"/home/gargamel/Public/node/student-response/client/css/particles.css",
-		"/home/gargamel/Public/node/student-response/server/controllers/socket.js",
-		"/home/gargamel/Public/node/student-response/client/css/particulator.css",
-		"/home/gargamel/Public/node/student-response/server/controllers/user.js",
-		"/home/gargamel/Public/node/student-response/server/models/User.js",
-		"/home/gargamel/Public/node/student-response/client/views/particles/particulator-panel.jade",
-		"/home/gargamel/Public/node/student-response/client/js/controller/particle.js",
-		"/home/gargamel/Public/node/student-response/client/js/controller/player.js",
-		"/home/gargamel/Public/node/student-response/server.js",
-		"/home/gargamel/Public/node/student-response/server/models/Event.js",
-		"/home/gargamel/Public/node/student-response/client/views/partials/player-admin.jade",
-		"/home/gargamel/Public/node/student-response/server/models/Lecture.js",
-		"/home/gargamel/Public/node/student-response/client/views/forms/slide-mc.jade",
-		"/home/gargamel/Public/node/student-response/client/views/slides/mob/slide-mc.jade",
-		"/home/gargamel/Public/node/student-response/client/views/partials/player-pres.jade",
-		"/home/gargamel/Public/node/student-response/client/views/partials/player-mob.jade",
-		"/home/gargamel/Public/node/student-response/client/views/slides/pres/slide-mc.jade",
-		"/home/gargamel/Public/node/student-response/client/views/slides/mob/slide-simple.jade",
-		"/home/gargamel/Public/node/student-response/client/views/forms/slide-simple.jade",
-		"/home/gargamel/Public/node/student-response/client/views/forms/slide.jade",
-		"/home/gargamel/Public/node/student-response/client/views/slides/stat/slide-mc.jade",
-		"/home/gargamel/Public/node/student-response/client/views/slides/pres/slide-simple.jade",
-		"/home/gargamel/Public/node/student-response/client/views/partials/teachers.jade",
-		"/home/gargamel/Public/node/student-response/server/models/Deck.js",
-		"/home/gargamel/Public/node/student-response/server/models/Slide.js",
-		"/home/gargamel/Public/node/student-response/client/views/partials/login.jade",
-		"/home/gargamel/Public/node/student-response/package.json",
-		"/home/gargamel/Public/node/student-response/LICENSE"
+		"/home/gargamel/Public/node/student-response/client/views/particles/group-test.jade"
 	],
 	"find":
 	{
@@ -282,6 +330,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules, -/home/gargamel/Public/node/studi/app/bower_components",
 			"/home/gargamel/Public/node/studi",
 			"/home/gargamel/Public/node/studi/app/views/partials",
 			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/client/js/lib/*, -/home/gargamel/Public/node/studi/app/bower_components/*",
@@ -302,6 +351,27 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"$location",
+			"choose",
+			"deserialize",
+			"ongoStore",
+			"EventCtrl",
+			"ViewerCtrl",
+			"EventCtrl",
+			"tab",
+			"tabs",
+			"template",
+			"templatr",
+			"template",
+			"submitForm",
+			"lecture",
+			"submitForm",
+			"WYSIWYG-Editor",
+			"WYSYEYG-Editor",
+			"mathJaxUpdateDone",
+			"span",
+			"appendBogus",
+			"submitForm",
 			"isActive",
 			"awesomeThings",
 			"awesome",
@@ -411,6 +481,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"ViewerCtrl",
+			"event",
 			"pcData",
 			"pc-data",
 			"Deck",
@@ -440,49 +512,49 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 10,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lib/controllers/api.js",
+					"file": "app/views/partials/admin/deck-details.jade",
 					"settings":
 					{
-						"buffer_size": 1652,
+						"buffer_size": 363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1136,
-								1136
+								192,
+								192
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/controllers/admin.js",
+					"file": "app/scripts/directives/slide.js",
 					"settings":
 					{
-						"buffer_size": 1150,
+						"buffer_size": 384,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								189,
-								189
+								384,
+								384
 							]
 						],
 						"settings":
@@ -497,44 +569,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/scripts/controllers/main.js",
+					"file": "app/views/partials/slide-player.jade",
 					"settings":
 					{
-						"buffer_size": 239,
+						"buffer_size": 1124,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								239,
-								239
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/views/partials/admin/deck-browser.jade",
-					"settings":
-					{
-						"buffer_size": 163,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								72,
-								72
+								958,
+								958
 							]
 						],
 						"settings":
@@ -548,19 +594,45 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "app/views/partials/admin/group-browser.jade",
+					"buffer": 3,
+					"file": "app/scripts/controllers/slide.js",
 					"settings":
 					{
-						"buffer_size": 169,
+						"buffer_size": 1790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								169,
-								169
+								184,
+								184
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/partials/slides/slide-simple-pres.jade",
+					"settings":
+					{
+						"buffer_size": 114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								114,
+								114
 							]
 						],
 						"settings":
@@ -575,23 +647,23 @@
 				},
 				{
 					"buffer": 5,
-					"file": "app/styles/main.css",
+					"file": "app/views/partials/slides/slide-simple-mobile.jade",
 					"settings":
 					{
-						"buffer_size": 1422,
+						"buffer_size": 23,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1419,
-								1419
+								23,
+								23
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -601,49 +673,49 @@
 				},
 				{
 					"buffer": 6,
-					"file": "app/views/index.jade",
+					"file": "app/scripts/services/form.js",
 					"settings":
 					{
-						"buffer_size": 3819,
+						"buffer_size": 2443,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								857,
-								857
+								829,
+								829
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 450.0,
+						"translation.y": 107.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "app/scripts/controllers/navbar.js",
+					"file": "app/views/partials/slides/slide-mc-pres.jade",
 					"settings":
 					{
-						"buffer_size": 781,
+						"buffer_size": 115,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								487,
-								487
+								115,
+								115
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -653,18 +725,18 @@
 				},
 				{
 					"buffer": 8,
-					"file": "app/views/partials/admin/lecture-browser.jade",
+					"file": "app/views/partials/forms/slide-simple.jade",
 					"settings":
 					{
-						"buffer_size": 170,
+						"buffer_size": 1912,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								170,
-								170
+								576,
+								576
 							]
 						],
 						"settings":
@@ -679,23 +751,49 @@
 				},
 				{
 					"buffer": 9,
-					"file": "app/scripts/directives/ckeditor.js",
+					"file": "app/scripts/controllers/admin.js",
 					"settings":
 					{
-						"buffer_size": 3403,
+						"buffer_size": 7811,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								607,
-								607
+								983,
+								983
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/views/partials/admin/chooser.jade",
+					"settings":
+					{
+						"buffer_size": 637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								637,
+								637
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -1,5 +1,8 @@
 h4 event details
-
-div owner id: {{data.selected.event.own}}
-div name: {{data.selected.event.name}}
-div date: {{data.selected.event.date}}
+div(ng-show="data.selected.event")
+    div owner id: {{data.selected.event.own}}
+    div name: {{data.selected.event.name}}
+    div date: {{data.selected.event.date}}
+    div group: {{data.selected.event.group._id}}
+    div deck: {{data.selected.event.deck._id}}
+    .btn.btn-primary( ng-click="startEvent()" ) start event

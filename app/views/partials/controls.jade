@@ -1,0 +1,8 @@
+.navbar-fixed-bottom
+    .light-border
+        .btn.btn-primary(ng-repeat='control in app.controls', ng-click="control.action()")
+            span.glyphicon( ng-class="'glyphicon-' + control.icon" )
+
+
+        .btn.btn-primary.pull-right( ng-click="app.showNav = !app.showNav" )
+            span.glyphicon.glyphicon-th

@@ -3,7 +3,7 @@
 angular.module('studiApp')
     .controller('NavbarCtrl', function ($scope, $location, Auth) {
         $scope.info='NavbarCtrl';
-        $scope.menu = [{
+        $scope.app.nav = [{
             'title': 'Home',
             'link': '/'
         }, {
@@ -14,7 +14,11 @@ angular.module('studiApp')
             'link': '/join'
         }, {
             'title': 'Admin',
-            'link': '/admin/decks',
+            'link': '/admin',
+            'access': 'admin'
+        },{
+            'title': 'Player',
+            'link': '/player',
             'access': 'admin'
         }];
         
