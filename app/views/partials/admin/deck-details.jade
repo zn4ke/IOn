@@ -1,11 +1,12 @@
-div(ng-hide="data.selected.deck")
-    div <<<----- choose a deck
-div(ng-hide="!data.selected.deck")
-    h4 {{data.selected.deck.name}}
-    div Beschreibung: {{data.selected.deck.desc}}
-    div
-        span pub: {{data.selected.deck.pub}}
-        span share: {{data.selected.deck.share}}
-    div Anzahl Slides: {{data.selected.deck.slides.length}}
-    .btn.btn-primary( ng-click="addSlide()") add Slide
-    slide-preview
+div( ng-controller="AdminDeckCtrl" )
+    div(ng-hide="data.selected.deck")
+        div <<<----- choose a deck
+    div(ng-hide="!data.selected.deck")
+        h4 {{data.selected.deck.name}}
+        div Beschreibung: {{data.selected.deck.desc}}
+        div
+            span pub: {{data.selected.deck.pub}}
+            span share: {{data.selected.deck.share}}
+        div Anzahl Slides: {{data.selected.deck.slides.length}}
+        .btn.btn-primary( ng-click="addSlide()") add Slide
+        slide-preview

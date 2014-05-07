@@ -9,8 +9,12 @@ div()
             div(ng-class="{'bg-info': (item._id === selected.item._id) }")
                 .row
                     // ng-style="{'background-color': (item._id === selected.item._id) ? 'red' : 'gray'}"
-                    div.col-xs-10() (id: {{item._id}})
-                    .btn.btn-primary.btn-xs-pull-right( ng-click="select(this)" ) clickMe
+                    div.col-xs-11() {{item.name}}
+                    div( ng-click="select(this)" )
+                        span.glyphicon.glyphicon-unchecked( ng-hide="(item._id === selected.item._id)" )
+                        span.glyphicon.glyphicon-check( ng-show="(item._id === selected.item._id)" )
+                .row
+                    div.col-xs-11() (id: {{item._id}})
     .modal-footer
         button.btn.btn-primary( ng-click="ok()" ) Ok
         button.btn.btn-primary( ng-click="cancel()" ) cancel

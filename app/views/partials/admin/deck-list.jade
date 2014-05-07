@@ -1,0 +1,5 @@
+div(ng-controller='AdminCtrl')
+    h4 deck list
+    a.btn.btn-primary( href='/admin/edit/deck') new
+    div(ng-repeat='deck in data.decks', ng-click='select(this, "deck")')
+        div.thumbnail {{deck.name}}

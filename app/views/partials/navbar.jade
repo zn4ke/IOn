@@ -2,8 +2,8 @@ div(ng-controller='NavbarCtrl')
     div
         a.nav-pills.navbar-brand(ng-click='app.showControls = !app.showControls') Studi
         ul.nav.nav-bar.nav-pills
-            li(ng-repeat='item in app.nav', ng-class='{active: isActive(item.link)}')
-                a(ng-href='{{item.link}}', ng-show='currentUser', access='{{item.access}}') {{item.title}}
+            li(ng-repeat='item in app.nav', ui-sref-active="active")
+                a(ui-sref='{{item.sref}}', ng-show='currentUser', access='{{item.access}}') {{item.title}}
             li.pull-right(ng-hide='currentUser', ng-class='{active: isActive("/login")}')
                 a(href='/login') Login
             li.pull-right(ng-hide='currentUser', ng-class='{active: isActive("/signup")}')

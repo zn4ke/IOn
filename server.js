@@ -30,6 +30,7 @@ require(modelsPath + '/group');
 require(modelsPath + '/event');
 require(modelsPath + '/answer');
 require(modelsPath + '/user');
+require(modelsPath + '/file');
 // fs.readdirSync(modelsPath).forEach(function (file) {
 //   if (/(.*)\.(js$|coffee$)/.test(file)) {
 //     require(modelsPath + '/' + file);
@@ -58,6 +59,11 @@ var io = require('socket.io').listen(server);
 io.set('log level', 2);
 
 
+io.sockets.on('connection', function(socket){
+    require('./lib/controllers/socket')(socket, io);
+});
+
+
 
 // Express settings
 require('./lib/config/express')(app, db, io);
@@ -66,11 +72,6 @@ require('./lib/config/express')(app, db, io);
 require('./lib/routes')(app);
 
 
-
-
-io.sockets.on('connection', function(socket){
-  require('./lib/controllers/socket')(socket, io);
-});
 
 
 

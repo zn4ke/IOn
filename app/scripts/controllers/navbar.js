@@ -5,20 +5,17 @@ angular.module('studiApp')
         $scope.info='NavbarCtrl';
         $scope.app.nav = [{
             'title': 'Home',
-            'link': '/'
-        }, {
-            'title': 'Enter',
-            'link': '/enter'
+            'sref': 'home'
         }, {
             'title': 'Events',
-            'link': '/join'
+            'sref': 'join'
         }, {
             'title': 'Admin',
-            'link': '/admin',
+            'sref': 'admin',
             'access': 'admin'
         },{
             'title': 'Player',
-            'link': '/player',
+            'sref': 'player',
             'access': 'admin'
         }];
         
@@ -27,9 +24,5 @@ angular.module('studiApp')
                 .then(function() {
                 $location.path('/login');
             });
-        };
-        
-        $scope.isActive = function(route) {
-            return route === $location.path();
         };
     });

@@ -6,8 +6,7 @@ angular.module('studiApp')
             templateUrl: 'partials/slide-preview.html',
             restrict: 'E',
             link: function postLink(scope, element, attrs) {
-                //element.text('this is the slide directive');
-                console.log('link slide')
+                // linking
             }
         };
     });
@@ -19,8 +18,7 @@ angular.module('studiApp')
             templateUrl: 'partials/player-controls.html',
             restrict: 'E',
             link: function postLink(scope, element, attrs) {
-                //element.text('this is the slide directive');
-                console.log('link player controlls')
+                // linking
             }
         };
     });

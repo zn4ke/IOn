@@ -1,4 +1,4 @@
-div( dynamic="activeSlide.mobile.question" )
+div( dynamic="data.activeSlide.mobile.question" )
 
-div(ng-repeat="answer in activeSlide.mobile.answers")
+div(ng-repeat="answer in data.activeSlide.mobile.answers")
     .btn.btn-primary {{answer.text}}

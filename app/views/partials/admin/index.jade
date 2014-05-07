@@ -2,9 +2,12 @@ div(ng-controller='AdminCtrl')
         
     .container
         .row
-            #wrapper-sidebar( ng-show='app.styles.sidebarWidth', ng-class="app.styles.sidebarClass" )
+            #wrapper-sidebar( ng-class="app.styles.sidebarClass" )
                 div( ui-view='sidebar' )
             #wrapper-content( ng-class="app.styles.mainContentClass" )
                 div( ui-view='content' )
-                    .light-border( ng-repeat="link in links", ui-sref="{{link.sref}}" )
-                        .btn.btn-primary {{link.title}} - {{link.content}}
+                    .container
+                        .row
+                            .col-xs-6.col-md-3( ng-repeat="link in links", ui-sref="{{link.sref}}" )
+                                .light-border
+                                    .btn.btn-primary {{link.title}} - {{link.content}}

@@ -1,8 +1,8 @@
 'use strict';
 
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
+// MathJax.Hub.Config({
+//   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+// });
 
 
 
@@ -12,7 +12,8 @@ angular.module('studiApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ngCkeditor'
+  'ngCkeditor',
+  'angular-client-side-auth'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
@@ -81,15 +82,15 @@ angular.module('studiApp', [
                 // 
                     url: "/decks",
                     views: {
-                        sidebar:{templateUrl: "partials/admin/deck-browser.html"},
-                        content:{templateUrl: "partials/admin/deck-details.html"}
+                        sidebar:{templateUrl: "partials/admin/decks-menu.html"},
+                        content:{templateUrl: "partials/admin/deck-list.html"}
                     }
                 })
                 .state("admin.deck", {
                 // 
                     url: "/deck/:id",
                     views: {
-                        sidebar:{templateUrl: "partials/admin/deck-browser.html"},
+                        sidebar:{templateUrl: "partials/admin/slide-browser.html"},
                         content:{templateUrl: "partials/admin/deck-details.html"}
                     }
                 })
@@ -156,7 +157,7 @@ angular.module('studiApp', [
                 views: {
                     nav:{templateUrl: "partials/navbar.html"},
                     main:{templateUrl: "partials/player.html"},
-                    controls:{templateUrl: "partials/controls.html"}
+                    controls:{templateUrl: "partials/player-controls.html"}
                 }
             })
             .state('presentation', {

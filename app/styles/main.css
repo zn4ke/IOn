@@ -27,7 +27,6 @@
 
 
 
-
 html,body {
     height: 100%;
     margin: 0;
@@ -74,31 +73,16 @@ body {
     background-color: #ddd;
 }
 
-#main-app > .container{
-/*    height: 100%;*/
-    /*background-color: rgba(235,235,235,0.1);*/
-}
 
-#main-nav {
-    /*background-image:url('../images/micro_carbon.png');*/
-/*    height: 48px;*/
-    /*margin-bottom: 5px;*/
-    /*border-bottom: 1px solid black;*/
-}
-#main-browser, #main-details {
 
-    /*background-color: white;*/
-}
-#admin .nav > li > a {
-    /*background-color: rgba(10,10,50,0.5);*/
-}
-#admin .nav > li.active > a {
-    /*background-color: rgba(255,255,255,1);*/
-}
-.main-content{
-    /*height:100%;*/
-    /*overflow-y: scroll;*/
-}
+
+
+
+
+
+
+
+
 
 
 .light-border {
@@ -124,10 +108,34 @@ body {
     margin-bottom: 10px;
 }
 
+
+
+
+
+
+
 .presentation {
     /*height: 100%;*/
     
 }
+
+
+
+
+
+
+.jumbotron {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -162,3 +170,4 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+

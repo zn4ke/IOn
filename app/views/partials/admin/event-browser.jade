@@ -1,5 +1,5 @@
 h4 event browser
-.btn.btn-primary(ng-click='goTo("/admin/edit/event")') new
+a.btn.btn-primary( href='/admin/edit/event') new
 div.thumbnail(ng-repeat='event in data.events', ng-click='select(this, "event")')
     div {{event._id}}
     div {{event.name}}

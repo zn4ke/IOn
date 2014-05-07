@@ -1,18 +1,15 @@
-.jumbotron
-  h1
-    | 'Allo, 'Allo 
-    span(ng-show='currentUser') {{ currentUser.name }}
-    | !
+.jumbotron.light-border
+    h2
+        | 'Allo, 'Allo 
 
-  p.lead
-    <img src="images/yeoman.png" alt="I'm Yeoman">
+        span(ng-show='currentUser') {{ currentUser.name }} !
+
     br
-    | Get your audience involved
-  p
-    a.btn.btn-lg.btn-success(ng-href='#') Splendid!
-    input( type="text", ng-model="app.styles.sidebarWidth")
+    img.thumbnail.center-block(src="images/feedback.jpg", alt="title images")
+    p Get your audience involved
+    p
+        .btn.btn-lg.btn-success(ng-href='#') Splendid!
 
 
-.footer
-  p ♥ from the fusionMedia team
+    p ♥ from the fusionMedia team
 

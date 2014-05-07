@@ -7,7 +7,6 @@ angular.module('studiApp')
         $rootScope.app = {
             showNav: true,
             showControls: false,
-            showSidebar: true,
             styles: { sidebarWidth: 3 },
             controls: []
         };
@@ -26,12 +25,12 @@ angular.module('studiApp')
             $scope.app.styles.wrapperMain.bottom = $scope.app.showControls * 48 + "px";
         });
 
-        $scope.$watch('app.sidebarWidth', function(){
+        $scope.$watch('app.styles.sidebarWidth', function(){
             $scope.app.styles.mainContentClass = "col-xs-" + (12 - $scope.app.styles.sidebarWidth)
             $scope.app.styles.sidebarClass = "col-xs-" + $scope.app.styles.sidebarWidth
         });
 
-        $scope.goTo = function(path){
-            $location.path(path)
+        $scope.openTab = function(path){
+            window.open(path, 'presentation', 'menubar=no,titlebar=no');
         };
     });
