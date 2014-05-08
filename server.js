@@ -29,7 +29,7 @@ require(modelsPath + '/deck');
 require(modelsPath + '/group');
 require(modelsPath + '/event');
 require(modelsPath + '/answer');
-require(modelsPath + '/user');
+var User = require(modelsPath + '/user');
 require(modelsPath + '/file');
 // fs.readdirSync(modelsPath).forEach(function (file) {
 //   if (/(.*)\.(js$|coffee$)/.test(file)) {

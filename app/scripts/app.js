@@ -15,46 +15,130 @@ angular.module('studiApp', [
   'ngCkeditor',
   'angular-client-side-auth'
 ])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+        
+        var access = routingConfig.accessLevels;
 
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/404");
       //
       // Now set up the states
+
+
+
+   // Anonymous routes
         $stateProvider
-            .state("home", {
-                // Use a url of "/" to set a states as the "index".
-                url: "/",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/home.html"}
+            .state('anon', {
+                abstract: true,
+                templateUrl: "partials/index.html",
+                data: {
+                    access: access.anon
                 }
             })
-            .state("login", {
-            // 
+            .state('anon.login', {
                 url: "/login",
+                controller: 'LoginCtrl',
                 views: {
                     nav:{templateUrl: "partials/navbar.html"},
                     main:{templateUrl: "partials/login.html"}
                 }
             })
-            .state("signup", {
-            // 
+            .state('anon.signup', {
                 url: "/signup",
                 views: {
                     nav:{templateUrl: "partials/navbar.html"},
                     main:{templateUrl: "partials/signup.html"}
                 }
             })
-            .state("profile", {
-            // 
-                url: "/profile",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/profile.html"}
+            .state('anon.404', {
+                url: '/404',
+                templateUrl: '404.html'
+            });
+
+
+
+
+
+
+
+       // Public routes
+        $stateProvider
+            .state('public', {
+                abstract: true,
+                templateUrl: "partials/index.html",
+                data: {
+                    access: access.public
+                }
+            });
+
+
+    // Regular user routes
+
+        $stateProvider
+            .state('user', {
+                abstract: true,
+                templateUrl: "partials/index.html",
+                data: {
+                    access: access.user
                 }
             })
-            .state("admin", {
+                .state("user.home", {
+                    // Use a url of "/" to set a states as the "index".
+                    url: "/",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/home.html"}
+                    }
+                })
+
+
+
+                .state("user.profile", {
+                // 
+                    url: "/profile",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/profile.html"}
+                    }
+                })
+
+                .state('user.join', {
+                    url: "/join",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/event-list.html"}
+                    }
+                })
+                .state('user.mobile', {
+                    url: "/mobile",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/mobile.html"}
+                    }
+                })
+
+                .state('user.presentation', {
+                    url: "/presentation",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/presentation.html"}
+                    }
+                })
+
+
+
+
+        // Admin routes
+        $stateProvider
+            .state('admin', {
+                abstract: true,
+                templateUrl: "partials/index.html",
+                data: {
+                    access: access.admin
+                }
+            })
+
+
+            .state("admin.admin", {
             // 
                 url: "/admin",
                 views: {
@@ -62,7 +146,7 @@ angular.module('studiApp', [
                     main:{templateUrl: "partials/admin/index.html"}
                 }
             })
-                .state("admin.users", {
+                .state("admin.admin.users", {
                 // 
                     url: "/users",
                     views: {
@@ -70,7 +154,7 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/user-details.html"}
                     }
                 })
-                .state("admin.user", {
+                .state("admin.admin.user", {
                 // 
                     url: "/user/:id",
                     views: {
@@ -78,7 +162,7 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/user-details.html"}
                     }
                 })
-                .state("admin.decks", {
+                .state("admin.admin.decks", {
                 // 
                     url: "/decks",
                     views: {
@@ -86,7 +170,7 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/deck-list.html"}
                     }
                 })
-                .state("admin.deck", {
+                .state("admin.admin.deck", {
                 // 
                     url: "/deck/:id",
                     views: {
@@ -94,7 +178,7 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/deck-details.html"}
                     }
                 })
-                .state("admin.groups", {
+                .state("admin.admin.groups", {
                 // 
                     url: "/groups",
                     views: {
@@ -102,7 +186,7 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/group-details.html"}
                     }
                 })
-                .state("admin.group", {
+                .state("admin.admin.group", {
                 // 
                     url: "/group/:id",
                     views: {
@@ -110,7 +194,7 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/group-details.html"}
                     }
                 })
-                .state("admin.edit", {
+                .state("admin.admin.edit", {
                     url: "/edit/:type",
                     views: {
                         sidebar:{templateUrl: "partials/admin/form-browser.html"},
@@ -121,7 +205,7 @@ angular.module('studiApp', [
                         }
                     }
                 })
-                .state("admin.events", {
+                .state("admin.admin.events", {
                 // 
                     url: "/events",
                     views: {
@@ -129,7 +213,7 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/event-details.html"}
                     }
                 })
-                .state("admin.event", {
+                .state("admin.admin.event", {
                 // 
                     url: "/event/:id",
                     views: {
@@ -137,65 +221,90 @@ angular.module('studiApp', [
                         content:{templateUrl: "partials/admin/event-details.html"}
                     }
                 })
+                .state('admin.player', {
+                    url: "/player",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/player.html"},
+                        controls:{templateUrl: "partials/player-controls.html"}
+                    }
+                })
 
-            .state('join', {
-                url: "/join",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/event-list.html"}
+
+
+        // FIX for trailing slashes. Gracefully "borrowed" from https://github.com/angular-ui/ui-router/issues/50
+        $urlRouterProvider.rule(function($injector, $location) {
+            if($location.protocol() === 'file')
+                return;
+
+            var path = $location.path()
+            // Note: misnomer. This returns a query object, not a search string
+                , search = $location.search()
+                , params
+                ;
+
+            // check to see if the path already ends in '/'
+            if (path[path.length - 1] === '/') {
+                return;
+            }
+
+            // If there was no search string / query params, return with a `/`
+            if (Object.keys(search).length === 0) {
+                return path + '/';
+            }
+
+            // Otherwise build the search string and return a `/?` prefix
+            params = [];
+            angular.forEach(search, function(v, k){
+                params.push(k + '=' + v);
+            });
+            return path + '/?' + params.join('&');
+        });
+
+        $locationProvider.html5Mode(true);
+
+        $httpProvider.interceptors.push(function($q, $location) {
+            return {
+                'responseError': function(response) {
+
+                    if(response.status === 401 || response.status === 403) {
+                        $location.path('/login');
+                    }
+                    return $q.reject(response);
                 }
-            })
-            .state('mobile', {
-                url: "/mobile",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/mobile.html"}
-                }
-            })
-            .state('player', {
-                url: "/player",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/player.html"},
-                    controls:{templateUrl: "partials/player-controls.html"}
-                }
-            })
-            .state('presentation', {
-                url: "/presentation",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/presentation.html"}
-                }
-            })
+            };
+        });
 
 
 
 
 
-      
-  //   // Intercept 401s and redirect you to login
-  //   $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
-  //     return {
-  //       'responseError': function(response) {
-  //         if(response.status === 401) {
-  //           $location.path('/login');
-  //           return $q.reject(response);
-  //         }
-  //         else {
-  //           return $q.reject(response);
-  //         }
-  //       }
-  //     };
-  //   }]);
+
+
+
+
+
     })
-    .run(function ($state, $stateParams, $rootScope, $location, Auth) {
+    .run(function ($rootScope, $state, $stateParams, Auth) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-    // Redirect to login if route requires auth and you're not logged in
-        $rootScope.$on('$routeChangeStart', function (event, next) {
 
-            if (next.authenticate && !Auth.isLoggedIn()) {
-                $location.path('/login');
+    // Redirect to login if route requires auth and you're not logged in
+        $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+
+
+            if (!Auth.authorize(toState.data.access)) {
+                $rootScope.error = "Seems like you tried accessing a route you don't have access to...";
+                event.preventDefault();
+                
+                if(fromState.url === '^') {
+                    if(Auth.isLoggedIn()) {
+                        $state.go('user.home');
+                    } else {
+                        $rootScope.error = null;
+                        $state.go('anon.login');
+                    }
+                }
             }
         });
     });

@@ -34,3 +34,4 @@ angular.module('studiApp')
             window.open(path, 'presentation', 'menubar=no,titlebar=no');
         };
     });
+

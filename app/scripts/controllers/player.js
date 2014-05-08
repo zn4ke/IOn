@@ -36,24 +36,35 @@ angular.module('studiApp')
                     $scope.data.activeSlide = $scope.app.player.event.deck.slides[ $scope.app.player.activeSlideNr ];
                     Template.getPres( $scope.app.player.event.deck.slides[$scope.app.player.activeSlideNr].type, function(data){
                         $scope.app.player.presentation = data
+
+                        Template.getMobile( $scope.app.player.event.deck.slides[$scope.app.player.activeSlideNr].type, function(data){
+                            $scope.app.player.mobile = data
+                            if ($scope.app.player.locked) {
+                                socket.emit( "event:push", {
+                                    id: $scope.app.player.event._id,
+                                    presentation: $scope.app.player.presentation,
+                                    mobile: $scope.app.player.mobile,
+                                    activeSlide: $scope.data.activeSlide
+                                });
+                            }
+
+                        });
+
+
                     });
-                    Template.getMobile( $scope.app.player.event.deck.slides[$scope.app.player.activeSlideNr].type, function(data){
-                        $scope.app.player.mobile = data
-                    });
+
                     // Template.getStats( $scope.app.player.event.deck.slides[$scope.app.player.activeSlideNr].type, function(data){
                     //     $scope.app.player.stats = data
                     // });
                     $scope.app.player.notes = $scope.app.player.event.deck.slides[$scope.app.player.activeSlideNr].notes;
+
+                    // push slide to clients
+
+
+
+
                 };
 
-                if ($scope.app.player.locked) {
-                    socket.emit( "event:push", {
-                        id: $scope.app.player.event._id,
-                        presentation: $scope.app.player.presentation,
-                        mobile: $scope.app.player.mobile,
-                        activeSlide: $scope.data.activeSlide
-                    });
-                }
 
             }
 
@@ -85,11 +96,15 @@ angular.module('studiApp')
         $scope.app.showNav = false;
         $scope.app.styles.sidebarWidth = 0;
 
-        console.log('event', $scope.event)
         socket.emit( 'event:join', { id: $scope.eventId } )
 
         socket.on('event:push', function(data){
             console.log('pushing recieved in presentation')
+            $scope.templates = {
+                mobile: data.mobile,
+                presentation: data.presentation
+            };
+            $scope.data.activeSlide = data.activeSlide;
         });
 
 
@@ -106,10 +121,17 @@ angular.module('studiApp')
         
         $scope.app.showNav = false;
         $scope.app.styles.sidebarWidth = 0;
-        console.log($cookieStore.get('event'))
+        $scope.eventId = $cookieStore.get('event')
+        socket.emit( 'event:join', { id: $scope.eventId } )
 
         socket.on('event:push', function(data){
-            console.log('pushing recieved')
+            
+            $scope.templates = {
+                mobile: data.mobile,
+                presentation: data.presentation
+            };
+            $scope.data.activeSlide = data.activeSlide;
+            console.log('pushing recieved in mobile', data)
         });
 
 

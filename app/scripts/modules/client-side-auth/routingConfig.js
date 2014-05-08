@@ -50,7 +50,6 @@
             };
             bitMask = (intCode << 1 ).toString(2)
         }
-
         return userRoles;
     }
 
@@ -92,7 +91,6 @@
                 };
             }
         }
-
         return accessLevels;
     }
 

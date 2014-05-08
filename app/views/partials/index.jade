@@ -1,0 +1,7 @@
+#wrapper-topnav( ng-show='app.showNav' )
+    .nav( ui-view='nav')
+#wrapper-main.container( ng-style="app.styles.wrapperMain")
+    div(ui-view='main', ng-style="app.styles.wrapperContent")
+#wrapper-controls( ng-show='app.showControls' )
+    div( ui-view='controls' )
+

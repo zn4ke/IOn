@@ -6,28 +6,24 @@ angular.module('studiApp')
         $scope.info = 'Admin controller';
         updateAllData();
         $scope.links = [
-            { title:"Decks", sref:"admin.decks" },
-            { title:"Gruppen", sref:"admin.groups" },
-            { title:"Kurse", sref:"admin.events" },
-            { title:"Users", sref:"admin.users" }
+            { title:"Decks", sref:"admin.admin.decks" },
+            { title:"Gruppen", sref:"admin.admin.groups" },
+            { title:"Kurse", sref:"admin.admin.events" },
+            { title:"Users", sref:"admin.admin.users" }
         ];
-
         $scope.$on('$stateChangeSuccess', function( changeEvent, toState, toParams, fromState, fromParams){
             $scope.app.styles.sidebarWidth = ( toState.name === 'admin') ? 0 : 3;
         });
-
-        $scope.log = function(text){console.log(text)}
         $scope.select = function(scope, type){
             var obj;
             if (type === 'user'){
-                obj = User.get({ id: scope.user._id }, function(item){
-                    $scope.data.selected.user = item;
+                obj = User.get({ id: scope.user._id }, function(user){
+                    $scope.data.selected.user = user;
                 })
             }
             else {
                 var obj = Db[type].get({ id: scope[type]._id }, function(item){
                     $scope.data.selected[type] = item;
-                    console.log('/admin/' + type + '/' + scope[type]._id)
                     $location.path( '/admin/' + type + '/' + scope[type]._id )
                 })
             }
@@ -100,7 +96,6 @@ angular.module('studiApp')
         $scope.$watch('formData', function(){
             //MathJax.Hub.Queue(["Typeset",MathJax.Hub])
             MathJax.Hub.Update($('body').html());
-            //console.log('pres changed')
         })
         $scope.toggleEdit = function(target){
             $('.cke_wysiwyg_div').removeAttr('title')
