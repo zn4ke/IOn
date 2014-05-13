@@ -14,11 +14,11 @@
         span.glyphicon.glyphicon-edit( ng-click="editSlide(this)" )
     span &nbsp; # {{ data.activeSlideNr + 1 }} / {{data.selected.deck.slides.length}} zoom: {{zoomFactor}} %
     div( ng-hide="data.activeSlide")
-        div.light-border( dynamic="template" ng-style="zoomStyle")
+        div.light-border( dynamic="template" ng-style="app.player.zoomStyle")
             .jumbotron
                 .btn.btn-primary(ng-click="data.activeSlideNr = 0") Start
     div( ng-hide="!data.activeSlide")
-        div.light-border( dynamic="template", ng-style="zoomStyle")
+        div.light-border( dynamic="template", ng-style="app.player.zoomStyle")
     div( ng-hide="!data.activeSlide")
         div.mobile-border
             div.mobile-inner( dynamic="templateMobile" )

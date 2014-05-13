@@ -12,7 +12,8 @@
     "passport-local": "latest",
     "passport.socketio":"2.2.0",
     "socket.io":"0.9.16",
-    "jade": "latest"
+    "jade": "latest",
+    "easyimage": "0.1.6"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

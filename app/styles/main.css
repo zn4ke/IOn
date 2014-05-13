@@ -72,6 +72,12 @@ body {
     width: 100%;
     background-color: #ddd;
 }
+#wrapper-controls-alt {
+    position: absolute;
+    bottom: 0px;
+    right:14px;
+    background-color: #ddd;
+}
 
 
 
@@ -111,7 +117,9 @@ body {
 
 
 
-
+.dynamic-preview {
+    min-height: 50px;
+}
 
 
 

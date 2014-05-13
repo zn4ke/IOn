@@ -9,9 +9,11 @@ angular.module('studiApp')
             { title:"Decks", sref:"admin.admin.decks" },
             { title:"Gruppen", sref:"admin.admin.groups" },
             { title:"Kurse", sref:"admin.admin.events" },
-            { title:"Users", sref:"admin.admin.users" }
+            { title:"Users", sref:"admin.admin.users" },
+            { title:"Files", sref:"admin.admin.files" }
         ];
         $scope.$on('$stateChangeSuccess', function( changeEvent, toState, toParams, fromState, fromParams){
+            console.log('toState',toState)
             $scope.app.styles.sidebarWidth = ( toState.name === 'admin') ? 0 : 3;
         });
         $scope.select = function(scope, type){
@@ -87,7 +89,7 @@ angular.module('studiApp')
                     '/',
                     { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
                     { name: 'colors', items : [ 'TextColor','BGColor' ] },
-                    { name: 'tools', items : [ 'Maximize', 'ShowBlocks','-','About' ] }
+                    { name: 'tools', items : [ 'Maximize', 'ShowBlocks'] }
                 ]
         };
         
@@ -109,6 +111,7 @@ angular.module('studiApp')
             $location.path('/admin/' + type + 's')
             
         };
+
         $scope.saveSlide = function(type){
             if ($scope.data.selected.slide === 'new')
                 $scope.data.selected.deck.slides.push($scope.formData);
@@ -179,7 +182,92 @@ angular.module('studiApp')
     .controller('AdminGroupCtrl', function ($scope, $location, Db) {
 
 
+    })
+
+    .controller('AdminUploadCtrl', function ($scope, $fileUploader, File) {
+        var uploader = $scope.uploader = $fileUploader.create({
+            scope: $scope,                          // to automatically update the html. Default: $rootScope
+            url: 'upload.php',
+            formData: [
+                { key: 'value' }
+            ],
+            filters: [
+                function (item) {                    // first user filter
+                    console.info('filter1');
+                    return true;
+                }
+            ]
+        });
+
+
+        uploader.progress = 0;
+        $scope.deleteFile = function(scope){
+            console.log('deleting', scope.uploadedFile)
+            scope.uploadedFile.$remove({ id: scope.uploadedFile._id })
+            $scope.uploadedFiles.splice(scope.$index, 1)
+        };
+        $scope.copyToClipboard = function(){
+
+        };
+
+        $scope.uploadedFiles = File.list();
+
+                // REGISTER HANDLERS
+
+        uploader.bind('afteraddingfile', function (event, item) {
+            console.info('After adding a file', item);
+        });
+
+        uploader.bind('whenaddingfilefailed', function (event, item) {
+            console.info('When adding a file failed', item);
+        });
+
+        uploader.bind('afteraddingall', function (event, items) {
+            console.info('After adding all files', items);
+        });
+
+        uploader.bind('beforeupload', function (event, item) {
+            console.info('Before upload', item);
+        });
+
+        uploader.bind('progress', function (event, item, progress) {
+            console.info('Progress: ' + progress, item);
+        });
+
+        uploader.bind('success', function (event, xhr, item, response) {
+            console.info('Success', xhr, item, response);
+            
+        });
+
+        uploader.bind('cancel', function (event, xhr, item) {
+            console.info('Cancel', xhr, item);
+        });
+
+        uploader.bind('error', function (event, xhr, item, response) {
+            console.info('Error', xhr, item, response);
+        });
+
+        uploader.bind('complete', function (event, xhr, item, response) {
+            $scope.uploadedFiles = File.list()
+            console.info('Complete', xhr, item, response);
+        });
+
+        uploader.bind('progressall', function (event, progress) {
+            console.info('Total progress: ' + progress);
+        });
+
+        uploader.bind('completeall', function (event, items) {
+            $scope.uploadedFiles = File.list()
+            console.info('Complete all', items);
+        });
+
+        $scope.submitFile = function(){
+            console.log('submitting file', $scope.formData)
+        };
+
+
     });
+
 
 
 var ModalInstanceCtrl = function ($scope, $modalInstance, items, type) {

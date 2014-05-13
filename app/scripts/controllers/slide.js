@@ -22,7 +22,7 @@ angular.module('studiApp')
             });
         });
         $scope.$watch('zoomFactor', function(newValue, oldValue) {
-            $scope.zoomStyle = {
+            $scope.app.player.zoomStyle = {
                 'zoom': newValue + '%',
                 '-moz-transform': 'scale(' + newValue/100 + ')'
             };

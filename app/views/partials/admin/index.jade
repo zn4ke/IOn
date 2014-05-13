@@ -6,8 +6,7 @@ div(ng-controller='AdminCtrl')
                 div( ui-view='sidebar' )
             #wrapper-content( ng-class="app.styles.mainContentClass" )
                 div( ui-view='content' )
-                    .container
-                        .row
-                            .col-xs-6.col-md-3( ng-repeat="link in links", ui-sref="{{link.sref}}" )
-                                .light-border
-                                    .btn.btn-primary {{link.title}} - {{link.content}}
+                    .row
+                        .col-xs-6.col-md-3( ng-repeat="link in links", ui-sref="{{link.sref}}" )
+                            .light-border
+                                .btn.btn-primary {{link.title}}

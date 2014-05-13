@@ -1,0 +1,10 @@
+.navbar-fixed-bottom
+    .light-border
+        .btn.btn-primary( ui-sref="user.join" )
+            span.glyphicon.glyphicon-home
+        .btn.btn-primary.pull-right( ng-click="app.showControls = false" )
+            span.glyphicon.glyphicon-remove
+        .btn.btn-primary.pull-right( ng-click="app.player.zoomFactor = app.player.zoomFactor - 2" )
+            span.glyphicon.glyphicon-zoom-out
+        .btn.btn-primary.pull-right( ng-click="app.player.zoomFactor = app.player.zoomFactor + 2" )
+            span.glyphicon.glyphicon-zoom-in

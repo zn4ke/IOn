@@ -1,18 +1,21 @@
-div.containerXX( ng-controller="ViewerCtrl")
-    h3 List of Events
-    h4 meine Veranstaltungen
-    div.col-xs-12
-        ul.row
-            li.col-xs-3( ng-repeat="event in data.events.pub", ng-click="joinEvent(this)")
-                .thumbnail
-                    div name {{event.name}}
-                    div date {{event.date}}
-                    div pub {{event.pub}}
+div( ng-controller="ViewerCtrl")
+    div.container
+        h3 List of Events
+        h4 meine Veranstaltungen
+        div.col-xs-12
+            ul.row
+                li( ng-repeat="event in data.events.pub", ng-click="joinEvent(this)")
+                    .thumbnail
+                        div name {{event.name}}
+                        div date {{event.date}}
+                        div pub {{event.pub}}
         h4 öffentliche Veranstaltungen
-        ul.row
-            li.col-xs-2( ng-repeat="event in data.events.my", ng-click="joinEvent(this)" )
-                .thumbnail
-                    div name {{event.name}}
-                    div date {{event.date}}
-                    div pub {{event.pub}}
+        div.col-xs-12
+            ul.row
+                li( ng-repeat="event in data.events.my", ng-click="joinEvent(this)" )
+                    .thumbnail
+                        div name {{event.name}}
+                        div date {{event.date}}
+                        div pub {{event.pub}}
         br
+    

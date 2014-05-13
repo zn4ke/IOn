@@ -1,5 +1,5 @@
 
 .presentation.light-border( ng-controller="PlayerCtrl" )
-    div.light-border( dynamic="app.player.stats", ng-style="zoomStyle", ng-show="app.player.showStats")
-    div.light-border( dynamic="app.player.notes", ng-style="zoomStyle", ng-show="(app.player.showNotes && data.activeSlide.notes)")
-    div.light-border( dynamic="app.player.presentation", ng-style="zoomStyle", ng-hide="app.player.showStats")
+    div.light-border( dynamic="app.player.stats", ng-style="app.player.zoomStyle", ng-show="app.player.showStats")
+    div.light-border( dynamic="app.player.presentation", ng-style="app.player.zoomStyle", ng-hide="app.player.showStats")
+    div.light-border( dynamic="app.player.notes", ng-style="app.player.zoomStyle", ng-show="(app.player.showNotes && data.activeSlide.notes)")

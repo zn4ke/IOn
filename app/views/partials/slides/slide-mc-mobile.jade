@@ -1,4 +1,4 @@
 div( dynamic="data.activeSlide.mobile.question" )
 
 div(ng-repeat="answer in data.activeSlide.mobile.answers")
-    .btn.btn-primary {{answer.text}}
+    .btn.btn-primary( ng-click="sendAnswer($index)") {{answer.text}}

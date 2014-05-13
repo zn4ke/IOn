@@ -30,6 +30,12 @@ angular.module('studiApp')
             $scope.app.styles.sidebarClass = "col-xs-" + $scope.app.styles.sidebarWidth
         });
 
+        $scope.showControls = function( value ){
+            console.log('showControls')
+            if (value === 'toggle') { $scope.app.showControls = !$scope.app.showControls; }
+            else if (value) { $scope.app.showControls = true; }
+            else { $scope.app.showControls = false; }
+        }
         $scope.openTab = function(path){
             window.open(path, 'presentation', 'menubar=no,titlebar=no');
         };

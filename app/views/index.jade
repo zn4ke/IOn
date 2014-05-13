@@ -11,7 +11,16 @@ html.no-js
         base(href="/")
         title
         meta(name="description", content="")
-        meta(name="viewport", content="width=device-width")
+        //meta(name="viewport", content="width=device-width")
+
+
+        // mobile app stuff
+        meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+        meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
+        meta(name="mobile-web-app-capable", content="yes")
+
+
         // Place favicon.ico and apple-touch-icon.png in the root directory
         <!-- build:css(app) styles/vendor.css -->
         <!-- bower:css -->
@@ -30,7 +39,7 @@ html.no-js
           <script src="bower_components/json3/lib/json3.min.js"></script>
           <![endif]
 
-        #wrapper( ui-view ) the UI-VIEW
+        #wrapper( ui-view )
 
 
         // Google Analytics: change UA-XXXXX-X to be your site's ID.
@@ -51,14 +60,19 @@ html.no-js
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+        <script src="bower_components/angular-ui-sortable/sortable.js"></script>
         <script src="bower_components/ng-ckeditor/ng-ckeditor.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js"></script>
+        <script src="bower_components/angular-ui-chart/src/chart.js"></script>
+        <script src="bower_components/jqplot/jquery.jqplot.js"></script>
         <script src="scripts/modules/client-side-auth/module.js"></script>
         <script src="scripts/modules/client-side-auth/directives.js"></script>
         <script src="scripts/modules/client-side-auth/routingConfig.js"></script>
+        <script src="scripts/modules/angular-file-upload/angular-file-upload.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
@@ -71,7 +85,7 @@ html.no-js
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/db.js"></script>
-        <script src="scripts/services/form.js"></script>
+        <script src="scripts/services/template.js"></script>
         <script src="scripts/services/menu.js"></script>
         <script src="scripts/services/socket.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
@@ -80,5 +94,6 @@ html.no-js
         <script src="scripts/controllers/slide.js"></script>
         <script src="scripts/directives/slide.js"></script>
         <script src="scripts/controllers/player.js"></script>
+        <script src="scripts/services/yun.js"></script>
         <!-- endbuild -->
         

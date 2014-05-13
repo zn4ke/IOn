@@ -11,6 +11,8 @@
     "angular-cookies": "1.2.11",
     "angular-sanitize": "1.2.11",
     "angular-ui-router": "0.2.*",
+    "angular-ui-chart": "latest",
+    "angular-ui-sortable": "latest",
     "ng-ckeditor": "*"
   },
   "devDependencies": {

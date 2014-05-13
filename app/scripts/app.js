@@ -12,8 +12,11 @@ angular.module('studiApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
+  'ui.sortable',
   'ngCkeditor',
-  'angular-client-side-auth'
+  'angular-client-side-auth',
+  'angularFileUpload',
+  'ui.chart'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         
@@ -112,7 +115,8 @@ angular.module('studiApp', [
                     url: "/mobile",
                     views: {
                         nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/mobile.html"}
+                        main:{templateUrl: "partials/mobile.html"},
+                        controls:{templateUrl: "partials/mobile-controls.html"}
                     }
                 })
 
@@ -120,7 +124,8 @@ angular.module('studiApp', [
                     url: "/presentation",
                     views: {
                         nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/presentation.html"}
+                        main:{templateUrl: "partials/presentation.html"},
+                        controls:{templateUrl: "partials/presentation-controls.html"}
                     }
                 })
 
@@ -138,89 +143,104 @@ angular.module('studiApp', [
             })
 
 
-            .state("admin.admin", {
-            // 
-                url: "/admin",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/admin/index.html"}
-                }
-            })
-                .state("admin.admin.users", {
+                .state("admin.admin", {
                 // 
-                    url: "/users",
+                    url: "/admin",
                     views: {
-                        sidebar:{templateUrl: "partials/admin/user-browser.html"},
-                        content:{templateUrl: "partials/admin/user-details.html"}
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/admin/index.html"}
                     }
                 })
-                .state("admin.admin.user", {
-                // 
-                    url: "/user/:id",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/user-browser.html"},
-                        content:{templateUrl: "partials/admin/user-details.html"}
-                    }
-                })
-                .state("admin.admin.decks", {
-                // 
-                    url: "/decks",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/decks-menu.html"},
-                        content:{templateUrl: "partials/admin/deck-list.html"}
-                    }
-                })
-                .state("admin.admin.deck", {
-                // 
-                    url: "/deck/:id",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/slide-browser.html"},
-                        content:{templateUrl: "partials/admin/deck-details.html"}
-                    }
-                })
-                .state("admin.admin.groups", {
-                // 
-                    url: "/groups",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/group-browser.html"},
-                        content:{templateUrl: "partials/admin/group-details.html"}
-                    }
-                })
-                .state("admin.admin.group", {
-                // 
-                    url: "/group/:id",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/group-browser.html"},
-                        content:{templateUrl: "partials/admin/group-details.html"}
-                    }
-                })
-                .state("admin.admin.edit", {
-                    url: "/edit/:type",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/form-browser.html"},
-                        content:{
-                            templateUrl: function(stateParams){
-                                return '/partials/forms/' + stateParams.type + '.html'
+                    .state("admin.admin.users", {
+                    // 
+                        url: "/users",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/user-browser.html"},
+                            content:{templateUrl: "partials/admin/user-details.html"}
+                        }
+                    })
+                    .state("admin.admin.user", {
+                    // 
+                        url: "/user/:id",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/user-browser.html"},
+                            content:{templateUrl: "partials/admin/user-details.html"}
+                        }
+                    })
+                    .state("admin.admin.decks", {
+                    // 
+                        url: "/decks",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/decks-menu.html"},
+                            content:{templateUrl: "partials/admin/deck-list.html"}
+                        }
+                    })
+                    .state("admin.admin.deck", {
+                    // 
+                        url: "/deck/:id",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/slide-browser.html"},
+                            content:{templateUrl: "partials/admin/deck-details.html"}
+                        }
+                    })
+                    .state("admin.admin.groups", {
+                    // 
+                        url: "/groups",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/group-browser.html"},
+                            content:{templateUrl: "partials/admin/group-details.html"}
+                        }
+                    })
+                    .state("admin.admin.group", {
+                    // 
+                        url: "/group/:id",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/group-browser.html"},
+                            content:{templateUrl: "partials/admin/group-details.html"}
+                        }
+                    })
+                    .state("admin.admin.edit", {
+                        url: "/edit/:type",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/form-browser.html"},
+                            content:{
+                                templateUrl: function(stateParams){
+                                    return '/partials/forms/' + stateParams.type + '.html'
+                                }
                             }
                         }
-                    }
-                })
-                .state("admin.admin.events", {
-                // 
-                    url: "/events",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/event-browser.html"},
-                        content:{templateUrl: "partials/admin/event-details.html"}
-                    }
-                })
-                .state("admin.admin.event", {
-                // 
-                    url: "/event/:id",
-                    views: {
-                        sidebar:{templateUrl: "partials/admin/event-browser.html"},
-                        content:{templateUrl: "partials/admin/event-details.html"}
-                    }
-                })
+                    })
+                    .state("admin.admin.events", {
+                    // 
+                        url: "/events",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/event-browser.html"},
+                            content:{templateUrl: "partials/admin/event-details.html"}
+                        }
+                    })
+                    .state("admin.admin.event", {
+                    // 
+                        url: "/event/:id",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/event-browser.html"},
+                            content:{templateUrl: "partials/admin/event-details.html"}
+                        }
+                    })
+                    .state('admin.admin.files', {
+                        url: "/files",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/file-browser.html"},
+                            content:{templateUrl: "partials/admin/file-details.html"}
+                        }
+                    })
+                    .state('admin.admin.file', {
+                        url: "/file/:id",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/file-browser.html"},
+                            content:{templateUrl: "partials/admin/file-details.html"}
+                        }
+                    })
+
                 .state('admin.player', {
                     url: "/player",
                     views: {

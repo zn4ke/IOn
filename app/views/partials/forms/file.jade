@@ -1,0 +1,78 @@
+div(ng-controller="AdminUploadCtrl")
+    form.form(name='form', ng-submit='submitFile()', enctype="multipart/form-data")
+    h4 Datei upload
+
+    div.container
+        .row
+            p Dateien in der Warteschlange: {{uploader.queue.length}}
+        .row
+            div.col-xs-2 % uploaded
+            div.col-xs-6
+                div.progress
+                    div.progress-bar( role="progressbar", ng-style="{ 'width': uploader.progress + '%' }")
+        .row( ng-show="uploader.isHTML5")
+            div.col-xs-2
+                input( ng-file-select, type="file", multiple )
+        .row
+            div.col-xs-6
+                .btn.btn-default( ng-file-drop="{url : '/upload'}", ng-file-over )
+                    span Dateien hierhin ziehen...
+    p( type='file', ng-file-select, multiple )
+    p Alle
+        button.btn.btn-success.btn-xs( type='button', ng-click="uploader.uploadAll()", ng-disabled="!uploader.getNotUploadedItems().length" )
+            span.glyphicon.glyphicon-upload
+        button.btn.btn-success.btn-xs( type='button', ng-click="uploader.cancelAll()", ng-disabled="!uploader.isUploading" )
+            span.glyphicon.glyphicon-ban-circle
+        button.btn.btn-success.btn-xs( type='button', ng-click="uploader.clearQueue()", ng-disabled="!uploader.queue.length")
+            span.glyphicon.glyphicon-trash
+    table.table.table-hover
+        thead
+            tr
+                th(width='40%') Name
+                th(width='15%' ng-show='uploader.isHTML5') Grösse
+                th(width='20%' ng-show='uploader.isHTML5') %
+                th
+                th Aktion
+        tbody
+            tr( ng-hide="uploader.queue.length")
+                td
+                    span Keine Dateien gewählt
+                td
+                td
+                td
+                td
+            tr( ng-repeat="item in uploader.queue" )
+                td
+                    em {{item.file.name}}
+                    br 
+                    span {{item.file.src}}
+                td(ng-show="uploader.isHTML5" nowrap) {{ item.file.size/1024/1024|number:2 }} MB
+                td(ng-show="uploader.isHTML5" )
+                    div.progress( style="margin-bottom: 0;" )
+                        div.progress-bar(role="progressbar", ng-style="{ 'width': item.progress + '%' }")
+                td.text-center
+                    span(ng-show="item.isSuccess")
+                        i.glyphicon.glyphicon-ok
+                    span(ng-show="item.isCancel")
+                        i.glyphicon.glyphicon-ban-circle
+                    span(ng-show="item.isError")
+                        i.glyphicon.glyphicon-remove
+                td.nowrap
+                    button.btn.btn-success.btn-xs( type='button', ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess")
+                        span.glyphicon.glyphicon-upload
+                    button.btn.btn-success.btn-xs( type='button', ng-click="item.cancel()" ng-disabled="!item.isUploading")
+                        span.glyphicon.glyphicon-ban-circle
+                    button.btn.btn-success.btn-xs( type='button', ng-click="item.remove()")
+                        span.glyphicon.glyphicon-trash
+            
+    div
+        p uploaded files
+        div.light-border( ng-repeat="uploadedFile in uploadedFiles")
+            .btn.btn-danger.pull-right(ng-click='deleteFile(this)') delete
+            div
+                em {{uploadedFile.filename}}
+            div
+                code {{uploadedFile.src}}
+                
+                div
+                    img.thumbnail( ng-show="uploadedFile.thumbSrc", ng-src="{{uploadedFile.thumbSrc}}")
