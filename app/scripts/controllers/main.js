@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('studiApp')
-    .controller('MainCtrl', function ($rootScope, $scope, $http, $location, $state, socket) {
+    .controller('MainCtrl', function ($rootScope, $scope, $http, $location, $state, $cookieStore, socket) {
         $scope.info='MainCtrl';
-        $rootScope.data = {};
+        $rootScope.data = {
+            selected: {}
+        };
         $rootScope.app = {
             showNav: true,
             showControls: false,
@@ -12,8 +14,10 @@ angular.module('studiApp')
         };
 
         socket.on('init', function(data){
-            console.log('socket handshaking')
+            var event = $cookieStore.get('event');
             socket.emit('init', { message:'answering handshake' } )
+            if ( event ) socket.emit('event:join', { id: event })
+
         });
 
         $scope.$watch('app.showNav', function(){

@@ -1,6 +1,6 @@
 div(ng-controller='AdminCtrl')
         
-    .container
+    .container( ng-init="app.styles.sidebarWidth = 0" )
         .row
             #wrapper-sidebar( ng-class="app.styles.sidebarClass" )
                 div( ui-view='sidebar' )

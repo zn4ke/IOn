@@ -1,4 +1,6 @@
-h4 user details
-div
-    div {{data.selected.user._id}}
+h4 Benutzerprofil
+div.light-border
+    div( ng-hide="data.selected.user" ) Kein User angewählt
     div {{data.selected.user.name}}
+    div {{data.selected.user.email}}
+    div {{data.selected.user.role.title}}

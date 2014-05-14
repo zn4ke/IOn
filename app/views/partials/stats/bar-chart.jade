@@ -1,3 +1,4 @@
 div(ng-controller="StatsCtrl")
-    .btn.btn-default( ng-click="updateChart()" ) update
+    .btn.btn-default( ng-click="data.answers.changed = true" ) update
+    .btn.btn-default( ng-click="clearChart()" ) reset
     div.container( ui-chart="testData", chart-options="testOptions")

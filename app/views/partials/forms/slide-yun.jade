@@ -1,0 +1,10 @@
+.row(ng-controller="AdminContentCtrl")
+    .col-sm-12
+        h1 YUN
+    
+    .col-sm-12
+        form.form( ng-init="formData.type='slide-yun'" )
+            .form-group()
+                label Title
+                input.form-control(type='textbox', name='pres', ng-model='formData.title')
+            .btn.btn-primary( ng-click='saveSlide( formData.type )') send

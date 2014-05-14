@@ -139,6 +139,17 @@ body {
 
 
 
+/* move graph offscreen, so it still gets updated*/
+.offscreen {
+    position: fixed;
+    left: 5000px;
+    top: 0px;
+    z-index: 0;
+}
+
+div.jqplot-axis.jqplot-yaxis {
+    left: -10px !important;
+}
 
 
 

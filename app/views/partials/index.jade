@@ -2,7 +2,7 @@
     .nav( ui-view='nav')
 #wrapper-main.container( ng-style="app.styles.wrapperMain" )
     div(ui-view='main', ng-style="app.styles.wrapperContent")
-#wrapper-controls-alt( ng-hide='(app.showControls || app.showNav)', ng-click="showControls(true)" )
+#wrapper-controls-alt( ng-hide='(!app.showControls || !app.showNav)', ng-click="showControls(true)" )
     .btn.btn-default
         span.glyphicon.glyphicon-th
 #wrapper-controls( ng-show='app.showControls' )

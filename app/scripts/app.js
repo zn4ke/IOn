@@ -130,8 +130,6 @@ angular.module('studiApp', [
                 })
 
 
-
-
         // Admin routes
         $stateProvider
             .state('admin', {

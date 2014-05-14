@@ -3,9 +3,9 @@
 angular.module('studiApp')
     .service('Template', function($http) {
         var templates = {
-            mobile: {'slide-simple':'', 'slide-mc':''},
-            pres: {'slide-simple':'', 'slide-mc':''},
-            stats: {'bar-chart':''}
+            mobile: { 'slide-simple':'', 'slide-mc':'', 'slide-yun':'' },
+            pres: { 'slide-simple':'', 'slide-mc':'', 'slide-yun':'' },
+            stats: { 'bar-chart':'' }
         };
 
         loadTemplates()

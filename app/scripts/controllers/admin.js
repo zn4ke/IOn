@@ -13,8 +13,7 @@ angular.module('studiApp')
             { title:"Files", sref:"admin.admin.files" }
         ];
         $scope.$on('$stateChangeSuccess', function( changeEvent, toState, toParams, fromState, fromParams){
-            console.log('toState',toState)
-            $scope.app.styles.sidebarWidth = ( toState.name === 'admin') ? 0 : 3;
+            $scope.app.styles.sidebarWidth = ( toState.name === 'admin.admin') ? 0 : 3;
         });
         $scope.select = function(scope, type){
             var obj;
@@ -31,12 +30,8 @@ angular.module('studiApp')
             }
             $scope.data.selected[type] = scope[type]
         };
-        $scope.editSlide = function(scope){
-            $scope.data.selected.slide = scope.$index;
-            $location.path('admin/edit/' + scope.slide.type);
-        };
         $scope.addSlide = function(scope){
-            $scope.data.selected.slide = 'new';
+            $scope.data.selected.slide.type = 'new';
             $location.path('admin/edit/slide-simple');
         };
 
@@ -55,9 +50,21 @@ angular.module('studiApp')
             $scope.data.groups = Db.group.list();
             $scope.data.events = Db.event.list();
         };
+
+
+        $scope.reportSorting = function(){
+            var order = "";
+            angular.forEach($scope.data.selected.deck.slides, function(item){
+                console.log( 'slide', item.title)
+                $scope.data.selected.deck.$save();
+            })
+        };
+
+
+
     })
 
-    .controller('AdminContentCtrl', function ($scope, $location, $modal, User, Db) {
+    .controller('AdminContentCtrl', function ($scope, $location, $modal, $state, User, Db) {
         //$scope.data.expression = "\\frac{5}{4} \\div \\frac{1}{6}";
 
         $scope.info = 'Admin Content controller';
@@ -92,13 +99,15 @@ angular.module('studiApp')
                     { name: 'tools', items : [ 'Maximize', 'ShowBlocks'] }
                 ]
         };
-        
-        $scope.formData = $scope.data.selected.deck && ( $scope.data.selected.deck.slides[ $scope.data.selected.slide ] || {} )
+
 
         $scope.$watch('formData', function(){
             //MathJax.Hub.Queue(["Typeset",MathJax.Hub])
             MathJax.Hub.Update($('body').html());
         })
+        $scope.formData = $scope.data.selected.slide;
+
+
         $scope.toggleEdit = function(target){
             $('.cke_wysiwyg_div').removeAttr('title')
             if (target==='pres')
@@ -113,7 +122,7 @@ angular.module('studiApp')
         };
 
         $scope.saveSlide = function(type){
-            if ($scope.data.selected.slide === 'new')
+            if ($scope.data.selected.slide.type === 'new')
                 $scope.data.selected.deck.slides.push($scope.formData);
 
             $scope.data.selected.deck.$update(function(savedDeck){
@@ -163,9 +172,9 @@ angular.module('studiApp')
     .controller('AdminDeckCtrl', function ($scope, $state, $modal, Db) {
         $scope.data.selected.deck = Db.deck.get( { id: $state.params.id }, function(deck){
             $scope.data.selected.deck = deck;
-            $scope.data.activeSlide = deck.slides[ $scope.data.activeSlideNr ]
+            $scope.data.selected.slide = deck.slides[ $scope.data.selected.slideNr ]
         });
-        $scope.data.activeSlideNr = -1;
+        $scope.data.selected.slideNr = -1;
         $scope.info = 'AdminDeckCtrl';
     })
 

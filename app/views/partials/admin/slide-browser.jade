@@ -1,3 +1,5 @@
 div slide browser
-div( ng-repeat="slide in data.selected.deck.slides", ng-click='data.activeSlideNr = $index' )
-    div {{slide._id}}
+div( ui-sortable, ng-model="data.selected.deck.slides" )
+    div.light-border( ng-repeat="slide in data.selected.deck.slides", ng-click='data.selected.slideNr = $index' )
+        div {{slide.title}}
+div.btn.btn-danger( ng-click="reportSorting()" ) save order

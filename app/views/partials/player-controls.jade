@@ -33,7 +33,7 @@
                 ng-class="{'btn-success': app.player.showStats, 'btn-primary': !app.player.showStats }")
             span stats
         .btn.btn-primary.pull-right( ng-click="app.player.showNotes = !app.player.showNotes"
-                ng-class="{'btn-success': app.player.showNotes, 'btn-primary': !app.player.showNotes, 'disabled': !data.activeSlide.notes }" )
+                ng-class="{'btn-success': app.player.showNotes, 'btn-primary': !app.player.showNotes, 'disabled': !data.selected.slide.notes }" )
             span notes
-        .btn.btn-primary.pull-right( ng-click='openTab("/presentation")' )
+        .btn.btn-primary.pull-right( ng-click='openTab("/player")' )
             span.glyphicon.glyphicon-film

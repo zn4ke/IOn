@@ -1,5 +1,4 @@
 h4 event browser
 a.btn.btn-primary( href='/admin/edit/event') new
 div.light-border(ng-repeat='event in data.events', ng-click='select(this, "event")')
-    div {{event._id}}
     div {{event.name}}

@@ -1,4 +1,4 @@
 h4 group browser
 a.btn.btn-primary( href='/admin/edit/group' ) new
-div(ng-repeat='group in data.groups', ng-click='select(this, "group")')
+div.light-border(ng-repeat='group in data.groups', ng-click='select(this, "group")')
     div {{group.name}}

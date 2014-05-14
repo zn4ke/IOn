@@ -1,10 +1,10 @@
 .slide-player.light-border( ng-controller="SlidePreviewCtrl")
     .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-fast-backward( ng-click="data.activeSlideNr = 0" )
+        span.glyphicon.glyphicon-fast-backward( ng-click="data.selected.slideNr = 0" )
     .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-step-backward( ng-click="data.activeSlideNr = data.activeSlideNr - 1" )
+        span.glyphicon.glyphicon-step-backward( ng-click="data.selected.slideNr = data.selected.slideNr - 1" )
     .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-step-forward( ng-click="data.activeSlideNr = data.activeSlideNr + 1" )
+        span.glyphicon.glyphicon-step-forward( ng-click="data.selected.slideNr = data.selected.slideNr + 1" )
     span &nbsp;
     .btn.btn-primary.btn-xs
         span.glyphicon.glyphicon-zoom-in( ng-click="zoomFactor = zoomFactor + 10" )
@@ -12,13 +12,14 @@
         span.glyphicon.glyphicon-zoom-out( ng-click="zoomFactor = zoomFactor - 10" )
     .btn.btn-primary.btn-xs.pull-right
         span.glyphicon.glyphicon-edit( ng-click="editSlide(this)" )
-    span &nbsp; # {{ data.activeSlideNr + 1 }} / {{data.selected.deck.slides.length}} zoom: {{zoomFactor}} %
-    div( ng-hide="data.activeSlide")
+    span &nbsp; # {{ data.selected.slideNr + 1 }} / {{data.selected.deck.slides.length}} zoom: {{zoomFactor}} %
+    div( ng-hide="data.selected.slide")
         div.light-border( dynamic="template" ng-style="app.player.zoomStyle")
             .jumbotron
-                .btn.btn-primary(ng-click="data.activeSlideNr = 0") Start
-    div( ng-hide="!data.activeSlide")
+                .btn.btn-primary(ng-click="data.selected.slideNr = 0") Start
+    div( ng-hide="!data.selected.slide")
         div.light-border( dynamic="template", ng-style="app.player.zoomStyle")
-    div( ng-hide="!data.activeSlide")
-        div.mobile-border
-            div.mobile-inner( dynamic="templateMobile" )
+    div( ng-hide="!data.selected.slide")
+        div.light-border
+            div(style="width:100%;")
+                div.mobile-inner( dynamic="templateMobile" )
