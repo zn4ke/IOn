@@ -9,4 +9,6 @@ div( ng-controller="AdminDeckCtrl" )
             span share: {{data.selected.deck.share}}
         div Anzahl Slides: {{data.selected.deck.slides.length}}
         .btn.btn-primary( ng-click="addSlide()") add Slide
+        span &nbsp;
+        .btn.btn-primary( ng-click="editDetails()") edit meta
         slide-preview

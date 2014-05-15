@@ -5,7 +5,7 @@
 
 CKEDITOR.editorConfig = function( config ) {
 
-    config.stylesSet = 'my_styles';
+
     //config.format_tags = 'p;h1;h2;h3;h4;pre;address;div';
 	// %REMOVE_START%
 	// The configuration options below are needed when running CKEditor from source files.

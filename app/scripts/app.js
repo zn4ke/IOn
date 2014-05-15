@@ -197,12 +197,24 @@ angular.module('studiApp', [
                             content:{templateUrl: "partials/admin/group-details.html"}
                         }
                     })
-                    .state("admin.admin.edit", {
-                        url: "/edit/:type",
+                    .state("admin.admin.new", {
+                        url: "/new/:type",
                         views: {
                             sidebar:{templateUrl: "partials/admin/form-browser.html"},
                             content:{
                                 templateUrl: function(stateParams){
+                                    return '/partials/forms/' + stateParams.type + '.html'
+                                }
+                            }
+                        }
+                    })
+                    .state("admin.admin.edit", {
+                        url: "/edit/:type/:id",
+                        views: {
+                            sidebar:{templateUrl: "partials/admin/form-browser.html"},
+                            content:{
+                                templateUrl: function(stateParams){
+                                    console.log('state params', stateParams)
                                     return '/partials/forms/' + stateParams.type + '.html'
                                 }
                             }

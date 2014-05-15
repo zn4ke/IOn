@@ -3,7 +3,7 @@
 angular.module('studiApp')
     .controller('NavbarCtrl', function ($rootScope, $scope, $location, Auth) {
         $scope.info='NavbarCtrl';
-
+        $scope.data.currentUser = Auth.user;
         $scope.user = Auth.user;
         $scope.userRoles = Auth.userRoles;
         $scope.accessLevels = Auth.accessLevels;
@@ -13,7 +13,7 @@ angular.module('studiApp')
             'sref': 'user.home',
             'access': Auth.accessLevels.user
         }, {
-            'title': 'Events',
+            'title': 'Veranstaltungen',
             'sref': 'user.join',
             'access': Auth.accessLevels.user
         }, {

@@ -4,3 +4,5 @@ div(ng-controller='AdminCtrl')
     div(ng-repeat='deck in data.decks', ng-click='select(this, "deck")')
         .light-border
             strong {{deck.name}}
+            p
+                em {{deck.desc}}

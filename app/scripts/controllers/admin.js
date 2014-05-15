@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('studiApp')
-    .controller('AdminCtrl', function ($scope, $location, $modal, $cookieStore, User, Db, socket) {
+    .controller('AdminCtrl', function ($scope, $location, $modal, $cookieStore, $state, User, Db, socket) {
         $scope.data.selected = {};
         $scope.info = 'Admin controller';
         updateAllData();
@@ -44,7 +44,13 @@ angular.module('studiApp')
         };
         $scope.addSlide = function(scope){
             $scope.app.newSlide = true;
-            $location.path('admin/edit/slide-simple');
+            $location.path('/admin/new/slide-simple');
+        };
+        $scope.editDetails = function(scope){
+            var type = $location.path().split('/')[2]
+            var editUrl = '/admin/edit/' + type + "/" + $state.params.id
+            console.log(type, editUrl)
+            $location.path(editUrl);
         };
 
 
@@ -85,12 +91,14 @@ angular.module('studiApp')
         $scope.editorOptions = {
             language: 'de',
             toolbar: 'Full',
-            extraPlugins: 'ngMath,sourcedialog,simplebox,save',
+            extraPlugins: 'ngMath,sourcedialog,simplebox,save,filebrowser,imagebrowser',
+            imageBrowser_listUrl : "/ckeditor-imagebrowser/demo/images/images_list.json",
+            stylesSet: 'default',
             allowedContent: true,
             forcePasteAsPlainText: true,
             forceSimpleAmpersand: true,
 
-            toolbarStartupExpanded: false,
+            //toolbarStartupExpanded: false,
 
             entities: true,
             basicEntities: false,
@@ -119,11 +127,17 @@ angular.module('studiApp')
         };
 
 
-        $scope.$watch('formData', function(){
-            //MathJax.Hub.Queue(["Typeset",MathJax.Hub])
-            MathJax.Hub.Update($('body').html());
-        })
+        // $scope.$watch('formData', function(){
+        //     //MathJax.Hub.Queue(["Typeset",MathJax.Hub])
+
+        //     MathJax.Hub.Update($('body').html());
+        // })
         $scope.formData = $scope.data.selected.slide;
+        console.log('state', $state)
+        if ( $state.params.id ){
+            $scope.formData = Db[ $state.params.type ].get( { id:$state.params.id } )
+        }
+        else { $scope.editing = false; }
 
 
         $scope.toggleEdit = function(target){
@@ -133,7 +147,15 @@ angular.module('studiApp')
         };
 
         $scope.submitForm = function(type){
-            Db[type].save($scope.formData)
+            if ($scope.formData._id){
+                console.log('updating')
+                $scope.formData.$update()
+            }
+            else {
+                console.log('saving')
+                Db[type].save($scope.formData);
+            }
+            //Db[type].save($scope.formData)
             $scope.data[type + 's'] = Db[type].list();
             $location.path('/admin/' + type + 's')
             
