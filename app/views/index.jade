@@ -29,6 +29,9 @@ html.no-js
         <!-- endbuild -->
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+
+        <link rel="stylesheet" href="scripts/vendor/chemdoodle/ChemDoodleWeb.css">
+        <link rel="stylesheet" href="scripts/vendor/chemdoodle/uis/jquery-ui-10.0.3.custom.css">
         <!-- endbuild -->
     body(ng-app="studiApp", ng-controller="MainCtrl")
         //[if lt IE 7]>
@@ -51,6 +54,10 @@ html.no-js
         <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script src="scripts/vendor/ckeditor/ckeditor.js"></script>
         <script src="scripts/vendor/socket.io/socket.io.js"></script>
+
+        <script src="scripts/vendor/chemdoodle/ChemDoodleWeb.js"></script>
+        <script src="scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis.js"></script>
+        <script src="scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis.js"></script>
         <!-- build:js(app) scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -98,5 +105,7 @@ html.no-js
         <script src="scripts/directives/slide.js"></script>
         <script src="scripts/controllers/player.js"></script>
         <script src="scripts/services/yun.js"></script>
+        <script src="scripts/services/chem.js"></script>
+        <script src="scripts/directives/chem.js"></script>
         <!-- endbuild -->
         

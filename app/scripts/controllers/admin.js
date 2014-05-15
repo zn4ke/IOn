@@ -8,10 +8,22 @@ angular.module('studiApp')
         $scope.links = [
             { title:"Decks", sref:"admin.admin.decks" },
             { title:"Gruppen", sref:"admin.admin.groups" },
-            { title:"Kurse", sref:"admin.admin.events" },
+            { title:"Veranstaltungen", sref:"admin.admin.events" },
             { title:"Users", sref:"admin.admin.users" },
-            { title:"Files", sref:"admin.admin.files" }
+            { title:"Dateien", sref:"admin.admin.files" }
         ];
+
+        $scope.sortableOptions = {
+          update: function(e, ui) {
+            console.log('reordering', e, ui)
+            $scope.updated = false;
+            // if (ui.item.scope().item == "can't be moved") {
+            //   ui.item.sortable.cancel();
+            // }
+          }
+        };
+
+
         $scope.$on('$stateChangeSuccess', function( changeEvent, toState, toParams, fromState, fromParams){
             $scope.app.styles.sidebarWidth = ( toState.name === 'admin.admin') ? 0 : 3;
         });
@@ -49,15 +61,17 @@ angular.module('studiApp')
             $scope.data.decks = Db.deck.list();
             $scope.data.groups = Db.group.list();
             $scope.data.events = Db.event.list();
+            $scope.updated = true;
         };
 
 
-        $scope.reportSorting = function(){
-            var order = "";
+        $scope.saveOrder = function(){
             angular.forEach($scope.data.selected.deck.slides, function(item){
                 console.log( 'slide', item.title)
-                $scope.data.selected.deck.$save();
+                
             })
+            $scope.updated = true;
+            $scope.data.selected.deck.$update();
         };
 
 
@@ -75,11 +89,15 @@ angular.module('studiApp')
             allowedContent: true,
             forcePasteAsPlainText: true,
             forceSimpleAmpersand: true,
+
+            toolbarStartupExpanded: false,
+
             entities: true,
             basicEntities: false,
             entities_greek: true,
             entities_latin: true,
             toolbarCanCollapse: true,
+            format_tags: 'p;h1;h2;h3;h4;pre;address;div',
             toolbar_Full: 
                 [
                     { name: 'document', items : [ 'Preview','Sourcedialog','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
