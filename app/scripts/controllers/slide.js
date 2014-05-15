@@ -26,6 +26,7 @@ angular.module('studiApp')
 
         });
         $scope.editSlide = function(scope){
+            $scope.app.newSlide = false;
             $location.path( 'admin/edit/' + $scope.data.selected.slide.type );
         };
     });

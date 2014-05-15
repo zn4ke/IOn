@@ -43,7 +43,7 @@ angular.module('studiApp')
             $scope.data.selected[type] = scope[type]
         };
         $scope.addSlide = function(scope){
-            $scope.data.selected.slide.type = 'new';
+            $scope.app.newSlide = true;
             $location.path('admin/edit/slide-simple');
         };
 
@@ -140,9 +140,10 @@ angular.module('studiApp')
         };
 
         $scope.saveSlide = function(type){
-            if ($scope.data.selected.slide.type === 'new')
+            if ( $scope.app.newSlide ){
                 $scope.data.selected.deck.slides.push($scope.formData);
-
+                $scope.app.newSlide = false;
+            }
             $scope.data.selected.deck.$update(function(savedDeck){
                 $scope.data.decks = Db.deck.list();
                 $scope.data.selected.deck = savedDeck;

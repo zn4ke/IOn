@@ -10,7 +10,7 @@
         span.glyphicon.glyphicon-zoom-in( ng-click="zoomFactor = zoomFactor + 10" )
     .btn.btn-primary.btn-xs
         span.glyphicon.glyphicon-zoom-out( ng-click="zoomFactor = zoomFactor - 10" )
-    .btn.btn-primary.btn-xs.pull-right
+    .btn.btn-primary.btn-xs.pull-right( ng-show="data.selected.slide" )
         span.glyphicon.glyphicon-edit( ng-click="editSlide(this)" )
     span &nbsp; # {{ data.selected.slideNr + 1 }} / {{data.selected.deck.slides.length}} zoom: {{zoomFactor}} %
     div( ng-hide="data.selected.slide")

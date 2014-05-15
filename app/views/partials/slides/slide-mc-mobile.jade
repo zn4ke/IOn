@@ -1,5 +1,5 @@
 div( dynamic="data.selected.slide.mobile.question" )
-div.container
-    div.row(ng-repeat="answer in data.selected.slide.mobile.answers")
-        .col-xs-12.form-group
-            .btn.btn-lg.btn-primary.form-control( ng-click="sendAnswer(answer.text)") {{answer.text}}
+form.form.container-fluid
+    div.form-group.row(ng-repeat="answer in data.selected.slide.mobile.answers")
+        .col-xs-12
+            .form-control.btn.btn-lg.btn-primary(  ng-click="sendAnswer(answer.text)") {{answer.text}}
