@@ -6,7 +6,7 @@
 
 
 
-angular.module('studiApp', [
+angular.module('ionApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -141,6 +141,14 @@ angular.module('studiApp', [
             })
 
 
+                .state("admin.video", {
+                // 
+                    url: "/video",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/admin/video.html"}
+                    }
+                })
                 .state("admin.admin", {
                 // 
                     url: "/admin",
@@ -214,7 +222,6 @@ angular.module('studiApp', [
                             sidebar:{templateUrl: "partials/admin/form-browser.html"},
                             content:{
                                 templateUrl: function(stateParams){
-                                    console.log('state params', stateParams)
                                     return '/partials/forms/' + stateParams.type + '.html'
                                 }
                             }

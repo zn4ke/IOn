@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
 .directive('molecule', function ($timeout) {
     return {
         template: '<div></div>',

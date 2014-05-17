@@ -3,7 +3,7 @@
 describe('Service: chem', function () {
 
   // load the service's module
-  beforeEach(module('studiApp'));
+  beforeEach(module('ionApp'));
 
   // instantiate service
   var chem;

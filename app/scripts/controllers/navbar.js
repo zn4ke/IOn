@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('NavbarCtrl', function ($rootScope, $scope, $location, Auth) {
         $scope.info='NavbarCtrl';
         $scope.data.currentUser = Auth.user;
@@ -24,6 +24,10 @@ angular.module('studiApp')
             'title': 'Player',
             'sref': 'admin.player',
             'access': Auth.accessLevels.admin
+        },{
+            'title': 'Video',
+            'sref': 'admin.video',
+            'access': Auth.accessLevels.admin
         }];
         
         $scope.logout = function() {
@@ -36,7 +40,7 @@ angular.module('studiApp')
     });
 
 
-angular.module('studiApp')
+angular.module('ionApp')
 .controller('LoginCtrl',
 ['$rootScope', '$scope', '$location', '$window', 'Auth', function($rootScope, $scope, $location, $window, Auth) {
 

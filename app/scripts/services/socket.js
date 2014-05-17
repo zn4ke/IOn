@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
         .factory('socket', function ($rootScope) {
             var socket = io.connect();
             return {

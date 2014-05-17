@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('MainCtrl', function ($rootScope, $scope, $http, $location, $state, $cookieStore, socket) {
         $scope.info='MainCtrl';
         $rootScope.data = {

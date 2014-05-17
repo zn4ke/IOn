@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .service('Template', function($http) {
         var serviceObject = {
             getForm: function( type, callback){

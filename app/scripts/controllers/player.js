@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('PlayerCtrl', function ($scope, $cookieStore, Db, Template, socket) {
         $scope.data.selected = $scope.data.selected || {};
         $scope.app.showControls = true;
@@ -72,6 +72,7 @@ angular.module('studiApp')
             console.log('pushing recieved', data)
         });
         socket.on('event:answer', function(data){
+            console.log('answer recieved', data)
             var answers = $scope.data.answers;
             answers[data.slideNr] = answers[data.slideNr] || {}
             if ( answers[data.slideNr][data.own] ) {
@@ -111,7 +112,7 @@ angular.module('studiApp')
 
 
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('PresentationCtrl', function ($scope, $cookieStore, Db, Template, socket ) {
 
         $scope.app.player = $scope.app.player || {
@@ -153,7 +154,7 @@ angular.module('studiApp')
         });
     });
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('MobileCtrl', function ($scope, $http, $cookieStore, Db, Template, socket ) {
         $scope.data.selected = $scope.data.selected || {};
         $scope.app.player = $scope.app.player || {
@@ -161,7 +162,7 @@ angular.module('studiApp')
             zoomFactor: 100, 
             locked: false 
         };
-
+        $scope.submitted = false;
 
         $scope.app.showNav = false;
         $scope.app.styles.sidebarWidth = 0;
@@ -169,7 +170,7 @@ angular.module('studiApp')
         socket.emit( 'event:join', { id: $scope.eventId } )
 
         socket.on('event:push', function(data){
-            
+            $scope.submitted = false;
             $scope.templates = {
                 mobile: data.mobile,
                 presentation: data.presentation
@@ -180,11 +181,17 @@ angular.module('studiApp')
         });
 
 
-        $scope.sendAnswer = function(answer){
+        $scope.sendAnswer = function(scope){
+            if (!$scope.submitted){
+                $scope.submitted = true;
+                scope.submittedAnswer = true;
+            }
+
+            
             $http.post('/submit', {
                     id: $scope.eventId,
                     slideNr: $scope.slideNr,
-                    answer: answer,
+                    answer: scope.answer.text,
                 })
                 .success(function(){
                     console.log('success: result posted')
@@ -195,7 +202,7 @@ angular.module('studiApp')
             socket.emit('event:answer', {
                 id: $scope.eventId,
                 slideNr: $scope.slideNr,
-                answer: answer
+                answer: scope.answer.text
 
             });
         }
@@ -216,7 +223,7 @@ angular.module('studiApp')
     });
 
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('StatsCtrl', function ($scope, $cookieStore, Db, Template, socket ) {
         $scope.testData = [[[]]];
         socket.emit('event:answers',{})

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('SlidePreviewCtrl', function ($scope, $location, Template) {
         $scope.data.selected.slideNr = -1;
         $scope.zoomFactor = 100;
@@ -32,7 +32,7 @@ angular.module('studiApp')
     });
 
 
-angular.module('studiApp')
+angular.module('ionApp')
 .controller('SlideYunCtrl', function ($scope, Yun, $http) {
     // $http.jsonp('http://192.168.188.29/data/get?callback=jsonp_callback')
     //     .success( function(data){

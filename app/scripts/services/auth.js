@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
 .factory('Auth', function Auth($location, $rootScope, $http, Session, User, $cookieStore) {
 
     var accessLevels = routingConfig.accessLevels

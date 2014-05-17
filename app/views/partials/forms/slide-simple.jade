@@ -9,7 +9,7 @@
                 input.form-control(type='textbox', name='pres', ng-model='formData.title')
                 div MathJax: x = {-b \pm \sqrt{b^2-4ac} \over 2a}
             .form-group()
-                label(ng-init="presZoom = 1") Presentation
+                label(ng-init="presZoom = 1") Präsentation
                 .btn.btn-primary(ng-click="presZoom = presZoom + 0.2; presZoomStyle={zoom: presZoom}") +
                 .btn.btn-primary(ng-click="presZoom = presZoom - 0.2; presZoomStyle={zoom: presZoom}") -
                 span &nbsp; {{presZoom}}
@@ -20,7 +20,7 @@
                         textarea( ckeditor="editorOptions", ng-model='formData.pres')
                     div.dynamic-preview( ng-hide="data.editPres", dynamic='formData.pres', ng-style="presZoomStyle")
 
-            .form-group()
+            .form-group() Handout
                 div.thumbnail(ng-init="data.editMobile = false")
                     .btn.btn-primary.pull-right( ng-hide="data.editMobile", ng-click="data.editMobile = !data.editMobile") edit
                     .btn.btn-danger.pull-right( ng-show="data.editMobile", ng-click="data.editMobile = !data.editMobile") save
@@ -29,6 +29,6 @@
                     div.dynamic-preview( ng-hide="data.editMobile", dynamic='formData.mobile', ng-style="presZoomStyle")
 
             .form-group()
-                label Notes
+                label Notizen
                 textarea.form-control( ng-model='formData.notes' )
             .btn.btn-primary( ng-click='saveSlide( "slide-simple" )') send

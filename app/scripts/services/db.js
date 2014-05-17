@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .service('Db', function Db($resource) {
         // AngularJS will instantiate a singleton by calling "new" on this function
         return {

@@ -1,0 +1,539 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ng-cl",
+				"ng-click	AngularJS"
+			],
+			[
+				"btn-",
+				"btn-primary"
+			],
+			[
+				"progress",
+				"progress-bar"
+			],
+			[
+				"btn-s",
+				"btn-success"
+			],
+			[
+				"btn",
+				"btn-default"
+			],
+			[
+				"ng-S",
+				"ng-show	AngularJS"
+			],
+			[
+				"div",
+				"div"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"bt",
+				"btn-primary"
+			],
+			[
+				"ng-s",
+				"ng-show	AngularJS"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"ng-in",
+				"ng-init	AngularJS"
+			],
+			[
+				"vie",
+				"viewer"
+			],
+			[
+				"ng",
+				"ng-click	AngularJS"
+			],
+			[
+				"ng-co",
+				"ng-controller	AngularJS"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"collect",
+				"collectionName"
+			],
+			[
+				"new",
+				"newDbEntry"
+			],
+			[
+				"current",
+				"current_user"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 112.0,
+		"selected_items":
+		[
+			[
+				"inten",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"int",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inte",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/gargamel/Public/node/studi/lib/routes.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-list.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/slide-browser.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/event-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/event-browser.jade",
+		"/home/gargamel/Public/node/studi/lib/controllers/api.js",
+		"/home/gargamel/Public/node/studi/app/images/images.json",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/admin.js",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/navbar.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/home.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/directives/chem.js",
+		"/home/gargamel/Public/node/studi/app/scripts/app.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-mc-mobile.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/slide-preview.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/slide.js",
+		"/home/gargamel/Public/node/studi/app/views/index.jade",
+		"/home/gargamel/Public/node/studi/.gitignore",
+		"/home/gargamel/Public/node/studi/package.json",
+		"/home/gargamel/Public/node/studi/bower.json",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/ngMath/plugin.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/config.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/styles.js",
+		"/home/gargamel/Public/node/studi/app/scripts/services/chem.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-yun-pres.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/services/yun.js",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/main.js",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/player.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-simple-pres.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-simple-mobile.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-mc-pres.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/player.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/player-controls.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-browser.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/form-browser.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/index.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/event-list.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/user-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/user-browser.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/stats/bar-chart.jade",
+		"/home/gargamel/Public/node/studi/lib/controllers/socket.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/navbar.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/services/template.js",
+		"/home/gargamel/Public/node/studi/lib/config/express.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-yun-mobile.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-yun.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/index.jade",
+		"/home/gargamel/Public/node/studi/app/styles/main.css",
+		"/home/gargamel/Public/node/studi/lib/models/answer.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/presentation.jade",
+		"/home/gargamel/Public/node/studi/lib/controllers/session.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/mobile.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/mobile-controls.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/presentation-controls.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/services/db.js",
+		"/home/gargamel/Public/node/studi/app/scripts/services/user.js",
+		"/home/gargamel/Public/node/studi/lib/config/env/all.js",
+		"/home/gargamel/Public/node/studi/lib/models/slide.js",
+		"/home/gargamel/Public/node/studi/lib/models/file.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/file.jade",
+		"/home/gargamel/Public/node/studi/lib/controllers/files.js",
+		"/home/gargamel/Public/node/studi/app/scripts/modules/angular-file-upload/angular-file-upload.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/file-browser.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/event.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/file-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/file.browser.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-simple.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/login.js",
+		"/home/gargamel/Public/node/studi/app/scripts/services/auth.js",
+		"/home/gargamel/Public/node/studi/lib/models/files.js",
+		"/home/gargamel/Public/node/studi/lib/middleware.js",
+		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/routingConfig.js",
+		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/directives.js",
+		"/home/gargamel/Public/node/studi/lib/controllers/users.js",
+		"/home/gargamel/Public/node/studi/lib/models/user.js",
+		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/services.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/signup.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/signup.js",
+		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/controllers.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/login.jade",
+		"/home/gargamel/Public/node/studi/lib/config/passport.js",
+		"/home/gargamel/Public/node/studi/lib/controllers/auth.js",
+		"/home/gargamel/Public/node/studi/app/scripts/services/session.js",
+		"/home/gargamel/Public/node/studi/server.js",
+		"/home/gargamel/Public/node/studi/app/scripts/directives/access.js",
+		"/home/gargamel/Public/node/studi/lib/config/dummydata.js",
+		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/module.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/decks-menu.jade",
+		"/home/gargamel/Public/node/studi/lib/models/event.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/event.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/chooser.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/directives/slide.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-mc.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/sidebar.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/controls.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-browser.jade",
+		"/home/gargamel/Public/node/studi/lib/models/deck.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/main.jade",
+		"/home/gargamel/Public/node/studi/test/spec/controllers/slide.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/player.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/slide-player.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/services/form.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/viewer.jade",
+		"/home/gargamel/Public/node/studi/test/spec/controllers/event.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/event.jade",
+		"/home/gargamel/Public/node/studi/app/bower_components/bootstrap/DOCS-LICENSE",
+		"/home/gargamel/Public/node/studi/studi.sublime-workspace",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-browser.jade",
+		"/home/gargamel/Public/node/studi/app/scripts/directives/dynamic.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/simplebox/plugin.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/simplebox/dialogs/simplebox.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/mathjax/plugin.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/mathjax/dialogs/mathjax.js",
+		"/home/gargamel/Public/node/studi/app/scripts/directives/ckeditor.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/ngMath/dialogs/ng-math.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/ckeditor.js",
+		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/templates/templates/default.js",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/deck.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/lecture.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/group.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/form-details.jade",
+		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-simple",
+		"/home/gargamel/Public/node/studi/app/scripts/services/socket.js",
+		"/home/gargamel/Public/node/studi/app/scripts/controllers/form.js",
+		"/home/gargamel/Public/node/studi/lib/models/thing.js",
+		"/home/gargamel/Public/node/studi/lib/controllers/index.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/app/bower_components/*, -/home/gargamel/Public/node/studi/app/scripts/vendor/*",
+			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/app/bower_components/*",
+			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules, -/home/gargamel/Public/node/studi/app/bower_components",
+			"/home/gargamel/Public/node/studi",
+			"/home/gargamel/Public/node/studi/app/views/partials",
+			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/client/js/lib/*, -/home/gargamel/Public/node/studi/app/bower_components/*",
+			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/client/js/lib/*, -/home/gargamel/Public/node/studi/app/bower-components/*",
+			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/client/js/lib/*",
+			"/home/gargamel/Public/node/student-response, -/home/gargamel/Public/node/student-response/node_modules/*, -/home/gargamel/Public/node/student-response/client/js/lib/*",
+			"/home/gargamel/Public/node/sf, -/home/gargamel/Public/node/sf/node_modules/*, -/home/gargamel/Public/node/sf/client/js/libs/*",
+			"/home/gargamel/Public/node/mean, -/home/gargamel/Public/node/mean/node_modules/*, -/home/gargamel/Public/node/mean/public/lib/*",
+			"-public/lib/*,-node_modules/*",
+			"-/home/gargamel/Public/node/mean/public/lib,-/home/gargamel/Public/node/mean/node_modules",
+			"/home/gargamel/Public/node/mean/app,/home/gargamel/Public/node/mean/public,-/home/gargamel/Public/node/mean/public/lib,-/home/gargamel/Public/node/mean/node_modules",
+			"/home/gargamel/Public/node/mean/app,/home/gargamel/Public/node/mean/public,-/home/gargamel/Public/node/mean/public/lib",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"studi",
+			"my_styles",
+			"feedback",
+			"forms",
+			"newSlide",
+			"viewACS2",
+			"Format",
+			"stylesDefinitions",
+			"stylesLis",
+			"styles",
+			"Template.get",
+			"selected.slide",
+			"data.activeSlide",
+			"$scope.data.activeSlide",
+			"activeSlide",
+			"Db.deck.get",
+			"editSlide",
+			"activeSlide",
+			"$scope.data.selected.slide",
+			"sidebarWidth",
+			"slideNr",
+			"8",
+			"event:answer",
+			"id",
+			"eventId",
+			"app.player.presentation",
+			"Template.get",
+			"app.player.presentation",
+			"PlayerCtrl",
+			"zoomStyle",
+			"console",
+			"onclick",
+			"thumbSrc",
+			"src",
+			"extname",
+			"body",
+			"console.log",
+			"DELETE",
+			"GET",
+			"PUT",
+			"POST",
+			"Forbidden",
+			"ensureAuthorized",
+			"$cookieStore.get('user')",
+			"$cookieStore.get(\"user\")",
+			"userRoles",
+			"cookie",
+			"console.log('acc",
+			"authorize",
+			"$location",
+			"$state.go",
+			"user.home",
+			".authorize",
+			"Auth.authorize",
+			"ng-ckeditor.map",
+			"selected.user.profile",
+			"profilectrl",
+			"cookie",
+			"$cookieStore",
+			"go",
+			"serialize",
+			"$cookieStore",
+			"dasdasdasdd",
+			"goTo",
+			"$on",
+			"schema",
+			"mongoose",
+			"console",
+			"lost que",
+			"$scope.data.activeSlide",
+			"directive",
+			"console",
+			"$scope.activeSlide",
+			"activeSlide",
+			"console",
+			"User",
+			"$compile",
+			"app.sidebarWidth",
+			"sidebarWidth",
+			"showTopNav",
+			"showNav",
+			"overflo",
+			"SlideCtrl",
+			"$location",
+			"choose",
+			"deserialize",
+			"ongoStore",
+			"EventCtrl",
+			"ViewerCtrl",
+			"EventCtrl",
+			"tab",
+			"tabs",
+			"template",
+			"templatr",
+			"template",
+			"submitForm",
+			"lecture",
+			"submitForm",
+			"WYSIWYG-Editor",
+			"WYSYEYG-Editor",
+			"mathJaxUpdateDone",
+			"span",
+			"appendBogus",
+			"submitForm",
+			"isActive",
+			"awesomeThings",
+			"awesome",
+			"currentUser",
+			"user list",
+			"forms",
+			"Thing",
+			"SignupCtrl",
+			"console",
+			"html5",
+			"pcModel",
+			"pc-model",
+			"console",
+			"Group",
+			"group",
+			"Group",
+			"scope.particular",
+			"event",
+			"scope.particular",
+			"NavCtrl",
+			"scope.particle",
+			"Auth",
+			"particle-type",
+			"particle-templ"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"context",
+			"data.selected.slide",
+			"$scope.data.selected.slide",
+			"$scope.data.activeSlide.type",
+			"app.player.zoomStyle",
+			"delete",
+			"get",
+			"put",
+			"post",
+			"$scope.data.activeSlide",
+			"app.styles.sidebarWidth",
+			"showNav",
+			"showTopNav",
+			"SlidePreviewCtrl",
+			"ViewerCtrl",
+			"event",
+			"pcData",
+			"pc-data",
+			"Deck",
+			"deck",
+			"event",
+			"Event",
+			"particular",
+			"Group",
+			"ngsf-db",
+			"socket",
+			"event",
+			"Event",
+			"student-response",
+			"username",
+			"db:get",
+			"Deck",
+			"StudentFeedback",
+			"ngsf",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 287.0,
+	"status_bar_visible": true
+}

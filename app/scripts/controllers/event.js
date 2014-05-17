@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('ViewerCtrl', function ($scope, $resource, $location, $cookieStore, Db, socket) {
         $scope.data.viewer = $scope.data.viewer || {};
         $scope.data.events = {

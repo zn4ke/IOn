@@ -1,15 +1,15 @@
 .slide-player.light-border( ng-controller="SlidePreviewCtrl")
-    .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-fast-backward( ng-click="data.selected.slideNr = 0" )
-    .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-step-backward( ng-click="data.selected.slideNr = data.selected.slideNr - 1" )
-    .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-step-forward( ng-click="data.selected.slideNr = data.selected.slideNr + 1" )
+    .btn.btn-primary.btn-xs( ng-click="data.selected.slideNr = 0" )
+        span.glyphicon.glyphicon-fast-backward
+    .btn.btn-primary.btn-xs( ng-click="data.selected.slideNr = data.selected.slideNr - 1" )
+        span.glyphicon.glyphicon-step-backward
+    .btn.btn-primary.btn-xs( ng-click="data.selected.slideNr = data.selected.slideNr + 1" )
+        span.glyphicon.glyphicon-step-forward
     span &nbsp;
-    .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-zoom-in( ng-click="zoomFactor = zoomFactor + 10" )
-    .btn.btn-primary.btn-xs
-        span.glyphicon.glyphicon-zoom-out( ng-click="zoomFactor = zoomFactor - 10" )
+    .btn.btn-primary.btn-xs( ng-click="zoomFactor = zoomFactor + 10" )
+        span.glyphicon.glyphicon-zoom-in
+    .btn.btn-primary.btn-xs( ng-click="zoomFactor = zoomFactor - 10" )
+        span.glyphicon.glyphicon-zoom-out
     .btn.btn-primary.btn-xs.pull-right( ng-show="data.selected.slide" )
         span.glyphicon.glyphicon-edit( ng-click="editSlide(this)" )
     span &nbsp; # {{ data.selected.slideNr + 1 }} / {{data.selected.deck.slides.length}} zoom: {{zoomFactor}} %

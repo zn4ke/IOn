@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
 .factory('Yun', function Yun() {
     var settings = {
         url: "http://192.168.188.29/data/"

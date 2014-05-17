@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
 .controller('SignupCtrl', function ($rootScope, $scope, Auth, $location) {
 
     $scope.role = Auth.userRoles.user;

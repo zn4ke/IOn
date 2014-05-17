@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .directive('dynamic', function ($compile) {
         return {
             restrict: 'A',
@@ -27,7 +27,7 @@ MathJax.Hub.Configured();
 
 
 
-angular.module('studiApp')
+angular.module('ionApp')
     .directive("mathjaxBind", function() {
         return {
             restrict: "A",
@@ -45,7 +45,7 @@ angular.module('studiApp')
 
 
 
-angular.module('studiApp')
+angular.module('ionApp')
     .directive("mjMath", function() {
         return {
             restrict: "E",

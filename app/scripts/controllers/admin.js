@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .controller('AdminCtrl', function ($scope, $location, $modal, $cookieStore, $state, User, Db, socket) {
         $scope.data.selected = {};
         $scope.info = 'Admin controller';
@@ -15,7 +15,6 @@ angular.module('studiApp')
 
         $scope.sortableOptions = {
           update: function(e, ui) {
-            console.log('reordering', e, ui)
             $scope.updated = false;
             // if (ui.item.scope().item == "can't be moved") {
             //   ui.item.sortable.cancel();
@@ -44,12 +43,12 @@ angular.module('studiApp')
         };
         $scope.addSlide = function(scope){
             $scope.app.newSlide = true;
+            $scope.data.selected.slide = {};
             $location.path('/admin/new/slide-simple');
         };
         $scope.editDetails = function(scope){
             var type = $location.path().split('/')[2]
             var editUrl = '/admin/edit/' + type + "/" + $state.params.id
-            console.log(type, editUrl)
             $location.path(editUrl);
         };
 
@@ -73,7 +72,6 @@ angular.module('studiApp')
 
         $scope.saveOrder = function(){
             angular.forEach($scope.data.selected.deck.slides, function(item){
-                console.log( 'slide', item.title)
                 
             })
             $scope.updated = true;
@@ -84,7 +82,7 @@ angular.module('studiApp')
 
     })
 
-    .controller('AdminContentCtrl', function ($scope, $location, $modal, $state, User, Db) {
+    .controller('AdminContentCtrl', function ($rootScope, $scope, $location, $modal, $state, User, Db) {
         //$scope.data.expression = "\\frac{5}{4} \\div \\frac{1}{6}";
 
         $scope.info = 'Admin Content controller';
@@ -127,24 +125,32 @@ angular.module('studiApp')
         };
 
 
-        // $scope.$watch('formData', function(){
-        //     //MathJax.Hub.Queue(["Typeset",MathJax.Hub])
 
-        //     MathJax.Hub.Update($('body').html());
-        // })
-        $scope.formData = $scope.data.selected.slide;
-        console.log('state', $state)
+        $scope.$watch('formData', function(){
+            //MathJax.Hub.Update($('body').html());
+        });
+        $scope.$watch('data.editPres', function(){
+            $('.cke_wysiwyg_div').removeAttr('title');
+        });
+        $scope.$watch('data.editMobile', function(){
+            $('.cke_wysiwyg_div').removeAttr('title');
+        });
+
+
+
+
+        // if we are editing a slide load formdata
+        if ($state.params.type.indexOf('slide') >= 0) {
+            $scope.formData = $scope.data.selected.slide;
+        }
+        
+        // if we are editing any other type than slide get ressource and load formdata
         if ( $state.params.id ){
-            $scope.formData = Db[ $state.params.type ].get( { id:$state.params.id } )
+            $scope.formData = Db[ $state.params.type ].get( { id:$state.params.id });
         }
         else { $scope.editing = false; }
 
 
-        $scope.toggleEdit = function(target){
-            $('.cke_wysiwyg_div').removeAttr('title')
-            if (target==='pres')
-                $scope.data.editPres = !($scope.data.editPres);
-        };
 
         $scope.submitForm = function(type){
             if ($scope.formData._id){

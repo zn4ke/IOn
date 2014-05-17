@@ -3,7 +3,7 @@
 describe('Directive: access', function () {
 
   // load the directive's module
-  beforeEach(module('studiApp'));
+  beforeEach(module('ionApp'));
 
   var element,
     scope;

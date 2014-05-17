@@ -3,7 +3,7 @@
 describe('Controller: SlidePreviewCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('studiApp'));
+  beforeEach(module('ionApp'));
 
   var SlidePreviewCtrl,
     scope,

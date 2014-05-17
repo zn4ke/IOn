@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
   .factory('Session', function ($resource) {
     return $resource('/api/session/');
   });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .factory('User', function ($resource) {
         return $resource('/api/users/:id', {
             id: '@id'
@@ -25,7 +25,7 @@ angular.module('studiApp')
         });
     });
 
-angular.module('studiApp')
+angular.module('ionApp')
     .factory('File', function ($resource) {
         var files = $resource('/files/:id', {
             id: '@id'

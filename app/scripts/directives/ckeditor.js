@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .directive('ckEditor', function () {
         return {
             require: '?ngModel',
@@ -37,7 +37,7 @@ angular.module('studiApp')
 // https://github.com/ericpanorel/AngularCkEdDirective
 
 // "use strict";
-// angular.module('studiApp')
+// angular.module('ionApp')
 // .directive('ckedit', function ($parse) {
 //     CKEDITOR.disableAutoInline = true;
 //     var counter = 0,

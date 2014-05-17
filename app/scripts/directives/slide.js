@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .directive('slidePreview', function () {
         return {
             templateUrl: 'partials/slide-preview.html',
@@ -12,7 +12,7 @@ angular.module('studiApp')
     });
 
 
-angular.module('studiApp')
+angular.module('ionApp')
     .directive('playerControls', function () {
         return {
             templateUrl: 'partials/player-controls.html',

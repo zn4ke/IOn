@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
 .controller('LoginCtrl', function ($rootScope, $scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};

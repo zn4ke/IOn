@@ -7,13 +7,30 @@
             .form-group
                 label Titel
                 input.form-control(type='text', placeholder='type a name', ng-model='formData.title')
+
+
+            .form-group()
+                label(ng-init="presZoom = 1") Präsentation
+                .btn.btn-primary(ng-click="presZoom = presZoom + 0.2; presZoomStyle={zoom: presZoom}") +
+                .btn.btn-primary(ng-click="presZoom = presZoom - 0.2; presZoomStyle={zoom: presZoom}") -
+                span &nbsp; {{presZoom}}
+                div.thumbnail(ng-init="data.editPres = false")
+                    .btn.btn-primary.pull-right( ng-hide="data.editPres", ng-click="data.editPres = !data.editPres") edit
+                    .btn.btn-danger.pull-right( ng-show="data.editPres", ng-click="data.editPres = !data.editPres") save
+                    div( ng-show="data.editPres")
+                        textarea( ckeditor="editorOptions", ng-model='formData.pres.question')
+                    div.dynamic-preview( ng-hide="data.editPres", dynamic='formData.pres.question', ng-style="presZoomStyle")
+
+
+            .form-group() Frage (Smartphone)
+                div.thumbnail(ng-init="data.editMobile = false")
+                    .btn.btn-primary.pull-right( ng-hide="data.editMobile", ng-click="data.editMobile = !data.editMobile") edit
+                    .btn.btn-danger.pull-right( ng-show="data.editMobile", ng-click="data.editMobile = !data.editMobile") save
+                    div( ng-show="data.editMobile")
+                        textarea( ckeditor="editorOptions", ng-model='formData.mobile.question')
+                    div.dynamic-preview( ng-hide="data.editMobile", dynamic='formData.mobile.question', ng-style="presZoomStyle")
+
             .form-group
-                label Question (Presentation)
-                textarea.form-control( placeholder='type some presentation here', ng-model='formData.pres.question')
-                br
-                label Mobile Content
-                textarea.form-control( placeholder='type some mobile content', ng-model='formData.mobile.question')
-                br
                 label(ng-init="formData.mobile.answers = formData.mobile.answers || [{text: 'ans1'},{text: 'ans2'}]") Answers
                 div( ng-repeat='answer in formData.mobile.answers')
                     div.form-group

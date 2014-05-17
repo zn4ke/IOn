@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('studiApp')
+angular.module('ionApp')
     .service('Template', function($http) {
         var templates = {
             mobile: { 'slide-simple':'', 'slide-mc':'', 'slide-yun':'' },
