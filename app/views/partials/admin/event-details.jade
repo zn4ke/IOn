@@ -1,8 +1,13 @@
 h4 Details
-div(ng-show="data.selected.event")
-    div owner id: {{data.selected.event.own}}
-    div name: {{data.selected.event.name}}
-    div date: {{data.selected.event.date}}
-    div group: {{data.selected.event.group.name}}
-    div deck: {{data.selected.event.deck.name}}
-    .btn.btn-primary( ng-click="startEvent()" ) start event
+div(ng-show="data.selected.event").light-border
+    .container
+        h5
+            strong {{data.selected.event.name}}
+
+        p erstellt am {{data.selected.event.date | date:'dd.MM.yyyy'}} um {{data.selected.event.date | date:'HH:mm'}} Uhr
+        p für: {{data.selected.event.group.name}}
+        p Deck: {{data.selected.event.deck.name}}
+        p
+            .btn.btn-primary( ng-click="startEvent()" )
+                span.glyphicon.glyphicon-play
+                span &nbsp;Starten

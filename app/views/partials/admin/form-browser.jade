@@ -1,8 +1,12 @@
-h4 form browser
-div 
-    div.light-border
-        a(ng-href="/admin/edit/slide-simple") Simple Slide
-    div.light-border
-        a(ng-href="/admin/edit/slide-mc") Multiple-Choice
-    div.light-border
-        a(ng-href="/admin/edit/slide-yun") YUN
+div(ng-show="true")
+    h4 Folien-Typen
+    div 
+        div.light-border
+            a(ng-href="/admin/edit/slide-simple") simple Slide
+        div.light-border
+            a(ng-href="/admin/edit/slide-mc") Umfrage
+        div.light-border
+            a(ng-href="/admin/edit/slide-yun") YUN
+
+    div
+        h6 TODO: hide if content type is not slide

@@ -52,6 +52,7 @@ angular.module('ionApp')
             controller: ["$scope", "$element", "$attrs", function($scope, $element, $attrs) {
                 
                 var $script = angular.element("<script type='math/tex'>")
+
                 $script.html( $element.html() )
                 $element.html("");
                 $element.html($script);

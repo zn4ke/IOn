@@ -90,7 +90,8 @@ angular.module('ionApp')
             language: 'de',
             toolbar: 'Full',
             extraPlugins: 'ngMath,sourcedialog,simplebox,save,filebrowser,imagebrowser',
-            imageBrowser_listUrl : "/ckeditor-imagebrowser/demo/images/images_list.json",
+            imageBrowser_listUrl : "/files/images",
+            filebrowserImageBrowseUrl : "/files/imges",
             stylesSet: 'default',
             allowedContent: true,
             forcePasteAsPlainText: true,
@@ -124,11 +125,6 @@ angular.module('ionApp')
                 ]
         };
 
-
-
-        $scope.$watch('formData', function(){
-            //MathJax.Hub.Update($('body').html());
-        });
         $scope.$watch('data.editPres', function(){
             $('.cke_wysiwyg_div').removeAttr('title');
         });

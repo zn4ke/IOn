@@ -30,6 +30,7 @@ angular.module('ionApp', [
 
    // Anonymous routes
         $stateProvider
+            
             .state('anon', {
                 abstract: true,
                 templateUrl: "partials/index.html",
@@ -71,11 +72,8 @@ angular.module('ionApp', [
                 data: {
                     access: access.public
                 }
-            });
-
-
+            })
     // Regular user routes
-
         $stateProvider
             .state('user', {
                 abstract: true,
@@ -141,6 +139,9 @@ angular.module('ionApp', [
             })
 
 
+
+
+
                 .state("admin.video", {
                 // 
                     url: "/video",
@@ -149,6 +150,28 @@ angular.module('ionApp', [
                         main:{templateUrl: "partials/admin/video.html"}
                     }
                 })
+                .state("admin.math", {
+                // 
+                    url: "/math",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/admin/math.html"}
+                    }
+                })
+                .state("admin.chem", {
+                // 
+                    url: "/chem",
+                    views: {
+                        nav:{templateUrl: "partials/navbar.html"},
+                        main:{templateUrl: "partials/admin/chem.html"}
+                    }
+                })
+
+
+
+
+
+
                 .state("admin.admin", {
                 // 
                     url: "/admin",

@@ -17,7 +17,7 @@ angular.module('ionApp')
             'sref': 'user.join',
             'access': Auth.accessLevels.user
         }, {
-            'title': 'Admin',
+            'title': 'Admin |||||||||||',
             'sref': 'admin.admin',
             'access': Auth.accessLevels.admin
         },{
@@ -27,6 +27,14 @@ angular.module('ionApp')
         },{
             'title': 'Video',
             'sref': 'admin.video',
+            'access': Auth.accessLevels.admin
+        },{
+            'title': 'Math',
+            'sref': 'admin.math',
+            'access': Auth.accessLevels.admin
+        },{
+            'title': 'Chem',
+            'sref': 'admin.chem',
             'access': Auth.accessLevels.admin
         }];
         

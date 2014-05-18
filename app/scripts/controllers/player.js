@@ -155,7 +155,7 @@ angular.module('ionApp')
     });
 
 angular.module('ionApp')
-    .controller('MobileCtrl', function ($scope, $http, $cookieStore, Db, Template, socket ) {
+    .controller('MobileCtrl', function ($scope, $http, $cookieStore, Template, socket ) {
         $scope.data.selected = $scope.data.selected || {};
         $scope.app.player = $scope.app.player || {
             activeSlideNr: 0, 
@@ -224,7 +224,7 @@ angular.module('ionApp')
 
 
 angular.module('ionApp')
-    .controller('StatsCtrl', function ($scope, $cookieStore, Db, Template, socket ) {
+    .controller('StatsCtrl', function ($scope, socket ) {
         $scope.testData = [[[]]];
         socket.emit('event:answers',{})
         var ticks = []
@@ -311,5 +311,12 @@ angular.module('ionApp')
             console.log('newTestData[0].length', newTestData[0].length)
             console.log('testData', JSON.stringify($scope.testData))
         }
+
+    });
+
+
+angular.module('ionApp')
+    .controller('StatsCtrl', function ($scope, socket ) {
+
 
     });

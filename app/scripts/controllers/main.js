@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('ionApp')
-    .controller('MainCtrl', function ($rootScope, $scope, $http, $location, $state, $cookieStore, socket) {
+    .controller('MainCtrl', function ($rootScope, $scope, $http, $location, $state, $stateParams, $cookieStore, socket) {
+        $rootScope.stateParams = $stateParams;
         $scope.info='MainCtrl';
         $rootScope.data = {
             selected: {}

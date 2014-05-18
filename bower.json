@@ -14,7 +14,8 @@
     "angular-ui-router": "0.2.*",
     "angular-ui-chart": "latest",
     "angular-ui-sortable": "latest",
-    "ng-ckeditor": "*"
+    "ng-ckeditor": "*",
+    "lodash": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.2.11",

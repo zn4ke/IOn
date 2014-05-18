@@ -5,7 +5,7 @@ CKEDITOR.plugins.add( 'ngMath', {
         editor.addCommand( 'ngMathDialog',new CKEDITOR.dialogCommand( 'ngMathDialog' ) );
 
         editor.ui.addButton( 'NgMath', {
-            label: 'Insert Abbreviation',
+            label: 'Formel einfügen',
             command: 'ngMathDialog',
             icon: iconPath
         });
@@ -109,7 +109,8 @@ CKEDITOR.dialog.add( 'ngMathDialog', function( editor ) {
                         console.log('creating new math element')
                         var element = editor.document.createElement( 'span' );
                         element.addClass('math');
-                        element.append( editor.document.createElement( 'mj-math' ) );
+                        var mjMath = editor.document.createElement( 'mj-math' )
+                        element.append( mjMath );
                         this.insertMode = true;
                     }
                     else

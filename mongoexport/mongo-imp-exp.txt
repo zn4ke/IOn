@@ -7,7 +7,8 @@ mongoimport -db fullstack-dev -c users --jsonArray -o users.db
 
 // binary version, recommended method
 
-mongodump --collection XYZ --db DBNAME (--repair)
+mongodump --db fullstack-dev
+
 
 mongodump --dbpath /srv/mongodb
 

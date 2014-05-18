@@ -1,0 +1,23 @@
+div( ng-controller="MathCtrl")
+    div Math.js Test
+    input( type="text", ng-model="mathInput" )
+    .btn.btn-default(ng-click="parseMath()" ) parse
+    div input:
+        span( ng-bind="mathOutput")
+    div eval:
+        span( ng-bind="mathOutput")
+    div
+        h5 vars
+        div(ng-repeat="variable in vars")
+            span {{variable}}
+            input( contenteditable="true", ng-model='value', ng-change='updateVars(this)' )
+
+        h4 result
+        div {{result}}
+        h4 graphData
+        div(ng-repeat="point in xyData")
+            div x: {{point[0]}},     y: {{point[1]}}
+        .btn.btn-default(ng-click="updateGraph()" ) update
+div( ng-repeat="point in xyData")
+    div
+        <div style="position:fixed; top: {{point[0]}}px; left: {{point[1]}}px;">OO</div>

@@ -1,8 +1,8 @@
 div(ng-controller='AdminCtrl')
-    h4 deck list
-    a.btn.btn-primary( href='/admin/edit/deck') new
+
     div(ng-repeat='deck in data.decks', ng-click='select(this, "deck")')
         .light-border
             strong {{deck.name}}
             p
                 em {{deck.desc}}
+    a.btn.btn-primary( href='/admin/edit/deck') neues Deck

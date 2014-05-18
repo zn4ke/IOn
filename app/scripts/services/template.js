@@ -4,7 +4,7 @@ angular.module('ionApp')
     .service('Template', function($http) {
         var templates = {
             mobile: { 'slide-simple':'', 'slide-mc':'', 'slide-yun':'' },
-            pres: { 'slide-simple':'', 'slide-mc':'', 'slide-yun':'' },
+            pres: { 'slide-simple':'', 'slide-mc':'', 'slide-yun':'',  },
             stats: { 'bar-chart':'' }
         };
 

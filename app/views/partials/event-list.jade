@@ -6,9 +6,10 @@ div( ng-controller="ViewerCtrl")
             .row
                 div( ng-repeat="event in data.events.pub", ng-click="joinEvent(this)")
                     .thumbnail
-                        div name {{event.name}}
-                        div date {{event.date}}
-                        div pub {{event.pub}}
+                        div {{event.name}}
+                        p {{event.date}}
+                            br
+                            span pub {{event.pub}}
         h4 öffentliche
         div.col-xs-12
             .row

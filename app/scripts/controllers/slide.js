@@ -7,13 +7,20 @@ angular.module('ionApp')
         $scope.app.player = $scope.app.player || {};
         $scope.$watch('data.selected.slideNr', function(newValue, oldValue) {
             
-            if (!$scope.data.selected.deck || !$scope.data.selected.deck.slides) return;
+            if (!$scope.data.selected.deck 
+                || !$scope.data.selected.deck.slides
+                || !$scope.data.selected.deck.slides[0] ) return;
             
             var deckSize = $scope.data.selected.deck.slides.length;
+            var slideNr = $scope.data.selected.slideNr;
 
-            if ($scope.data.selected.slideNr < 0) $scope.data.selected.slideNr = 0;
-            if ($scope.data.selected.slideNr > deckSize - 1) $scope.data.selected.slideNr = deckSize - 1;
-            $scope.data.selected.slide = $scope.data.selected.deck.slides[$scope.data.selected.slideNr];
+            if (slideNr < 0) slideNr = 0;
+            if (slideNr > deckSize - 1) slideNr = deckSize - 1;
+            $scope.data.selected.slideNr = slideNr;
+            console.log('slideNr', slideNr)
+
+            $scope.data.selected.slide = $scope.data.selected.deck.slides[slideNr];
+            console.log('$scope.data.selected.slide', $scope.data.selected.slide)
             
             $scope.template = Template.get.pres[$scope.data.selected.slide.type];
             $scope.templateMobile = Template.get.mobile[$scope.data.selected.slide.type];
@@ -28,6 +35,21 @@ angular.module('ionApp')
         $scope.editSlide = function(scope){
             $scope.app.newSlide = false;
             $location.path( 'admin/edit/' + $scope.data.selected.slide.type );
+        };
+        $scope.deleteSlide = function(){
+            var slideNr = $scope.data.selected.slideNr
+            console.log('deleting slide ' + slideNr + " of "+ $scope.data.selected.deck.slides.length)
+            
+            var confirm = window.confirm( 'Die Folie wird gelöscht' );
+            if (!confirm) { return; }
+            $scope.data.selected.deck.slides.splice(slideNr, 1)
+            $scope.data.selected.deck.$update( function(updatedDeck,arg2){
+                console.log('updated deck contains ', $scope.data.selected.deck.slides.length)
+                $scope.data.selected.slideNr = slideNr - 1;
+            })
+
+            
+
         };
     });
 
@@ -138,3 +160,120 @@ angular.module('ionApp')
         }
     }
 });
+
+angular.module('ionApp')
+.controller('MathCtrl', function ($scope) {
+    var math = mathjs();
+    var fn;
+    $scope.mathScope = {};
+    $scope.xyData = [];
+    for (var i = -10; i<=10; i++){
+        $scope.xyData.push([i/10.0,i/10.0]);
+    }
+
+    console.log('init MathCtrl')
+
+    $scope.mathInput = "a*x^2+b*x+c";
+
+    $scope.parseMath = function(){
+        var tree = math.parse($scope.mathInput);
+        fn = tree.compile(math);
+
+        $scope.vars = parseVars(tree.expr)
+
+        // _.each($scope.vars, function(variable){
+        //     $scope.mathScope[variable.name] = variable.value
+        // });
+
+    }
+
+    function parseVars(tree){
+        console.log(MathJax)
+        var vars = [];
+        parseNode(tree);
+        function parseNode(node){
+
+            _.each(node, function(obj, key){
+
+                if ( key === 'name' ) vars.push(obj);
+
+                if ( _.isArray(obj) ) {
+                    _.each( obj, function(child, childKey){
+                        parseNode(child);
+                    });
+                }
+            })
+        }
+        console.log(vars)
+        return _.uniq(vars);
+    }
+    $scope.updateVars = function(scope){
+        $scope.mathScope[scope.variable] = parseFloat(scope.value);
+        console.log('updated vars', $scope.mathScope)
+        $scope.result = fn.eval($scope.mathScope)
+
+    }
+    $scope.updateGraph = function(scope){
+        _.each( $scope.xyData, function(point){
+            $scope.mathScope.x = point[0]
+            point[1] = fn.eval($scope.mathScope)
+
+        });
+        
+    }
+
+});
+
+angular.module('ionApp')
+.controller('ChemCtrl', function ($scope, $http, $timeout) {
+    console.log('ChemCtrl init');
+    $scope.molecule = {}
+    
+    //var sketcherSrc = $('#sketcher-src').contents().find('pre');
+    var sketcherHtml = $('<html>')
+    var sketcherHead = $('<head>')
+    var sketcherBody = $('<body>')
+
+    sketcherHead.append('<meta http-equiv="X-UA-Compatible" content="chrome=1">')
+    sketcherHead.append('<script src="scripts/vendor/chemdoodle/ChemDoodleWeb.js"></script>')
+    sketcherHead.append('<link rel="stylesheet" href="scripts/vendor/chemdoodle/uis/jquery-ui-10.0.3.custom.css">')
+    sketcherHead.append('<script src="scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis.js"></script>')
+
+    var sketcherCanvas = $('<canvas id="mychemsketcher"></canvas>')
+    sketcherBody.append('<div>inside iframe</div>')
+    sketcherBody.append(sketcherCanvas)
+
+    sketcherHtml.append(sketcherHead).append(sketcherBody)
+    sketcherBody.append('<script src="scripts/chemframe.js"></script>')
+         
+
+
+    var ifrm = document.getElementById('sketcher-frame');
+    ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+    
+    ifrm.document.open();
+    ifrm.document.write(sketcherHtml.html());
+    ifrm.document.close();
+
+
+
+
+    $scope.updateVars = function(scope){
+
+
+    }
+    $scope.updateGraph = function(scope){
+
+        
+    }
+
+
+
+
+
+
+
+
+
+});
+
