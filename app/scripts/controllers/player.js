@@ -225,6 +225,8 @@ angular.module('ionApp')
 
 angular.module('ionApp')
     .controller('StatsCtrl', function ($scope, socket ) {
+        console.log('StatsCtrl init')
+        $scope.info = 'StatsCtrl'
         $scope.testData = [[[]]];
         socket.emit('event:answers',{})
         var ticks = []
@@ -270,6 +272,7 @@ angular.module('ionApp')
             
         });
         $scope.clearChart = function(){
+
             socket.emit('event:results:clear', {
                 id: $scope.app.player.event._id,
                 slideNr: $scope.app.player.activeSlideNr
@@ -280,7 +283,7 @@ angular.module('ionApp')
 
         }
         $scope.updateChart = function(){
-            console.log('updating chart')
+
             var newTestData = [[]];
             var answers = $scope.data.answers[$scope.app.player.activeSlideNr]
 
@@ -298,25 +301,17 @@ angular.module('ionApp')
                 });
             }
             angular.forEach($scope.testOptions.axes.xaxis.ticks, function(key){
-                console.log('newTestData[0].length', newTestData[0].length)
+                //console.log('newTestData[0].length', newTestData[0].length)
                 //newTestData[0].push([index, answer])
                 
                 newTestData[0].push(data[key])
             });
 
-
-
             if (newTestData[0].length == 0){ newTestData = [[[]]] }
             $scope.testData = newTestData;
-            console.log('newTestData[0].length', newTestData[0].length)
-            console.log('testData', JSON.stringify($scope.testData))
+            //console.log('newTestData[0].length', newTestData[0].length)
+            //console.log('testData', JSON.stringify($scope.testData))
         }
 
     });
 
-
-angular.module('ionApp')
-    .controller('StatsCtrl', function ($scope, socket ) {
-
-
-    });

@@ -2,16 +2,12 @@
 
 mongoexport -db fullstack-dev -c users --jsonArray -o users.db
 
-mongoimport -db fullstack-dev -c users --jsonArray -o users.db
+mongoimport -db fullstack-dev -c users --jsonArray -file users.db
 
 
 // binary version, recommended method
 
 mongodump --db fullstack-dev
 
+mongorestore  --db fullstack-dev dump/fullstack-dev/
 
-mongodump --dbpath /srv/mongodb
-
-mongorestore --collection people --db accounts dump/accounts/
-
-mongorestore --host mongodb1.example.net --port 37017 --username user --password pass /opt/backup/mongodump-2011-10-24

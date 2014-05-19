@@ -1,4 +1,5 @@
 div(ng-controller="StatsCtrl")
     .btn.btn-default( ng-click="data.answers.changed = true" ) update
-    .btn.btn-default( ng-click="clearChart()" ) reset
+    .btn.btn-default( ng-click="clearChart()" ) reset Poll
+    span &nbsp; nach dem zurücksetzen der Umfrage Schloss auf rot stellen und gelbe Taste drücken.
     div.container( ui-chart="testData", chart-options="testOptions")

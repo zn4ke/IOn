@@ -54,6 +54,10 @@ angular.module('ionApp')
     });
 
 
+
+
+
+
 angular.module('ionApp')
 .controller('SlideYunCtrl', function ($scope, Yun, $http) {
     // $http.jsonp('http://192.168.188.29/data/get?callback=jsonp_callback')
@@ -161,6 +165,10 @@ angular.module('ionApp')
     }
 });
 
+
+
+
+
 angular.module('ionApp')
 .controller('MathCtrl', function ($scope) {
     var math = mathjs();
@@ -223,6 +231,11 @@ angular.module('ionApp')
     }
 
 });
+
+
+
+
+// TODO clean that mess
 
 angular.module('ionApp')
 .controller('ChemCtrl', function ($scope, $http, $timeout) {
