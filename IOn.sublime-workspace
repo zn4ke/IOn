@@ -83,6 +83,49 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/index.jade",
+			"settings":
+			{
+				"buffer_size": 6426,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/admin/chem.jade",
+			"settings":
+			{
+				"buffer_size": 373,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "'use strict';\n\nangular.module('ionApp')\n    .controller('SlidePreviewCtrl', function ($scope, $location, Template) {\n        $scope.data.selected.slideNr = -1;\n        $scope.zoomFactor = 100;\n        $scope.app.player = $scope.app.player || {};\n        $scope.$watch('data.selected.slideNr', function(newValue, oldValue) {\n            \n            if (!$scope.data.selected.deck \n                || !$scope.data.selected.deck.slides\n                || !$scope.data.selected.deck.slides[0] ) return;\n            \n            var deckSize = $scope.data.selected.deck.slides.length;\n            var slideNr = $scope.data.selected.slideNr;\n\n            if (slideNr < 0) slideNr = 0;\n            if (slideNr > deckSize - 1) slideNr = deckSize - 1;\n            $scope.data.selected.slideNr = slideNr;\n            console.log('slideNr', slideNr)\n\n            $scope.data.selected.slide = $scope.data.selected.deck.slides[slideNr];\n            console.log('$scope.data.selected.slide', $scope.data.selected.slide)\n            \n            $scope.template = Template.get.pres[$scope.data.selected.slide.type];\n            $scope.templateMobile = Template.get.mobile[$scope.data.selected.slide.type];\n        });\n        $scope.$watch('zoomFactor', function(newValue, oldValue) {\n            $scope.app.player.zoomStyle = {\n                'zoom': newValue + '%',\n                '-moz-transform': 'scale(' + newValue/100 + ')'\n            };\n\n        });\n        $scope.editSlide = function(scope){\n            $scope.app.newSlide = false;\n            $location.path( 'admin/edit/' + $scope.data.selected.slide.type );\n        };\n        $scope.deleteSlide = function(){\n            var slideNr = $scope.data.selected.slideNr\n            console.log('deleting slide ' + slideNr + \" of \"+ $scope.data.selected.deck.slides.length)\n            \n            var confirm = window.confirm( 'Die Folie wird gelöscht' );\n            if (!confirm) { return; }\n            $scope.data.selected.deck.slides.splice(slideNr, 1)\n            $scope.data.selected.deck.$update( function(updatedDeck,arg2){\n                console.log('updated deck contains ', $scope.data.selected.deck.slides.length)\n                $scope.data.selected.slideNr = slideNr - 1;\n            })\n\n            \n\n        };\n    });\n\n\n\n\n\n\nangular.module('ionApp')\n.controller('SlideYunCtrl', function ($scope, Yun, $http) {\n    // $http.jsonp('http://192.168.188.29/data/get?callback=jsonp_callback')\n    //     .success( function(data){\n    //         console.log('yun data', data)\n    //     })\n    $scope.Yun = Yun;\n    $scope.records = [[[]]];\n    $scope.lightSeries = [];\n    $scope.thermoSeries = [];\n    $scope.thermoSeries2 = [];\n\n    $scope.address = Yun.address();\n\n    var startTime = 0;\n\n    $scope.yunData = \"no data recieved yet\";\n    $scope.interval = 3000;\n\n    $scope.testOptions = {\n        title: 'YUN Daten',\n\n        seriesDefaults:{\n            pointLabels: { show: true },\n        },\n        axes: {\n            xaxis: {           pad: 0      },\n            yaxis: {           min: 0,           max:1024         },\n            y2axis: {           min: 10,           max:60          }\n        },\n        series:[ \n            {\n                // Change our line width and use a diamond shaped marker.\n                lineWidth:1, \n                //markerOptions: { style:'dimaond' },\n                yaxis: 'yaxis'\n            }, \n            {\n                // Don't show a line, just show markers.\n                // Make the markers 7 pixels with an 'x' style\n                //showLine:2, \n                markerOptions: { size: 7, style:\".\" },\n                yaxis: 'y2axis'\n            }, \n            {\n                // Don't show a line, just show markers.\n                // Make the markers 7 pixels with an 'x' style\n                //showLine:2, \n                markerOptions: { size: 7, style:\".\" },\n                yaxis: 'y2axis'\n            }\n        ]\n    };\n\n\n    $scope.getYunData = function( key ){\n        Yun.get( key, function(data){\n            $scope.yunData = data;\n            $scope.$apply();\n        })\n    }\n    $scope.setYunData = function( key, value ){\n        Yun.set( key, value, function(data){\n            $scope.yunData = data;\n            $scope.$apply();\n        })\n    }\n    var timer;\n    $scope.toggleRecord = function( key, value ){\n        Yun.set( 'rec', $scope.record ? 1 : 0, function(data){\n            $scope.yunData = data;\n            $scope.$apply();\n        });\n        if (timer) {\n            window.clearInterval(timer);\n            timer = null;\n        }\n        else {\n            $scope.lightSeries = [];\n            $scope.thermoSeries = [];\n            $scope.thermoSeries2 = [];\n            timer = window.setInterval( function(){\n\n                Yun.get( function(data){\n                    $scope.yunData = data;\n                    \n\n                    console.log('resetting timer', !$scope.thermoSeries.length)\n                    if (!$scope.thermoSeries.length) startTime = data.value.time / 1000.0;\n\n                    console.log('yunData', $scope.yunData)\n\n                    var time = data.value.time / 1000.0 - startTime;\n                    console.log('thermo',data.value.thermo)\n                    console.log('thermo2',data.value.thermo2)\n                    $scope.lightSeries.push( [ time, data.value.light ] );\n                    $scope.thermoSeries.push( [ time, data.value.thermo ] );\n                    $scope.thermoSeries2.push( [ time, data.value.thermo2 ] );\n                    console.log('$scope.records',$scope.records)\n                    $scope.records = [ $scope.lightSeries, $scope.thermoSeries, $scope.thermoSeries2 ];\n                    $scope.$apply();\n                })\n            } , $scope.interval)\n        }\n    }\n});\n\n\n\n\n\nangular.module('ionApp')\n.controller('MathCtrl', function ($scope) {\n    console.log('init MathCtrl')\n    var math = mathjs();\n\n    $scope.mathInput = \"a*x^2+b*x+c\";\n\n    $scope.myMath = parseMath( $scope.mathInput )\n    \n    function parseMath(formula){\n        var tree = math.parse(formula);\n        var fn = tree.compile(math);\n        var scope = parseVars(tree.expr)\n        return {\n            tree: tree,\n            fn: fn,\n            scope: scope,\n        };\n    }\n\n\n    function parseVars(tree){\n        var mathScope = {};\n        parseNode(tree);\n        // recursive function to walk node tree\n        function parseNode(node){\n            _.each(node, function(obj, key){\n                if ( key === 'name' ) {\n                    mathScope[obj] = {\n                        name: obj,\n                        value: 0,\n                        label: ''\n                    }\n                }\n                if ( _.isArray(obj) ) {\n                    _.each( obj, function(child, childKey){\n                        parseNode(child);\n                    });\n                }\n            })\n        }\n        return mathScope\n    }\n\n    $scope.updateMathScope = function(scope){\n        //$scope.myMath.scope[scope.key] = scope.obj.value;\n        console.log( $scope.myMath.scope.a )\n    }\n    $scope.updateGraph = function(scope){\n        _.each( $scope.xyData, function(point){\n            $scope.mathScope.x = point[0]\n            point[1] = fn.eval($scope.mathScope)\n        });\n    }\n\n});\n\n\n\n\n// TODO clean that mess\n\nangular.module('ionApp')\n.controller('ChemCtrl', function ($scope, $http, $timeout) {\n    console.log('ChemCtrl init');\n    $scope.molecule = {}\n    \n\n\n\n\n\n    var sketcher = new ChemDoodle.SketcherCanvas('sketcher-canvas', 500, 300, {\n        useServices:false,\n        oneMolecule:true\n    });\n    sketcher.repaint()\n\n\n\n    var viewer = new ChemDoodle.ViewerCanvas('viewer-canvas', 200, 200);\n\n\n    $scope.update = function(){\n        console.log('commiting mol')\n        var mol = sketcher.getMolecule();\n        $scope.molFile = ChemDoodle.writeMOL(mol);\n        viewer.loadMolecule(mol);\n    }\n\n\n\n\n\n\n\n\n\n\n\n\n    // //var sketcherSrc = $('#sketcher-src').contents().find('pre');\n    // var sketcherHtml = $('<html>')\n    // var sketcherHead = $('<head>')\n    // var sketcherBody = $('<body>')\n\n    // sketcherHead.append('<meta http-equiv=\"X-UA-Compatible\" content=\"chrome=1\">')\n    // sketcherHead.append('<script src=\"scripts/vendor/chemdoodle/ChemDoodleWeb.js\"></script>')\n    // sketcherHead.append('<link rel=\"stylesheet\" href=\"scripts/vendor/chemdoodle/uis/jquery-ui-10.0.3.custom.css\">')\n\n    \n    // sketcherHead.append('<script src=\"scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis-custom.js\"></script>')\n\n    // var sketcherCanvas = $('<canvas id=\"mychemsketcher\"></canvas>')\n    // sketcherBody.append('<div>inside iframe</div>')\n    // var sketcherStyle = '<style>'\n    //     + 'button {  display: inline-block; width: 28px; height: 28px; border: 1px solid red; margin: 2px; padding: 2px; background-color: #ddd}'\n    //     + 'label { display: inline-block; width: 22px; height: 22px; border: 1px solid black; margin: 2px; padding: 2px; background-color: #ddd}'\n    //     + 'input[type=\"radio\"] { display: none }'\n    //     //+ '.ui-button { border: 1px solid black; height: 28px; padding: 1px; margin: 1px}'\n    //     + 'canvas { border: 1px solid black; }'\n    //     + '.ui-state-active { background-color: blue; }'\n    //     + '.ui-corner-left { margin-right: 0px; }'\n    //     + 'button.ui-corner-right { margin-left: 0px; }'\n    //     //+ '.ui-corner-right { width: 8px; }'\n    //     + '</style>'\n    // sketcherBody.append(sketcherStyle)\n    // sketcherBody.append(sketcherCanvas)\n\n    // sketcherHtml.append(sketcherHead).append(sketcherBody)\n    // sketcherBody.append('<script src=\"scripts/chemframe.js\"></script>')\n         \n\n\n    // var ifrm = document.getElementById('sketcher-frame');\n    // ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;\n    \n    // ifrm.document.open();\n    // ifrm.document.write(sketcherHtml.html());\n    // ifrm.document.close();\n\n\n});\n\n",
+			"file": "app/scripts/controllers/slide.js",
+			"file_size": 10162,
+			"file_write_time": 1400533646000000,
+			"settings":
+			{
+				"buffer_size": 10050,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/main.css",
+			"settings":
+			{
+				"buffer_size": 2648,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/admin/math.jade",
+			"settings":
+			{
+				"buffer_size": 799,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -132,6 +175,100 @@
 	},
 	"file_history":
 	[
+		"/home/gargamel/Public/node/IOn/app/scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis-custom.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/stats/bar-chart.jade",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/player.js",
+		"/home/gargamel/Public/node/IOn/lib/controllers/socket.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/home.jade",
+		"/home/gargamel/Public/node/IOn/lib/controllers/api.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/app.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/template.js",
+		"/home/gargamel/Public/node/IOn/lib/config/express.js",
+		"/home/gargamel/Public/node/IOn/app/views/index.jade",
+		"/home/gargamel/Public/node/IOn/app/scripts/chemframe.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/slide.js",
+		"/home/gargamel/Public/node/IOn/app/views/chemsketcher.html",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/math.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/chem.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/stats/chemsketcher.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/forms/chemsketcher.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/forms/chemsketcher",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/navbar.js",
+		"/home/gargamel/Public/node/IOn/bower.json",
+		"/home/gargamel/Public/node/IOn/lib/routes.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/dynamic.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/vendor/ckeditor/plugins/ngMath/plugin.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/form-browser.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/event-list.jade",
+		"/home/gargamel/Public/node/IOn/app/scripts/vendor/ckeditor/config.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/admin.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/slide-preview.jade",
+		"/home/gargamel/Public/node/IOn/app/scripts/vendor/ckeditor/plugins/ckdragresize/plugin.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/vendor/ckeditor/plugins/wysiwygarea/samples/fullpage.html",
+		"/home/gargamel/Public/node/IOn/lib/models/file.js",
+		"/home/gargamel/Public/node/IOn/lib/controllers/files.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/vendor/ckeditor/plugins/imagebrowser/browser/browser.html",
+		"/home/gargamel/Public/node/IOn/app/scripts/vendor/ckeditor/plugins/imagebrowser/browser/browser.jade",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/main.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/group-details.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/group-browser.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/event-details.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/event-browser.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/decks-menu.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/deck-list.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/deck-details.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/deck-browser.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/chooser.jade",
+		"/home/gargamel/Public/node/IOn/mongoexport/mongo-imp-exp.txt",
+		"/home/gargamel/Public/node/IOn/app/views/partials/forms/slide-mc.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/forms/slide-simple.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/slides/slide-mc-pres.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/slides/slide-mc-mobile.jade",
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/ckeditor.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/file-browser.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/file-details.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/slides/slide-simple-mobile.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/video.jade",
+		"/home/gargamel/Public/node/IOn/app/styles/main.css",
+		"/home/gargamel/Public/node/IOn/lib/models/slide.js",
+		"/home/gargamel/Public/node/IOn/lib/middleware.js",
+		"/home/gargamel/Public/node/IOn/lib/controllers/index.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/navbar.jade",
+		"/home/gargamel/Public/node/IOn/lib/config/env/all.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/access.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/event.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/login.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/settings.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/signup.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/chem.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/mongooseError.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/slide.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/auth.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/chem.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/db.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/form.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/menu.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/session.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/socket.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/user.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/services/yun.js",
+		"/home/gargamel/Public/node/IOn/test/spec/controllers/admin.js",
+		"/home/gargamel/Public/node/IOn/test/spec/controllers/event.js",
+		"/home/gargamel/Public/node/IOn/test/spec/controllers/form.js",
+		"/home/gargamel/Public/node/IOn/test/spec/controllers/main.js",
+		"/home/gargamel/Public/node/IOn/test/spec/controllers/player.js",
+		"/home/gargamel/Public/node/IOn/test/spec/controllers/slide.js",
+		"/home/gargamel/Public/node/IOn/test/spec/directives/access.js",
+		"/home/gargamel/Public/node/IOn/test/spec/directives/chem.js",
+		"/home/gargamel/Public/node/IOn/test/spec/directives/ckeditor.js",
+		"/home/gargamel/Public/node/IOn/test/spec/directives/dynamic.js",
+		"/home/gargamel/Public/node/IOn/test/spec/directives/slide.js",
+		"/home/gargamel/Public/node/IOn/test/spec/services/chem.js",
+		"/home/gargamel/Public/node/IOn/test/spec/services/db.js",
+		"/home/gargamel/Public/node/IOn/test/spec/services/form.js",
+		"/home/gargamel/Public/node/IOn/test/spec/services/menu.js",
+		"/home/gargamel/Public/node/IOn/test/spec/services/socket.js",
+		"/home/gargamel/Public/node/IOn/test/spec/services/yun.js",
 		"/home/gargamel/Public/node/studi/lib/routes.js",
 		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-list.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-details.jade",
@@ -165,101 +302,7 @@
 		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-mc-pres.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/player.jade",
 		"/home/gargamel/Public/node/studi/app/views/partials/player-controls.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-details.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-browser.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/form-browser.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/index.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/event-list.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/user-details.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/user-browser.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/stats/bar-chart.jade",
-		"/home/gargamel/Public/node/studi/lib/controllers/socket.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/navbar.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/services/template.js",
-		"/home/gargamel/Public/node/studi/lib/config/express.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/slides/slide-yun-mobile.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-yun.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/index.jade",
-		"/home/gargamel/Public/node/studi/app/styles/main.css",
-		"/home/gargamel/Public/node/studi/lib/models/answer.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/presentation.jade",
-		"/home/gargamel/Public/node/studi/lib/controllers/session.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/mobile.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/mobile-controls.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/presentation-controls.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/services/db.js",
-		"/home/gargamel/Public/node/studi/app/scripts/services/user.js",
-		"/home/gargamel/Public/node/studi/lib/config/env/all.js",
-		"/home/gargamel/Public/node/studi/lib/models/slide.js",
-		"/home/gargamel/Public/node/studi/lib/models/file.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/file.jade",
-		"/home/gargamel/Public/node/studi/lib/controllers/files.js",
-		"/home/gargamel/Public/node/studi/app/scripts/modules/angular-file-upload/angular-file-upload.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/file-browser.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/controllers/event.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/file-details.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/file.browser.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-simple.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/controllers/login.js",
-		"/home/gargamel/Public/node/studi/app/scripts/services/auth.js",
-		"/home/gargamel/Public/node/studi/lib/models/files.js",
-		"/home/gargamel/Public/node/studi/lib/middleware.js",
-		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/routingConfig.js",
-		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/directives.js",
-		"/home/gargamel/Public/node/studi/lib/controllers/users.js",
-		"/home/gargamel/Public/node/studi/lib/models/user.js",
-		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/services.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/signup.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/controllers/signup.js",
-		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/controllers.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/login.jade",
-		"/home/gargamel/Public/node/studi/lib/config/passport.js",
-		"/home/gargamel/Public/node/studi/lib/controllers/auth.js",
-		"/home/gargamel/Public/node/studi/app/scripts/services/session.js",
-		"/home/gargamel/Public/node/studi/server.js",
-		"/home/gargamel/Public/node/studi/app/scripts/directives/access.js",
-		"/home/gargamel/Public/node/studi/lib/config/dummydata.js",
-		"/home/gargamel/Public/node/studi/app/scripts/modules/client-side-auth/module.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/decks-menu.jade",
-		"/home/gargamel/Public/node/studi/lib/models/event.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/event.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/chooser.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/directives/slide.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-mc.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/sidebar.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/controls.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/deck-browser.jade",
-		"/home/gargamel/Public/node/studi/lib/models/deck.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/main.jade",
-		"/home/gargamel/Public/node/studi/test/spec/controllers/slide.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/player.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/slide-player.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/services/form.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/viewer.jade",
-		"/home/gargamel/Public/node/studi/test/spec/controllers/event.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/event.jade",
-		"/home/gargamel/Public/node/studi/app/bower_components/bootstrap/DOCS-LICENSE",
-		"/home/gargamel/Public/node/studi/studi.sublime-workspace",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-details.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/lecture-browser.jade",
-		"/home/gargamel/Public/node/studi/app/scripts/directives/dynamic.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/simplebox/plugin.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/simplebox/dialogs/simplebox.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/mathjax/plugin.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/mathjax/dialogs/mathjax.js",
-		"/home/gargamel/Public/node/studi/app/scripts/directives/ckeditor.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/ngMath/dialogs/ng-math.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/ckeditor.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/templates/templates/default.js",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/deck.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/lecture.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/group.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/admin/form-details.jade",
-		"/home/gargamel/Public/node/studi/app/views/partials/forms/slide-simple",
-		"/home/gargamel/Public/node/studi/app/scripts/services/socket.js",
-		"/home/gargamel/Public/node/studi/app/scripts/controllers/form.js",
-		"/home/gargamel/Public/node/studi/lib/models/thing.js",
-		"/home/gargamel/Public/node/studi/lib/controllers/index.js"
+		"/home/gargamel/Public/node/studi/app/views/partials/admin/group-details.jade"
 	],
 	"find":
 	{
@@ -270,6 +313,8 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"/home/gargamel/Public/node/IOn, -/home/gargamel/Public/node/IOn/node_modules/*, -/home/gargamel/Public/node/IOn/app/bower_components/*",
+			"/home/gargamel/Public/node/IOn, -/home/gargamel/Public/node/IOn/node_modules/*, -/home/gargamel/Public/node/IOn/app/bower_components/*, -/home/gargamel/Public/node/IOn/app/scripts/vendor/*",
 			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/app/bower_components/*, -/home/gargamel/Public/node/studi/app/scripts/vendor/*",
 			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules/*, -/home/gargamel/Public/node/studi/app/bower_components/*",
 			"/home/gargamel/Public/node/studi, -/home/gargamel/Public/node/studi/node_modules, -/home/gargamel/Public/node/studi/app/bower_components",
@@ -293,6 +338,30 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"unbind",
+			"<button",
+			"zn4ke",
+			"ION",
+			"input",
+			"console",
+			"StatsCtrl",
+			"images",
+			"|||||||||||',",
+			"$watch",
+			"browser/browser.html",
+			"wysiwyg",
+			"WYSIWYG",
+			"emit",
+			"scope.answer",
+			"'event:answer'",
+			"addEvent",
+			"loaded",
+			"changed",
+			"console.",
+			"console.log(",
+			"studiApp",
+			"studi",
+			"studiApp",
 			"studi",
 			"my_styles",
 			"feedback",
@@ -396,31 +465,7 @@
 			"mathJaxUpdateDone",
 			"span",
 			"appendBogus",
-			"submitForm",
-			"isActive",
-			"awesomeThings",
-			"awesome",
-			"currentUser",
-			"user list",
-			"forms",
-			"Thing",
-			"SignupCtrl",
-			"console",
-			"html5",
-			"pcModel",
-			"pc-model",
-			"console",
-			"Group",
-			"group",
-			"Group",
-			"scope.particular",
-			"event",
-			"scope.particular",
-			"NavCtrl",
-			"scope.particle",
-			"Auth",
-			"particle-type",
-			"particle-templ"
+			"submitForm"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -428,6 +473,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"ionApp",
 			"context",
 			"data.selected.slide",
 			"$scope.data.selected.slide",
@@ -473,8 +519,140 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/index.jade",
+					"settings":
+					{
+						"buffer_size": 6426,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4117,
+								4117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 765.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/partials/admin/chem.jade",
+					"settings":
+					{
+						"buffer_size": 373,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								372,
+								372
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/controllers/slide.js",
+					"settings":
+					{
+						"buffer_size": 10050,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5818,
+								5818
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3960.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/styles/main.css",
+					"settings":
+					{
+						"buffer_size": 2648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2403,
+								2403
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2520.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/partials/admin/math.jade",
+					"settings":
+					{
+						"buffer_size": 799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								598,
+								598
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -534,6 +712,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 287.0,
+	"side_bar_width": 380.0,
 	"status_bar_visible": true
 }

@@ -188,3 +188,9 @@ div.jqplot-axis.jqplot-yaxis {
     margin-right: auto;
 }
 
+
+/* ChemDooDleWeb Sketcher fix*/
+.btn-default.ui-state-active {
+    background-color: #5cb85c;
+    border-color: #4cae4c
+}

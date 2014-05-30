@@ -7,7 +7,7 @@ mongoimport -db fullstack-dev -c users --jsonArray -file users.db
 
 // binary version, recommended method
 
-mongodump --db fullstack-dev
+mongodump --db IOn-dev
 
-mongorestore  --db fullstack-dev dump/fullstack-dev/
+mongorestore  --db IOn-dev dump/IOn-dev/
 

@@ -171,40 +171,38 @@ angular.module('ionApp')
 
 angular.module('ionApp')
 .controller('MathCtrl', function ($scope) {
-    var math = mathjs();
-    var fn;
-    $scope.mathScope = {};
-    $scope.xyData = [];
-    for (var i = -10; i<=10; i++){
-        $scope.xyData.push([i/10.0,i/10.0]);
-    }
-
     console.log('init MathCtrl')
+    var math = mathjs();
 
     $scope.mathInput = "a*x^2+b*x+c";
 
-    $scope.parseMath = function(){
-        var tree = math.parse($scope.mathInput);
-        fn = tree.compile(math);
-
-        $scope.vars = parseVars(tree.expr)
-
-        // _.each($scope.vars, function(variable){
-        //     $scope.mathScope[variable.name] = variable.value
-        // });
-
+    $scope.myMath = parseMath( $scope.mathInput )
+    
+    function parseMath(formula){
+        var tree = math.parse(formula);
+        var fn = tree.compile(math);
+        var scope = parseVars(tree.expr)
+        return {
+            tree: tree,
+            fn: fn,
+            scope: scope,
+        };
     }
 
+
     function parseVars(tree){
-        console.log(MathJax)
-        var vars = [];
+        var mathScope = {};
         parseNode(tree);
+        // recursive function to walk node tree
         function parseNode(node){
-
             _.each(node, function(obj, key){
-
-                if ( key === 'name' ) vars.push(obj);
-
+                if ( key === 'name' ) {
+                    mathScope[obj] = {
+                        name: obj,
+                        value: 0,
+                        label: ''
+                    }
+                }
                 if ( _.isArray(obj) ) {
                     _.each( obj, function(child, childKey){
                         parseNode(child);
@@ -212,22 +210,18 @@ angular.module('ionApp')
                 }
             })
         }
-        console.log(vars)
-        return _.uniq(vars);
+        return mathScope
     }
-    $scope.updateVars = function(scope){
-        $scope.mathScope[scope.variable] = parseFloat(scope.value);
-        console.log('updated vars', $scope.mathScope)
-        $scope.result = fn.eval($scope.mathScope)
 
+    $scope.updateMathScope = function(scope){
+        //$scope.myMath.scope[scope.key] = scope.obj.value;
+        console.log( $scope.myMath.scope.a )
     }
     $scope.updateGraph = function(scope){
         _.each( $scope.xyData, function(point){
             $scope.mathScope.x = point[0]
             point[1] = fn.eval($scope.mathScope)
-
         });
-        
     }
 
 });
@@ -242,64 +236,79 @@ angular.module('ionApp')
     console.log('ChemCtrl init');
     $scope.molecule = {}
     
-    //var sketcherSrc = $('#sketcher-src').contents().find('pre');
-    var sketcherHtml = $('<html>')
-    var sketcherHead = $('<head>')
-    var sketcherBody = $('<body>')
 
-    sketcherHead.append('<meta http-equiv="X-UA-Compatible" content="chrome=1">')
-    sketcherHead.append('<script src="scripts/vendor/chemdoodle/ChemDoodleWeb.js"></script>')
-    sketcherHead.append('<link rel="stylesheet" href="scripts/vendor/chemdoodle/uis/jquery-ui-10.0.3.custom.css">')
+
+
+
+
+    var sketcher = new ChemDoodle.SketcherCanvas('sketcher-canvas', 500, 300, {
+        useServices:false,
+        oneMolecule:true
+    });
+    sketcher.repaint()
+
+
+
+    var viewer = new ChemDoodle.ViewerCanvas('viewer-canvas', 200, 200);
+
+
+    $scope.update = function(){
+        console.log('commiting mol')
+        var mol = sketcher.getMolecule();
+        $scope.molFile = ChemDoodle.writeMOL(mol);
+        viewer.loadMolecule(mol);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // //var sketcherSrc = $('#sketcher-src').contents().find('pre');
+    // var sketcherHtml = $('<html>')
+    // var sketcherHead = $('<head>')
+    // var sketcherBody = $('<body>')
+
+    // sketcherHead.append('<meta http-equiv="X-UA-Compatible" content="chrome=1">')
+    // sketcherHead.append('<script src="scripts/vendor/chemdoodle/ChemDoodleWeb.js"></script>')
+    // sketcherHead.append('<link rel="stylesheet" href="scripts/vendor/chemdoodle/uis/jquery-ui-10.0.3.custom.css">')
 
     
-    sketcherHead.append('<script src="scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis.js"></script>')
+    // sketcherHead.append('<script src="scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis-custom.js"></script>')
 
-    var sketcherCanvas = $('<canvas id="mychemsketcher"></canvas>')
-    sketcherBody.append('<div>inside iframe</div>')
-    var sketcherStyle = '<style>'
-        + 'button {  display: inline-block; width: 28px; height: 28px; border: 1px solid red; margin: 2px; padding: 2px; background-color: #ddd}'
-        + 'label { display: inline-block; width: 22px; height: 22px; border: 1px solid black; margin: 2px; padding: 2px; background-color: #ddd}'
-        + 'input[type="radio"] { display: none }'
-        //+ '.ui-button { border: 1px solid black; height: 28px; padding: 1px; margin: 1px}'
-        + 'canvas { border: 1px solid black; }'
-        + '.ui-state-active { background-color: blue; }'
-        + '.ui-corner-left { margin-right: 0px; }'
-        + 'button.ui-corner-right { margin-left: 0px; }'
-        //+ '.ui-corner-right { width: 8px; }'
-        + '</style>'
-    sketcherBody.append(sketcherStyle)
-    sketcherBody.append(sketcherCanvas)
+    // var sketcherCanvas = $('<canvas id="mychemsketcher"></canvas>')
+    // sketcherBody.append('<div>inside iframe</div>')
+    // var sketcherStyle = '<style>'
+    //     + 'button {  display: inline-block; width: 28px; height: 28px; border: 1px solid red; margin: 2px; padding: 2px; background-color: #ddd}'
+    //     + 'label { display: inline-block; width: 22px; height: 22px; border: 1px solid black; margin: 2px; padding: 2px; background-color: #ddd}'
+    //     + 'input[type="radio"] { display: none }'
+    //     //+ '.ui-button { border: 1px solid black; height: 28px; padding: 1px; margin: 1px}'
+    //     + 'canvas { border: 1px solid black; }'
+    //     + '.ui-state-active { background-color: blue; }'
+    //     + '.ui-corner-left { margin-right: 0px; }'
+    //     + 'button.ui-corner-right { margin-left: 0px; }'
+    //     //+ '.ui-corner-right { width: 8px; }'
+    //     + '</style>'
+    // sketcherBody.append(sketcherStyle)
+    // sketcherBody.append(sketcherCanvas)
 
-    sketcherHtml.append(sketcherHead).append(sketcherBody)
-    sketcherBody.append('<script src="scripts/chemframe.js"></script>')
+    // sketcherHtml.append(sketcherHead).append(sketcherBody)
+    // sketcherBody.append('<script src="scripts/chemframe.js"></script>')
          
 
 
-    var ifrm = document.getElementById('sketcher-frame');
-    ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+    // var ifrm = document.getElementById('sketcher-frame');
+    // ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
     
-    ifrm.document.open();
-    ifrm.document.write(sketcherHtml.html());
-    ifrm.document.close();
-
-
-
-
-    $scope.updateVars = function(scope){
-
-
-    }
-    $scope.updateGraph = function(scope){
-
-        
-    }
-
-
-
-
-
-
-
+    // ifrm.document.open();
+    // ifrm.document.write(sketcherHtml.html());
+    // ifrm.document.close();
 
 
 });

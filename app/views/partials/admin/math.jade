@@ -8,16 +8,15 @@ div( ng-controller="MathCtrl")
         span( ng-bind="mathOutput")
     div
         h5 vars
-        div(ng-repeat="variable in vars")
-            span {{variable}}
-            input( contenteditable="true", ng-model='value', ng-change='updateVars(this)' )
+        div.container(ng-repeat="(key, obj) in myMath.scope")
+            span {{key}}
+            input( ng-model='obj.value', ng-change="updateMathScope(this)" )
+            p
+                input( type="range", min="-2", max="2", step="0.01", ng-model='obj.value', ng-change="updateMathScope(this)")
 
         h4 result
         div {{result}}
         h4 graphData
         div(ng-repeat="point in xyData")
             div x: {{point[0]}},     y: {{point[1]}}
-        .btn.btn-default(ng-click="updateGraph()" ) update
-div( ng-repeat="point in xyData")
-    div
-        <div style="position:fixed; top: {{point[0]}}px; left: {{point[1]}}px;">OO</div>
+        .btn.btn-default(ng-click="updateGraph(this)" ) update
