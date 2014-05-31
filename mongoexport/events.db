@@ -1,1 +1,0 @@
-[{ "date" : { "$date" : 1400247984673 }, "own" : { "$oid" : "536a8b788498812e59b42091" }, "group" : { "$oid" : "536b607556be3cb064490342" }, "deck" : { "$oid" : "536b60a556be3cb064490344" }, "name" : "Einleitung", "accessKey" : "1234", "_id" : { "$oid" : "537616b04fe103881d707a4a" }, "pub" : true, "open" : false, "__v" : 0 }]
