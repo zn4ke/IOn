@@ -17,10 +17,10 @@ angular.module('ionApp')
 
 
 MathJax.Hub.Config({
-    skipStartupTypeset: true,
+    skipStartupTypeset: false,
     messageStyle: "none",
     "HTML-CSS": {
-        showMathMenu: false
+        showMathMenu: true
     }
 });
 MathJax.Hub.Configured();

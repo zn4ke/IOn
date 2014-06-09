@@ -1,5 +1,15 @@
 'use strict';
 
+
+MathJax.Hub.Config({
+  asciimath2jax: {
+    delimiters: [['§','§'], ['§§','§§']]
+  }
+});
+
+
+
+
 angular.module('ionApp', [
     'ngCookies',
     'ngResource',

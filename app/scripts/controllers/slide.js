@@ -174,26 +174,60 @@ angular.module('ionApp')
     console.log('init MathCtrl')
     var math = mathjs();
 
-    $scope.xyData = [ [-1.5,0.0] , [-1.0,0.0] , [-0.5,0.0] , [0.0,0.0] , [0.5,0.0] , [1.0,0.0] , [1.5,0.0] ]
 
-    $scope.mathInput = "a*x^2+b*x+c";
 
-    $scope.myMath = parseMath( $scope.mathInput )
-    
-    function parseMath(formula){
+    $scope.chartData = [
+        {
+               "key": "Series 1",
+                "values": []
+        }
+    ];
+
+    for(var i = -2; i < 2 ; i += 0.01){
+        $scope.chartData[0].values.push([i,i])
+    }
+
+    $scope.toolTipContentFunction = function(){
+
+        return function(key, x, y, e, graph) {
+
+            return  '<p>{ ' +  y + ' , ' + x + ' }</p>'
+        }
+    }
+    $scope.xAxisFormatFun = function(){
+        return function(d){
+            return d3.format('.2g')(d);
+        }
+    }
+    $scope.yAxisFormatFun = function(){
+        return function(d){
+            return d3.format('.2g')(d);
+        }
+    }
+
+
+
+    $scope.parseMath = function(formula){
+
         var tree = math.parse(formula);
         var fn = tree.compile(math);
         var scope = parseVars(tree.expr)
-        console.log(scope)
-        return {
+
+        $scope.myMath = {
             tree: tree,
             fn: fn,
             scope: scope,
         };
     }
-    $scope.yAxisTickFormatFunction = function(){
-        return 1.0;
-    }
+
+
+
+    $scope.mathInput = "a*x^2+b*x+c+test";
+
+    //$scope.parseMath( $scope.mathInput )
+
+
+
 
     function parseVars(tree){
         var mathScope = {};
@@ -216,13 +250,15 @@ angular.module('ionApp')
 
     $scope.updateMathScope = function(scope){
         $scope.myMath.scope[scope.key] = parseFloat(scope.obj);
-        console.log( $scope.myMath.scope )
+
+        $scope.updateGraph()
     }
-    $scope.updateGraph = function(scope){
-        _.each( $scope.xyData, function(point){
+    $scope.updateGraph = function(){
+        _.each( $scope.chartData[0].values, function(point){
             $scope.myMath.scope.x = point[0]
             point[1] = $scope.myMath.fn.eval($scope.myMath.scope)
         });
+        delete $scope.myMath.scope.x;
         delete $scope.myMath.scope.ans;
     }
 
@@ -264,47 +300,6 @@ angular.module('ionApp')
         viewer.repaint(); 
 
     }
-
-    // //var sketcherSrc = $('#sketcher-src').contents().find('pre');
-    // var sketcherHtml = $('<html>')
-    // var sketcherHead = $('<head>')
-    // var sketcherBody = $('<body>')
-
-    // sketcherHead.append('<meta http-equiv="X-UA-Compatible" content="chrome=1">')
-    // sketcherHead.append('<script src="scripts/vendor/chemdoodle/ChemDoodleWeb.js"></script>')
-    // sketcherHead.append('<link rel="stylesheet" href="scripts/vendor/chemdoodle/uis/jquery-ui-10.0.3.custom.css">')
-
-    
-    // sketcherHead.append('<script src="scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis-custom.js"></script>')
-
-    // var sketcherCanvas = $('<canvas id="mychemsketcher"></canvas>')
-    // sketcherBody.append('<div>inside iframe</div>')
-    // var sketcherStyle = '<style>'
-    //     + 'button {  display: inline-block; width: 28px; height: 28px; border: 1px solid red; margin: 2px; padding: 2px; background-color: #ddd}'
-    //     + 'label { display: inline-block; width: 22px; height: 22px; border: 1px solid black; margin: 2px; padding: 2px; background-color: #ddd}'
-    //     + 'input[type="radio"] { display: none }'
-    //     //+ '.ui-button { border: 1px solid black; height: 28px; padding: 1px; margin: 1px}'
-    //     + 'canvas { border: 1px solid black; }'
-    //     + '.ui-state-active { background-color: blue; }'
-    //     + '.ui-corner-left { margin-right: 0px; }'
-    //     + 'button.ui-corner-right { margin-left: 0px; }'
-    //     //+ '.ui-corner-right { width: 8px; }'
-    //     + '</style>'
-    // sketcherBody.append(sketcherStyle)
-    // sketcherBody.append(sketcherCanvas)
-
-    // sketcherHtml.append(sketcherHead).append(sketcherBody)
-    // sketcherBody.append('<script src="scripts/chemframe.js"></script>')
-         
-
-
-    // var ifrm = document.getElementById('sketcher-frame');
-    // ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
-    
-    // ifrm.document.open();
-    // ifrm.document.write(sketcherHtml.html());
-    // ifrm.document.close();
-
 
 });
 
