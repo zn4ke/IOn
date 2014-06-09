@@ -224,7 +224,7 @@ angular.module('ionApp')
 
     $scope.mathInput = "a*x^2+b*x+c+test";
 
-    //$scope.parseMath( $scope.mathInput )
+    $scope.parseMath( $scope.mathInput )
 
 
 
@@ -266,8 +266,6 @@ angular.module('ionApp')
 
 
 
-
-// TODO clean that mess
 
 angular.module('ionApp')
 .controller('ChemCtrl', function ($scope, $http, $timeout) {
