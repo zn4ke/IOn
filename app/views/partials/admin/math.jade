@@ -10,9 +10,9 @@ div( ng-controller="MathCtrl")
         h5 vars
         div.container(ng-repeat="(key, obj) in myMath.scope")
             span {{key}}
-            input( ng-model='obj.value', ng-change="updateMathScope(this)" )
+            input( ng-model='obj', ng-change="updateMathScope(this)" )
             p
-                input( type="range", min="-2", max="2", step="0.01", ng-model='obj.value', ng-change="updateMathScope(this)")
+                input( type="range", min="-2", max="2", step="0.01", ng-model='obj', ng-change="updateMathScope(this)")
 
         h4 result
         div {{result}}
@@ -20,3 +20,16 @@ div( ng-controller="MathCtrl")
         div(ng-repeat="point in xyData")
             div x: {{point[0]}},     y: {{point[1]}}
         .btn.btn-default(ng-click="updateGraph(this)" ) update
+
+
+
+    nvd3-line-chart(
+        data="{ key: 'serie 1', values: xyData }"
+        id="exampleId"
+        xAxisTickFormat="xAxisTickFormatFunction()"
+        yAxisTickFormat="yAxisTickFormatFunction()"
+        width="550"
+        height="350"
+        showXAxis="true"
+        showYAxis="true")
+        svg

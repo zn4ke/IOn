@@ -1,19 +1,14 @@
 div( ng-controller="ChemCtrl" ) ChemDoodeleWeb
-    div.light-border Editor
+    div.light-border
+        iframe#sketcher-frame.light-border( width="550px", height="400px", src="/partials/sketcher.html" )
 
-        canvas#sketcher-canvas()
-        p
-            a.btn.btn-primary( ng-click="molecule = 'update()'" ) commit
-            span ChemDoodle (jQuery-UI?) is removing ng-click events
+        a.btn.btn-primary( ng-click="updateMol(this)" ) commit
 
-    div
-
-
-        canvas#viewer-canvas()
+        canvas#viewer-canvas.light-border()
 
         div 
             p .mol-file
-            p {{molecule}}
+            p {{molFile}}
 
 
 

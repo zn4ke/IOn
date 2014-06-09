@@ -1,22 +1,16 @@
 'use strict';
 
-// MathJax.Hub.Config({
-//   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-// });
-
-
-
 angular.module('ionApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ui.router',
-  'ui.bootstrap',
-  'ui.sortable',
-  'ngCkeditor',
-  'angular-client-side-auth',
-  'angularFileUpload',
-  'ui.chart'
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ui.router',
+    'ui.bootstrap',
+    'ui.sortable',
+    'ngCkeditor',
+    'angularFileUpload',
+    'ui.chart',
+    'nvd3ChartDirectives'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         

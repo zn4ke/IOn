@@ -174,6 +174,8 @@ angular.module('ionApp')
     console.log('init MathCtrl')
     var math = mathjs();
 
+    $scope.xyData = [ [-1.5,0.0] , [-1.0,0.0] , [-0.5,0.0] , [0.0,0.0] , [0.5,0.0] , [1.0,0.0] , [1.5,0.0] ]
+
     $scope.mathInput = "a*x^2+b*x+c";
 
     $scope.myMath = parseMath( $scope.mathInput )
@@ -182,13 +184,16 @@ angular.module('ionApp')
         var tree = math.parse(formula);
         var fn = tree.compile(math);
         var scope = parseVars(tree.expr)
+        console.log(scope)
         return {
             tree: tree,
             fn: fn,
             scope: scope,
         };
     }
-
+    $scope.yAxisTickFormatFunction = function(){
+        return 1.0;
+    }
 
     function parseVars(tree){
         var mathScope = {};
@@ -197,11 +202,7 @@ angular.module('ionApp')
         function parseNode(node){
             _.each(node, function(obj, key){
                 if ( key === 'name' ) {
-                    mathScope[obj] = {
-                        name: obj,
-                        value: 0,
-                        label: ''
-                    }
+                    mathScope[obj] = 0
                 }
                 if ( _.isArray(obj) ) {
                     _.each( obj, function(child, childKey){
@@ -214,14 +215,15 @@ angular.module('ionApp')
     }
 
     $scope.updateMathScope = function(scope){
-        //$scope.myMath.scope[scope.key] = scope.obj.value;
-        console.log( $scope.myMath.scope.a )
+        $scope.myMath.scope[scope.key] = parseFloat(scope.obj);
+        console.log( $scope.myMath.scope )
     }
     $scope.updateGraph = function(scope){
         _.each( $scope.xyData, function(point){
-            $scope.mathScope.x = point[0]
-            point[1] = fn.eval($scope.mathScope)
+            $scope.myMath.scope.x = point[0]
+            point[1] = $scope.myMath.fn.eval($scope.myMath.scope)
         });
+        delete $scope.myMath.scope.ans;
     }
 
 });
@@ -235,40 +237,33 @@ angular.module('ionApp')
 .controller('ChemCtrl', function ($scope, $http, $timeout) {
     console.log('ChemCtrl init');
     $scope.molecule = {}
-    
-
-
-
-
-
-    var sketcher = new ChemDoodle.SketcherCanvas('sketcher-canvas', 500, 300, {
-        useServices:false,
-        oneMolecule:true
-    });
-    sketcher.repaint()
-
-
 
     var viewer = new ChemDoodle.ViewerCanvas('viewer-canvas', 200, 200);
 
 
-    $scope.update = function(){
+    $scope.updateMol = function(){
         console.log('commiting mol')
-        var mol = sketcher.getMolecule();
+        var sktch = window.frames[0].window.sketcher;
+        console.log(sktch)
+        var mol = sktch.getMolecule();
+        console.log(mol)
         $scope.molFile = ChemDoodle.writeMOL(mol);
-        viewer.loadMolecule(mol);
+        console.log($scope.molFile)
+
+        // get the dimension of the molecule
+        var size = mol.getDimension();
+        console.log('size',size)
+        // find the scale by taking the minimum of the canvas/size ratios
+        var scale = Math.min(viewer.width/size.x, viewer.height/size.y);
+        console.log('scale',scale)
+        // load the molecule first (this function automatically sets scale, so we need to change specs after)
+        viewer.loadMolecule( ChemDoodle.readMOL($scope.molFile) );
+        // change the specs.scale value to the scale calculated, shrinking it slightly so that text is not cut off
+        viewer.specs.scale = scale*.85;
+        // repaint the canvas
+        viewer.repaint(); 
+
     }
-
-
-
-
-
-
-
-
-
-
-
 
     // //var sketcherSrc = $('#sketcher-src').contents().find('pre');
     // var sketcherHtml = $('<html>')
