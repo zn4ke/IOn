@@ -14,12 +14,12 @@ div( ng-controller="AdminDeckCtrl" )
 
         h5
             h5
-                span( contenteditable="true" ng-model="deck.name" )
+                span( contenteditable="true", ng-model="deck.name" )
                 span.ckedit-icon.glyphicon.glyphicon-edit
                 span &nbsp; # {{ slideNr + 1 }} / {{deck.slides.length}}
                 span &nbsp;
                 span &nbsp;
-                span(ng-show='(show == "pres")', ckedit="deck.slides[slideNr].title") {{deck.slides[slideNr].title}}
+                span(ng-show='(show == "pres")', contenteditable="true", ng-model="deck.slides[slideNr].title") {{deck.slides[slideNr].title}}
                 span.ckedit-icon.glyphicon.glyphicon-edit
         div( ng-show='(show == "meta")' )
             

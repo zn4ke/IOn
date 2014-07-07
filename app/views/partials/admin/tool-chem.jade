@@ -1,0 +1,16 @@
+div( ng-controller="ChemCtrl" ) ChemDoodeleWeb
+    div.light-border
+        iframe#sketcher-frame.light-border( width="550px", height="400px", src="/partials/sketcher.html" )
+        br
+        .btn.btn-primary( ng-click="updateMol(this)" ) commit
+        br
+        canvas#viewer-canvas.light-border()
+
+        div 
+            p .mol-file
+            p {{molFile}}
+
+
+
+
+

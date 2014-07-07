@@ -1,0 +1,12 @@
+div
+    #wrapper-topnav( ng-style="window.styles.nav" )
+        div( ng-include="'partials/navbar.html'" )
+    #wrapper-main.container( ng-style="window.styles.main" )
+        .row
+            div#wrapper-sidebar( ng-class='window.classes.sidebar', ng-show="window.settings.showSidebar" )
+                .light-border(ui-view='sidebar', ng-style="window.styles.sidebar")
+            div#wrapper-content( ng-class='window.classes.content' )
+                .light-border(ui-view='content' ng-style="window.styles.content")
+    #wrapper-controls( ng-style="window.styles.controls")
+        div( ng-include="'partials/controls.html'" )
+

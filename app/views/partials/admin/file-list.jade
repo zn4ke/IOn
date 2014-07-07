@@ -1,0 +1,9 @@
+div(ng-controller="AdminUploadCtrl")
+    div diese Sidebar könnte nutzloser nicht sein
+    p
+        a.btn.btn-primary( href='/admin/edit/deck') uploads
+    div(ng-repeat='uploadedFile in uploadedFiles', ng-click='select(this, "deck")')
+        .light-border
+            strong {{uploadedFile.name}}
+            p
+                em {{uploadedFile}}

@@ -1,0 +1,3 @@
+a.btn.btn-primary( href='/admin/edit/group' ) new
+div.light-border(ng-repeat='group in data.groups', ng-click='select(this, "group")')
+    div {{group.name}}
