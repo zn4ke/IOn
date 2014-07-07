@@ -1,23 +1,24 @@
 div(ng-controller='NavbarCtrl')
-    div
-        a.nav-pills.navbar-brand(ng-click='app.showControls = !app.showControls') IOn
+    div.nav
+        a.nav-pills.navbar-brand( ng-click="test()" ) IOn
             sup( style="color:red;" ) +
 
         
 
         ul.nav.nav-bar.nav-pills
-            li(ng-repeat='item in app.nav', ui-sref-active="active")
+            li(ng-repeat='item in menu', ui-sref-active="active")
                 a(ui-sref='{{item.sref}}', access-level="{{item.access}}") {{item.title}}
-            li.pull-right(ng-hide='user', ng-class='{active: isActive("/login")}')
-                a(href='/login') Login
-            li.pull-right(ng-hide='user', ng-class='{active: isActive("/signup")}')
-                a(href='/signup') Sign up
-            li.pull-right()
-                a.dropdown-toggle( data-toggle='dropdown') {{user.name}}
-                ul.dropdown-menu
-                    li(ng-class='{active: isActive("/logout")}')
-                        a(href='', ng-click='logout()') Logout
-                    li
-                        a(href='/profile') Profile
+
+            li.pull-right( ng-show="user.name" )
+                a(href='', ng-click='logout()') Logout
+            li.pull-right
+                a(href='/profile', ng-show="user")
+                    span {{user.name}}
+            li.pull-right
+                a(href='/login', ng-show="!user.name") Login
+            li.pull-right
+                a(href='/signup', ng-show="!user.name") neu hier?
+
+
             //li
                 .btn.btn-danger err: {{error}}

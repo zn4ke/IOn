@@ -11,9 +11,6 @@
 
             .form-group()
                 label(ng-init="presZoom = 1") Präsentation
-                .btn.btn-primary(ng-click="presZoom = presZoom + 0.2; presZoomStyle={zoom: presZoom}") +
-                .btn.btn-primary(ng-click="presZoom = presZoom - 0.2; presZoomStyle={zoom: presZoom}") -
-                span &nbsp; {{presZoom}}
                 div.thumbnail(ng-init="data.editPres = false")
                     .btn.btn-primary.pull-right( ng-hide="data.editPres", ng-click="data.editPres = !data.editPres") edit
                     .btn.btn-danger.pull-right( ng-show="data.editPres", ng-click="data.editPres = !data.editPres") save

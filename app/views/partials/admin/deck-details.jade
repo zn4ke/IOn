@@ -1,14 +1,56 @@
 div( ng-controller="AdminDeckCtrl" )
-    div(ng-hide="data.selected.deck")
+    div(ng-hide="deck")
         div <<<----- choose a deck
-    div(ng-hide="!data.selected.deck")
-        h4 {{data.selected.deck.name}}
-        div Beschreibung: {{data.selected.deck.desc}}
-        div
-            span pub: {{data.selected.deck.pub}}
-            span share: {{data.selected.deck.share}}
-        div Anzahl Slides: {{data.selected.deck.slides.length}}
+    div(ng-hide="!deck")
+        .btn.btn-default.pull-right( ng-click="show='mobile'") mobile
+        .btn.btn-default.pull-right( ng-click="show='pres'") pres
+        
+        .btn.pull-right( ng-click="show='mobile'") Vorschau: 
+        .btn.btn-default.pull-right( ng-click="show='overview'") Übersicht
+        .btn.btn-default.pull-right( ng-click="show='meta'") meta
+        
+
         .btn.btn-primary( ng-click="addSlide()") add Slide
-        span &nbsp;
-        .btn.btn-primary( ng-click="editDetails()") edit meta
-        slide-preview
+
+        h5
+            h5
+                span( contenteditable="true" ng-model="deck.name" )
+                span.ckedit-icon.glyphicon.glyphicon-edit
+                span &nbsp; # {{ slideNr + 1 }} / {{deck.slides.length}}
+                span &nbsp;
+                span &nbsp;
+                span(ng-show='(show == "pres")', ckedit="deck.slides[slideNr].title") {{deck.slides[slideNr].title}}
+                span.ckedit-icon.glyphicon.glyphicon-edit
+        div( ng-show='(show == "meta")' )
+            
+            
+            div
+                p
+                    strong Info:
+                p {{deck.desc}}
+                p 
+                    strong pub: 
+                    span {{deck.pub}}
+                p 
+                    strong share: 
+                    span {{deck.share}}
+
+        div( ng-show='(show == "overview")' )
+            div Übersicht
+
+        div#previews( ng-repeat="slide in deck.slides" )
+            
+            div( ng-show='(show == "pres") && ($index == slideNr)' )
+                div.light-border(dynamic='template.get.pres[slide.type]')
+            div( ng-show='(show == "mobile") && ($index == slideNr)' )
+                h5 {{$index}} - {{slide.title}} - Mobil
+                div.light-border(dynamic='template.get.mobile[slide.type]')
+            div.col-xs-3( ng-show='(show == "overview")', style="height:150px;overflow:hidden;")
+                .slide-preview
+                    .light-border( ng-click='slideDetails(this)')
+                        h6.light-border( style="white-space:nowrap;text-overflow:ellipsis;background-color:#eee;")
+                            strong {{$index}} 
+                            span - {{slide.title}}
+                        .light-border( style="zoom:25%;height:500px;" )
+                            
+                            div(dynamic='template.get.pres[slide.type]')

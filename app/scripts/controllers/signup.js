@@ -18,7 +18,8 @@ angular.module('ionApp')
             },
             function(err) {
                 $rootScope.error = err;
-            });
+            }
+        );
     };
 
 

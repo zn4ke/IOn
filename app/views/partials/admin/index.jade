@@ -1,12 +1,17 @@
 div(ng-controller='AdminCtrl')
-        
-    .container( ng-init="app.styles.sidebarWidth = 0" )
-        .row
-            #wrapper-sidebar( ng-class="app.styles.sidebarClass" )
-                div( ui-view='sidebar' )
-            #wrapper-content( ng-class="app.styles.mainContentClass" )
-                div( ui-view='content' )
-                    .row
-                        .col-xs-6.col-md-3( ng-repeat="link in links", ui-sref="{{link.sref}}" )
-                            .light-border
-                                .btn.btn-primary {{link.title}}
+    p
+        .btn.btn-primary( ui-sref="admin.decks") Decks
+    p
+        .btn.btn-primary( ui-sref="admin.events") Veranstaltungen
+    p
+        .btn.btn-primary( ui-sref="admin.groups") Gruppen
+    p
+        .btn.btn-primary( ui-sref="admin.files") Dateien
+    //#wrapper-sidebar( ng-class="app.styles.sidebarClass" )
+        div( ui-view='sidebar' )
+    //#wrapper-content( ng-class="app.styles.mainContentClass" )
+        div( ui-view='content' )
+            .row
+                .col-xs-6.col-md-3( ng-repeat="link in links", ui-sref="{{link.sref}}" )
+                    .light-border
+                        .btn.btn-primary {{link.title}}

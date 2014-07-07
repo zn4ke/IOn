@@ -1,6 +1,9 @@
-div( dynamic="data.selected.slide.mobile.question" )
+div( dynamic="slide.mobile.question" )
 form.form.container-fluid
-    div.form-group.row(ng-repeat="answer in data.selected.slide.mobile.answers")
+    div.form-group.row(ng-repeat="answer in slide.mobile.answers")
         .col-xs-12
-            .form-control.btn.btn-lg(  ng-click="sendAnswer(this)"
-                ng-class="{ 'btn-primary': !submittedAnswer, 'btn-success': submittedAnswer }" ) {{answer.text}}
+            div.btn( ng-click="sendAnswer(this)"
+                ng-class="{ 'btn-primary': !submittedAnswer, 'btn-success': submittedAnswer }"
+                style="white-space:normal; width:100%;" )
+                div
+                    p( style="color:black;" ) {{answer.text}}

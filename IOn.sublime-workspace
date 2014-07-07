@@ -84,26 +84,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/directives/client-side-auth.js",
+			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 1975,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/scripts/controllers/slide.js",
-			"settings":
-			{
-				"buffer_size": 10736,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/partials/admin/chem.jade",
-			"settings":
-			{
-				"buffer_size": 353,
+				"buffer_size": 12648,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,15 +95,87 @@
 			"file": "app/views/partials/admin/math.jade",
 			"settings":
 			{
-				"buffer_size": 787,
+				"buffer_size": 1262,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/index.jade",
+			"file": "app/scripts/controllers/slide.js",
 			"settings":
 			{
-				"buffer_size": 6066,
+				"buffer_size": 9184,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/directives/dynamic.js",
+			"settings":
+			{
+				"buffer_size": 1766,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/admin.js",
+			"settings":
+			{
+				"buffer_size": 13177,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/admin/file-details.jade",
+			"settings":
+			{
+				"buffer_size": 3668,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/navbar.js",
+			"settings":
+			{
+				"buffer_size": 2157,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/admin/chem.jade",
+			"settings":
+			{
+				"buffer_size": 372,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/sketcher.jade",
+			"settings":
+			{
+				"buffer_size": 2065,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/controllers/users.js",
+			"settings":
+			{
+				"buffer_size": 1499,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/vendor/ckeditor/config.js",
+			"settings":
+			{
+				"buffer_size": 1267,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/partials/slides/slide-mc-mobile.jade",
+			"settings":
+			{
+				"buffer_size": 413,
 				"line_ending": "Unix"
 			}
 		}
@@ -172,6 +228,12 @@
 	},
 	"file_history":
 	[
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/slide.js",
+		"/home/gargamel/Public/node/IOn/server.js",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/math.jade",
+		"/home/gargamel/Public/node/IOn/app/views/partials/admin/chem.jade",
+		"/home/gargamel/Public/node/IOn/app/scripts/controllers/slide.js",
+		"/home/gargamel/Public/node/IOn/app/scripts/directives/client-side-auth.js",
 		"/home/gargamel/Public/node/IOn/app/views/index.jade",
 		"/home/gargamel/Public/node/IOn/bower.json",
 		"/home/gargamel/Public/node/IOn/app/scripts/app.js",
@@ -189,9 +251,6 @@
 		"/home/gargamel/Public/node/IOn/lib/config/env/test.js",
 		"/home/gargamel/Public/node/IOn/lib/config/env/production.js",
 		"/home/gargamel/Public/node/IOn/lib/config/env/development.js",
-		"/home/gargamel/Public/node/IOn/app/views/partials/admin/math.jade",
-		"/home/gargamel/Public/node/IOn/app/scripts/controllers/slide.js",
-		"/home/gargamel/Public/node/IOn/app/views/partials/admin/chem.jade",
 		"/home/gargamel/Public/node/IOn/app/scripts/vendor/chemdoodle/uis/ChemDoodleWeb-uis-custom.js",
 		"/home/gargamel/Public/node/IOn/app/views/partials/stats/bar-chart.jade",
 		"/home/gargamel/Public/node/IOn/app/scripts/controllers/player.js",
@@ -251,7 +310,6 @@
 		"/home/gargamel/Public/node/IOn/app/scripts/controllers/signup.js",
 		"/home/gargamel/Public/node/IOn/app/scripts/directives/chem.js",
 		"/home/gargamel/Public/node/IOn/app/scripts/directives/mongooseError.js",
-		"/home/gargamel/Public/node/IOn/app/scripts/directives/slide.js",
 		"/home/gargamel/Public/node/IOn/app/scripts/services/auth.js",
 		"/home/gargamel/Public/node/IOn/app/scripts/services/chem.js",
 		"/home/gargamel/Public/node/IOn/app/scripts/services/db.js",
@@ -297,9 +355,7 @@
 		"/home/gargamel/Public/node/studi/app/views/index.jade",
 		"/home/gargamel/Public/node/studi/.gitignore",
 		"/home/gargamel/Public/node/studi/package.json",
-		"/home/gargamel/Public/node/studi/bower.json",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/plugins/ngMath/plugin.js",
-		"/home/gargamel/Public/node/studi/app/scripts/vendor/ckeditor/config.js"
+		"/home/gargamel/Public/node/studi/bower.json"
 	],
 	"find":
 	{
@@ -307,7 +363,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/home/gargamel/Public/node/IOn, -/home/gargamel/Public/node/IOn/node_modules/*, -/home/gargamel/Public/node/IOn/app/bower_components/*, -/home/gargamel/Public/node/IOn/app/scripts/vendor/*",
@@ -517,23 +573,23 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 11,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/directives/client-side-auth.js",
+					"file": "app/scripts/app.js",
 					"settings":
 					{
-						"buffer_size": 1975,
+						"buffer_size": 12648,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								655,
-								655
+								244,
+								244
 							]
 						],
 						"settings":
@@ -541,25 +597,52 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 42.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/scripts/controllers/slide.js",
+					"file": "app/views/partials/admin/math.jade",
 					"settings":
 					{
-						"buffer_size": 10736,
+						"buffer_size": 1262,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7411,
-								7411
+								1262,
+								1262
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/controllers/slide.js",
+					"settings":
+					{
+						"buffer_size": 9184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8344,
+								8344
 							]
 						],
 						"settings":
@@ -567,77 +650,77 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2697.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/partials/admin/chem.jade",
-					"settings":
-					{
-						"buffer_size": 353,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								351,
-								351
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3552.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "app/views/partials/admin/math.jade",
+					"file": "app/scripts/directives/dynamic.js",
 					"settings":
 					{
-						"buffer_size": 787,
+						"buffer_size": 1766,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								702,
-								702
+								1221,
+								1221
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
-						"translation.x": 23.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "app/views/index.jade",
+					"file": "app/scripts/controllers/admin.js",
 					"settings":
 					{
-						"buffer_size": 6066,
+						"buffer_size": 13177,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2736,
-								2736
+								4832,
+								4832
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 70.0,
+						"translation.y": 2142.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/partials/admin/file-details.jade",
+					"settings":
+					{
+						"buffer_size": 3668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3011,
+								3011
 							]
 						],
 						"settings":
@@ -645,7 +728,163 @@
 							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
 						},
 						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/scripts/controllers/navbar.js",
+					"settings":
+					{
+						"buffer_size": 2157,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								641,
+								641
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/partials/admin/chem.jade",
+					"settings":
+					{
+						"buffer_size": 372,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								372,
+								372
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/views/partials/sketcher.jade",
+					"settings":
+					{
+						"buffer_size": 2065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2065,
+								2065
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "lib/controllers/users.js",
+					"settings":
+					{
+						"buffer_size": 1499,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1433,
+								1433
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
 						"translation.y": 504.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/scripts/vendor/ckeditor/config.js",
+					"settings":
+					{
+						"buffer_size": 1267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1267,
+								1267
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/views/partials/slides/slide-mc-mobile.jade",
+					"settings":
+					{
+						"buffer_size": 413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								413,
+								413
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

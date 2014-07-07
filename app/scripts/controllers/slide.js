@@ -1,29 +1,31 @@
 'use strict';
 
 angular.module('ionApp')
-    .controller('SlidePreviewCtrl', function ($scope, $location, Template) {
-        $scope.data.selected.slideNr = -1;
+    .controller('SlidePreviewCtrl', function ($scope, $location, Template, Selection) {
+
+        $scope.slideNr = -1;
         $scope.zoomFactor = 100;
+        $scope.app = $scope.app || {};
         $scope.app.player = $scope.app.player || {};
-        $scope.$watch('data.selected.slideNr', function(newValue, oldValue) {
+        $scope.$watch('slideNr', function(newValue, oldValue) {
             
-            if (!$scope.data.selected.deck 
-                || !$scope.data.selected.deck.slides
-                || !$scope.data.selected.deck.slides[0] ) return;
+            if (!Selection.deck 
+                || !Selection.deck.slides
+                || !Selection.deck.slides[0] ) return;
             
-            var deckSize = $scope.data.selected.deck.slides.length;
-            var slideNr = $scope.data.selected.slideNr;
+            var deckSize = Selection.deck.slides.length;
+            var slideNr = Selection.slideNr;
 
             if (slideNr < 0) slideNr = 0;
             if (slideNr > deckSize - 1) slideNr = deckSize - 1;
-            $scope.data.selected.slideNr = slideNr;
+            Selection.slideNr = slideNr;
             console.log('slideNr', slideNr)
 
-            $scope.data.selected.slide = $scope.data.selected.deck.slides[slideNr];
-            console.log('$scope.data.selected.slide', $scope.data.selected.slide)
+            Selection.slide = Selection.deck.slides[slideNr];
+            console.log('Selection.slide', Selection.slide)
             
-            $scope.template = Template.get.pres[$scope.data.selected.slide.type];
-            $scope.templateMobile = Template.get.mobile[$scope.data.selected.slide.type];
+            $scope.template = Template.get.pres[Selection.slide.type];
+            $scope.templateMobile = Template.get.mobile[Selection.slide.type];
         });
         $scope.$watch('zoomFactor', function(newValue, oldValue) {
             $scope.app.player.zoomStyle = {
@@ -34,18 +36,18 @@ angular.module('ionApp')
         });
         $scope.editSlide = function(scope){
             $scope.app.newSlide = false;
-            $location.path( 'admin/edit/' + $scope.data.selected.slide.type );
+            $location.path( 'admin/edit/' + Selection.slide.type );
         };
         $scope.deleteSlide = function(){
-            var slideNr = $scope.data.selected.slideNr
-            console.log('deleting slide ' + slideNr + " of "+ $scope.data.selected.deck.slides.length)
+            var slideNr = Selection.slideNr
+            console.log('deleting slide ' + slideNr + " of "+ Selection.deck.slides.length)
             
             var confirm = window.confirm( 'Die Folie wird gelöscht' );
             if (!confirm) { return; }
-            $scope.data.selected.deck.slides.splice(slideNr, 1)
-            $scope.data.selected.deck.$update( function(updatedDeck,arg2){
-                console.log('updated deck contains ', $scope.data.selected.deck.slides.length)
-                $scope.data.selected.slideNr = slideNr - 1;
+            Selection.deck.slides.splice(slideNr, 1)
+            Selection.deck.$update( function(updatedDeck,arg2){
+                console.log('updated deck contains ', Selection.deck.slides.length)
+                Selection.slideNr = slideNr - 1;
             })
 
             
@@ -272,7 +274,7 @@ angular.module('ionApp')
     console.log('ChemCtrl init');
     $scope.molecule = {}
 
-    var viewer = new ChemDoodle.ViewerCanvas('viewer-canvas', 200, 200);
+    var viewer = new ChemDoodle.ViewerCanvas('viewer-canvas', 200, 180);
 
 
     $scope.updateMol = function(){
@@ -293,7 +295,7 @@ angular.module('ionApp')
         // load the molecule first (this function automatically sets scale, so we need to change specs after)
         viewer.loadMolecule( ChemDoodle.readMOL($scope.molFile) );
         // change the specs.scale value to the scale calculated, shrinking it slightly so that text is not cut off
-        viewer.specs.scale = scale*.85;
+        viewer.specs.scale = scale*.75;
         // repaint the canvas
         viewer.repaint(); 
 

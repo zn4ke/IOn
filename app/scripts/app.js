@@ -3,12 +3,9 @@
 
 MathJax.Hub.Config({
   asciimath2jax: {
-    delimiters: [['§','§'], ['§§','§§']]
+    delimiters: [['$','$'], ['$$','$$']]
   }
 });
-
-
-
 
 angular.module('ionApp', [
     'ngCookies',
@@ -23,6 +20,7 @@ angular.module('ionApp', [
     'nvd3ChartDirectives'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+        console.log('loading app config')
         
         var access = routingConfig.accessLevels;
 
@@ -37,97 +35,91 @@ angular.module('ionApp', [
             
             .state('anon', {
                 abstract: true,
-                templateUrl: "partials/index.html",
+                templateUrl: "partials/window.html",
+                controller: 'WindowCtrl',
                 data: {
                     access: access.anon
                 }
             })
-            .state('anon.login', {
-                url: "/login",
-                controller: 'LoginCtrl',
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/login.html"}
-                }
-            })
-            .state('anon.signup', {
-                url: "/signup",
-                views: {
-                    nav:{templateUrl: "partials/navbar.html"},
-                    main:{templateUrl: "partials/signup.html"}
-                }
-            })
-            .state('anon.404', {
-                url: '/404',
-                templateUrl: '404.html'
-            });
-
-
-
-
-
-
+                .state('anon.login', {
+                    url: "/login",
+                    controller: 'LoginCtrl',
+                    views: {
+                        content:{templateUrl: "partials/login.html"}
+                    }
+                })
+                .state('anon.signup', {
+                    url: "/signup",
+                    views: {
+                        content:{templateUrl: "partials/signup.html"}
+                    }
+                })
+                .state('anon.404', {
+                    url: '/404',
+                    views: {
+                        content:{templateUrl: "404.html"}
+                    }
+                });
 
        // Public routes
         $stateProvider
             .state('public', {
                 abstract: true,
-                templateUrl: "partials/index.html",
+                templateUrl: "partials/window.html",
+                controller: 'WindowCtrl',
                 data: {
                     access: access.public
                 }
             })
+                .state("public.home", {
+                // 
+                    url: "/",
+                    views: {
+                        content:{templateUrl: "partials/home.html"}
+                    }
+                })
     // Regular user routes
         $stateProvider
             .state('user', {
                 abstract: true,
-                templateUrl: "partials/index.html",
+                templateUrl: "partials/window.html",
+                controller: 'WindowCtrl',
                 data: {
                     access: access.user
                 }
             })
                 .state("user.home", {
-                    // Use a url of "/" to set a states as the "index".
+                // 
                     url: "/",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/home.html"}
+                        content:{templateUrl: "partials/home.html"}
                     }
                 })
-
-
-
                 .state("user.profile", {
                 // 
                     url: "/profile",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/profile.html"}
+                        content:{templateUrl: "partials/profile.html"}
                     }
                 })
 
                 .state('user.join', {
                     url: "/join",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/event-list.html"}
+                        content:{templateUrl: "partials/event-list.html"}
                     }
                 })
                 .state('user.mobile', {
                     url: "/mobile",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/mobile.html"},
-                        controls:{templateUrl: "partials/mobile-controls.html"}
+                        content:{templateUrl: "partials/presentation.html"}
                     }
                 })
 
                 .state('user.presentation', {
                     url: "/presentation",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/presentation.html"},
-                        controls:{templateUrl: "partials/presentation-controls.html"}
+                        content:{templateUrl: "partials/presentation.html"},
                     }
                 })
 
@@ -136,161 +128,137 @@ angular.module('ionApp', [
         $stateProvider
             .state('admin', {
                 abstract: true,
-                templateUrl: "partials/index.html",
+                templateUrl: "partials/window.html",
+                controller: 'WindowCtrl',
                 data: {
                     access: access.admin
-                }
+                },
             })
-
-
-
-
 
                 .state("admin.video", {
                 // 
-                    url: "/video",
+                    url: "video",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/admin/video.html"}
+                        content:{templateUrl: "partials/admin/tool-video.html"}
                     }
                 })
                 .state("admin.math", {
                 // 
-                    url: "/math",
+                    url: "math",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/admin/math.html"}
+                        content:{templateUrl: "partials/admin/tool-math.html"}
                     }
                 })
                 .state("admin.chem", {
                 // 
-                    url: "/chem",
+                    url: "chem",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/admin/chem.html"}
+                        content:{templateUrl: "partials/admin/tool-chem.html"}
                     }
                 })
-
-
-
-
 
 
                 .state("admin.admin", {
                 // 
                     url: "/admin",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/admin/index.html"}
+                        content:{templateUrl: "partials/admin/index.html"}
                     }
                 })
-                    .state("admin.admin.users", {
-                    // 
-                        url: "/users",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/user-browser.html"},
-                            content:{templateUrl: "partials/admin/user-details.html"}
-                        }
-                    })
-                    .state("admin.admin.user", {
-                    // 
-                        url: "/user/:id",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/user-browser.html"},
-                            content:{templateUrl: "partials/admin/user-details.html"}
-                        }
-                    })
-                    .state("admin.admin.decks", {
-                    // 
-                        url: "/decks",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/decks-menu.html"},
-                            content:{templateUrl: "partials/admin/deck-list.html"}
-                        }
-                    })
-                    .state("admin.admin.deck", {
-                    // 
-                        url: "/deck/:id",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/slide-browser.html"},
-                            content:{templateUrl: "partials/admin/deck-details.html"}
-                        }
-                    })
-                    .state("admin.admin.groups", {
-                    // 
-                        url: "/groups",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/group-browser.html"},
-                            content:{templateUrl: "partials/admin/group-details.html"}
-                        }
-                    })
-                    .state("admin.admin.group", {
-                    // 
-                        url: "/group/:id",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/group-browser.html"},
-                            content:{templateUrl: "partials/admin/group-details.html"}
-                        }
-                    })
-                    .state("admin.admin.new", {
-                        url: "/new/:type",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/form-browser.html"},
-                            content:{
-                                templateUrl: function(stateParams){
-                                    return '/partials/forms/' + stateParams.type + '.html'
-                                }
+                .state("admin.users", {
+                // 
+                    url: "/admin/users",
+                    views: {
+                        content:{templateUrl: "partials/admin/user-details.html"}
+                    }
+                })
+                .state("admin.user", {
+                // 
+                    url: "/admin/user/:id",
+                    views: {
+                        sidebar:{templateUrl: "partials/admin/user-browser.html"},
+                        content:{templateUrl: "partials/admin/user-details.html"}
+                    }
+                })
+                .state("admin.decks", {
+                // 
+                    url: "/admin/decks",
+                    views: {
+                        content:{templateUrl: "partials/admin/deck-list.html"}
+                    }
+                })
+                .state("admin.deck", {
+                // 
+                    url: "/admin/deck/:id/:slideNr",
+                    views: {
+                        content:{templateUrl: "partials/admin/deck-details.html"}
+                    }
+                })
+                .state("admin.groups", {
+                // 
+                    url: "/admin/groups",
+                    views: {
+                        content:{templateUrl: "partials/admin/group-list.html"}
+                    }
+                })
+                .state("admin.group", {
+                // 
+                    url: "/admin/group/:id",
+                    views: {
+                        content:{templateUrl: "partials/admin/group-details.html"}
+                    }
+                })
+                .state("admin.new", {
+                    url: "/admin/new/:type",
+                    views: {
+                        content:{
+                            templateUrl: function(stateParams){
+                                return '/partials/forms/' + stateParams.type + '.html'
                             }
                         }
-                    })
-                    .state("admin.admin.edit", {
-                        url: "/edit/:type/:id",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/form-browser.html"},
-                            content:{
-                                templateUrl: function(stateParams){
-                                    return '/partials/forms/' + stateParams.type + '.html'
-                                }
+                    }
+                })
+                .state("admin.edit", {
+                    url: "/admin/edit/:type/:id",
+                    views: {
+                        content:{
+                            templateUrl: function(stateParams){
+                                return '/partials/forms/' + stateParams.type + '.html'
                             }
                         }
-                    })
-                    .state("admin.admin.events", {
-                    // 
-                        url: "/events",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/event-browser.html"},
-                            content:{templateUrl: "partials/admin/event-details.html"}
-                        }
-                    })
-                    .state("admin.admin.event", {
-                    // 
-                        url: "/event/:id",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/event-browser.html"},
-                            content:{templateUrl: "partials/admin/event-details.html"}
-                        }
-                    })
-                    .state('admin.admin.files', {
-                        url: "/files",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/file-browser.html"},
-                            content:{templateUrl: "partials/admin/file-details.html"}
-                        }
-                    })
-                    .state('admin.admin.file', {
-                        url: "/file/:id",
-                        views: {
-                            sidebar:{templateUrl: "partials/admin/file-browser.html"},
-                            content:{templateUrl: "partials/admin/file-details.html"}
-                        }
-                    })
+                    }
+                })
+                .state("admin.events", {
+                // 
+                    url: "/admin/events",
+                    views: {
+                        content:{templateUrl: "partials/admin/event-list.html"}
+                    }
+                })
+                .state("admin.event", {
+                // 
+                    url: "/admin/event/:id",
+                    views: {
+                        content:{templateUrl: "partials/admin/event-details.html"}
+                    }
+                })
+                .state('admin.files', {
+                    url: "/admin/files",
+                    views: {
+                        content:{templateUrl: "partials/admin/file-list.html"}
+                    }
+                })
+                .state('admin.file', {
+                    url: "/admin/file/:id",
+                    views: {
+                        content:{templateUrl: "partials/admin/file-details.html"}
+                    }
+                })
 
                 .state('admin.player', {
-                    url: "/player",
+                    url: "/admin/player",
                     views: {
-                        nav:{templateUrl: "partials/navbar.html"},
-                        main:{templateUrl: "partials/player.html"},
-                        controls:{templateUrl: "partials/player-controls.html"}
+                        content:{templateUrl: "partials/player.html"},
                     }
                 })
 

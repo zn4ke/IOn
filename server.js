@@ -56,7 +56,7 @@ var app = express()
 *   socket.io config and init
 */
 var io = require('socket.io').listen(server);
-io.set('log level', 5);
+io.set('log level', 2);
 
 
 io.sockets.on('connection', function(socket){

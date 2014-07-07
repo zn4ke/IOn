@@ -1,8 +1,8 @@
-.navbar-fixed-bottom
-    .light-border
-        .btn.btn-primary(ng-repeat='control in app.controls', ng-click="control.action()")
-            span.glyphicon( ng-class="'glyphicon-' + control.icon" )
-
-
-        .btn.btn-primary.pull-right( ng-click="app.showNav = !app.showNav" )
-            span.glyphicon.glyphicon-th
+.light-border
+    span  hello controlls
+    .btn.btn-primary.pull-right( ng-click="app.showControls = false" )
+        span.glyphicon.glyphicon-remove
+    .btn.btn-primary.pull-right( ng-click="app.player.zoomFactor = app.player.zoomFactor - 2" )
+        span.glyphicon.glyphicon-zoom-out
+    .btn.btn-primary.pull-right( ng-click="app.player.zoomFactor = app.player.zoomFactor + 2" )
+        span.glyphicon.glyphicon-zoom-in
